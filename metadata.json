@@ -1,0 +1,6 @@
+{
+  "name": "SaaS Authentication Portal",
+  "description": "The zero-knowledge vault built for developers. Securely encrypts, manages, and syncs SSH keys, AWS credentials, database strings, and dotenv files with client-side Web Crypto API protection.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

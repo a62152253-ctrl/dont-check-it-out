@@ -1,0 +1,69 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile state in Firestore",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "role": { "type": "string" },
+        "plan": { "type": "string" },
+        "companyName": { "type": "string" },
+        "onboardingCompleted": { "type": "boolean" },
+        "status": { "type": "string", "enum": ["Active", "Suspended", "Pending"] }
+      },
+      "required": ["uid", "email", "displayName", "createdAt", "role", "plan", "onboardingCompleted", "status"]
+    },
+    "UserActivity": {
+      "title": "UserActivity",
+      "description": "Security and actions audit log entry",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "action": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "userAgent": { "type": "string" },
+        "status": { "type": "string", "enum": ["Success", "Failed"] },
+        "details": { "type": "string" }
+      },
+      "required": ["uid", "action", "timestamp", "userAgent", "status"]
+    },
+    "PasswordEntry": {
+      "title": "PasswordEntry",
+      "description": "Secure credential entry in the password manager",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Owner user ID" },
+        "name": { "type": "string", "minLength": 1, "maxLength": 100, "description": "Name or Title of the credential" },
+        "url": { "type": "string", "maxLength": 2048, "description": "Target login website URL" },
+        "username": { "type": "string", "minLength": 1, "maxLength": 150, "description": "Login Username or Email address" },
+        "password": { "type": "string", "minLength": 1, "maxLength": 256, "description": "Plain text password stored securely" },
+        "category": { "type": "string", "enum": ["Personal", "Work", "Finance", "Social", "Database", "Server", "Other"] },
+        "notes": { "type": "string", "maxLength": 1000, "description": "Optional notes or details" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "isFavorite": { "type": "boolean", "description": "Whether the entry is marked as favorite" },
+        "isTrash": { "type": "boolean", "description": "Whether the entry is in the trash bin" }
+      },
+      "required": ["uid", "name", "username", "password", "category", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "Collection of user profiles keyed by Firebase Auth UID"
+    },
+    "userActivity/{activityId}": {
+      "schema": { "$ref": "#/entities/UserActivity" },
+      "description": "Audit log of user authentication actions and security events"
+    },
+    "passwords/{passwordId}": {
+      "schema": { "$ref": "#/entities/PasswordEntry" },
+      "description": "Encrypted or secure password entries keyed by document ID"
+    }
+  }
+}
