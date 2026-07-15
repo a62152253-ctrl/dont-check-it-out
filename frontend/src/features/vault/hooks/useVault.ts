@@ -420,13 +420,19 @@ export function useVault() {
         iv: encrypted.iv,
         isFavorite: false,
         isTrash: false,
-        updatedAt: new Date().toISOString()
+        updatedAt: new Date().toISOString(),
+        createdAt: new Date().toISOString() // Fallback, normally fetched from existing entry for updates
       };
 
-      const finalId = await repository.saveEntry(user.uid, id, id ? dbPayload : {
-        ...dbPayload,
-        createdAt: new Date().toISOString()
-      });
+      if (id) {
+        // If updating, preserve the original createdAt
+        const existingEntry = decryptedEntries.find(e => e.id === id);
+        if (existingEntry && existingEntry.createdAt) {
+           dbPayload.createdAt = existingEntry.createdAt;
+        }
+      }
+
+      const finalId = await repository.saveEntry(user.uid, id, dbPayload);
 
       if (id) {
         addActivityLog("Updated secret", `${name.trim()} (${category})`);
