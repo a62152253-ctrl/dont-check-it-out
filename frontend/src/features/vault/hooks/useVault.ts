@@ -420,13 +420,11 @@ export function useVault() {
         iv: encrypted.iv,
         isFavorite: false,
         isTrash: false,
-        updatedAt: new Date().toISOString()
+        updatedAt: new Date().toISOString(),
+        createdAt: id ? (entries.find(e => e.id === id)?.createdAt || new Date().toISOString()) : new Date().toISOString()
       };
 
-      const finalId = await repository.saveEntry(user.uid, id, id ? dbPayload : {
-        ...dbPayload,
-        createdAt: new Date().toISOString()
-      });
+      const finalId = await repository.saveEntry(user.uid, id, dbPayload);
 
       if (id) {
         addActivityLog("Updated secret", `${name.trim()} (${category})`);
