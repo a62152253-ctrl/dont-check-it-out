@@ -1,8 +1,9 @@
 import React, { Component, ErrorInfo, ReactNode } from "react";
 import { AlertTriangle, RefreshCw } from "lucide-react";
 
-interface Props {
+interface VaultErrorBoundaryProps {
   children: ReactNode;
+  onReset?: () => void;
 }
 
 interface State {
@@ -10,7 +11,7 @@ interface State {
   error: Error | null;
 }
 
-export class VaultErrorBoundary extends Component<Props, State> {
+export class VaultErrorBoundary extends Component<VaultErrorBoundaryProps, State> {
   public state: State = {
     hasError: false,
     error: null
@@ -61,7 +62,7 @@ export class VaultErrorBoundary extends Component<Props, State> {
       );
     }
 
-    return this.children;
+    return this.props.children;
   }
 }
 export default VaultErrorBoundary;
