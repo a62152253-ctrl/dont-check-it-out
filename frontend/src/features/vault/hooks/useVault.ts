@@ -423,10 +423,10 @@ export function useVault() {
         updatedAt: new Date().toISOString()
       };
 
-      const finalId = await repository.saveEntry(user.uid, id, id ? dbPayload : {
+      const finalId = await repository.saveEntry(user.uid, id, (id ? dbPayload : {
         ...dbPayload,
         createdAt: new Date().toISOString()
-      });
+      }) as any);
 
       if (id) {
         addActivityLog("Updated secret", `${name.trim()} (${category})`);
