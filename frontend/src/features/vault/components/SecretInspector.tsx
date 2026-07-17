@@ -1,12 +1,13 @@
+import { CopyButton } from "./CopyButton";
 import React from "react";
 import { 
   Star, Edit2, Copy, Check, Eye, EyeOff, Terminal, Database, 
   Trash2, Globe, ExternalLink, Calendar, RefreshCw, Folder, Cpu 
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import { useVaultContext } from "../../context/useVaultContext";
-import { mapLegacyCategory } from "../../hooks/useVault";
-import { DeveloperFields } from "../../types";
+import { useVaultContext } from "../context/useVaultContext";
+import { mapLegacyCategory } from "../hooks/useVault";
+import { DeveloperFields } from "shared";
 
 export function SecretInspector() {
   const {
@@ -107,7 +108,7 @@ export function SecretInspector() {
                   </span>
                 )}
               </div>
-            </div> </div>
+            </div>
 
             <div className="flex items-center gap-1 shrink-0">
               <button
@@ -148,13 +149,12 @@ export function SecretInspector() {
                 <div className="bg-[#121212] border border-white/5 p-2.5 rounded relative">
                   <span className="block text-[9px] font-mono text-slate-500 uppercase mb-0.5">AWS Access Key ID</span>
                   <span className="text-xs font-mono text-slate-200 select-all pr-8 break-all">{secret.developerFields.awsAccessKeyId || "Brak"}</span>
-                  <button
-                    onClick={() => copyText(secret.developerFields?.awsAccessKeyId || "", secret.id!, "aws_id")}
+                  <CopyButton
+                    isCopied={copiedId === secret.id && copiedField === "aws_id"}
+                    onCopy={() => copyText(secret.developerFields?.awsAccessKeyId || "", secret.id!, "aws_id")}
                     className="absolute right-2 top-3 text-slate-500 hover:text-white cursor-pointer"
                     title="Kopiuj ID"
-                  >
-                    {copiedId === secret.id && copiedField === "aws_id" ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-                  </button>
+                  />
                 </div>
 
                 <div className="bg-[#121212] border border-white/5 p-2.5 rounded relative">
@@ -169,12 +169,11 @@ export function SecretInspector() {
                     >
                       {isPassVisible ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
                     </button>
-                    <button
-                      onClick={() => copyText(secret.developerFields?.awsSecretAccessKey || "", secret.id!, "aws_secret")}
+                    <CopyButton
+                      isCopied={copiedId === secret.id && copiedField === "aws_secret"}
+                      onCopy={() => copyText(secret.developerFields?.awsSecretAccessKey || "", secret.id!, "aws_secret")}
                       className="hover:text-white cursor-pointer"
-                    >
-                      {copiedId === secret.id && copiedField === "aws_secret" ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-                    </button>
+                    />
                   </div>
                 </div>
 
@@ -259,12 +258,11 @@ export function SecretInspector() {
                 <div className="bg-[#121212] border border-white/5 p-2 rounded relative">
                   <span className="block text-[9px] font-mono text-slate-500 uppercase mb-0.5">Host zdalny (SSH Connection)</span>
                   <span className="text-xs font-mono text-slate-300 select-all pr-8 break-all">{secret.developerFields.sshHost || "np. ubuntu@192.168.1.1"}</span>
-                  <button
-                    onClick={() => copyText(secret.developerFields?.sshHost || "", secret.id!, "ssh_host")}
+                  <CopyButton
+                    isCopied={copiedId === secret.id && copiedField === "ssh_host"}
+                    onCopy={() => copyText(secret.developerFields?.sshHost || "", secret.id!, "ssh_host")}
                     className="absolute right-2 top-2.5 text-slate-500 hover:text-white cursor-pointer"
-                  >
-                    {copiedId === secret.id && copiedField === "ssh_host" ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-                  </button>
+                  />
                 </div>
 
                 {secret.developerFields.sshPassphrase && (
@@ -280,12 +278,11 @@ export function SecretInspector() {
                       >
                         {isPassVisible ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
                       </button>
-                      <button
-                        onClick={() => copyText(secret.developerFields?.sshPassphrase || "", secret.id!, "ssh_pass")}
+                      <CopyButton
+                        isCopied={copiedId === secret.id && copiedField === "ssh_pass"}
+                        onCopy={() => copyText(secret.developerFields?.sshPassphrase || "", secret.id!, "ssh_pass")}
                         className="hover:text-white cursor-pointer"
-                      >
-                        {copiedId === secret.id && copiedField === "ssh_pass" ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-                      </button>
+                      />
                     </div>
                   </div>
                 )}
@@ -296,13 +293,12 @@ export function SecretInspector() {
                     {secret.developerFields.sshPrivateKey ? secret.developerFields.sshPrivateKey.substring(0, 70) + "..." : "Brak klucza"}
                   </pre>
                   {secret.developerFields.sshPrivateKey && (
-                    <button
-                      onClick={() => copyText(secret.developerFields?.sshPrivateKey || "", secret.id!, "ssh_key")}
+                    <CopyButton
+                      isCopied={copiedId === secret.id && copiedField === "ssh_key"}
+                      onCopy={() => copyText(secret.developerFields?.sshPrivateKey || "", secret.id!, "ssh_key")}
                       className="absolute right-2 top-2.5 text-slate-500 hover:text-white cursor-pointer"
                       title="Skopiuj cały klucz SSH"
-                    >
-                      {copiedId === secret.id && copiedField === "ssh_key" ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-                    </button>
+                    />
                   )}
                 </div>
               </div>
@@ -316,12 +312,11 @@ export function SecretInspector() {
                   <pre className="text-[10px] font-mono text-emerald-400 select-all whitespace-pre-wrap leading-relaxed mt-1 break-all pr-6 select-all">
                     {secret.developerFields.dotenvContent || "Brak danych .env"}
                   </pre>
-                  <button
-                    onClick={() => copyText(secret.developerFields?.dotenvContent || "", secret.id!, "dotenv")}
+                  <CopyButton
+                    isCopied={copiedId === secret.id && copiedField === "dotenv"}
+                    onCopy={() => copyText(secret.developerFields?.dotenvContent || "", secret.id!, "dotenv")}
                     className="absolute right-2 top-2.5 text-slate-500 hover:text-white cursor-pointer"
-                  >
-                    {copiedId === secret.id && copiedField === "dotenv" ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-                  </button>
+                  />
                 </div>
 
                 <button
@@ -344,12 +339,11 @@ export function SecretInspector() {
                       <span className="text-xs font-mono text-slate-300 truncate block select-all">{secret.url}</span>
                     </div>
                     <div className="flex gap-2">
-                      <button
-                        onClick={() => copyText(secret.url || "", secret.id!, "url")}
+                      <CopyButton
+                        isCopied={copiedId === secret.id && copiedField === "url"}
+                        onCopy={() => copyText(secret.url || "", secret.id!, "url")}
                         className="text-slate-500 hover:text-white cursor-pointer"
-                      >
-                        {copiedId === secret.id && copiedField === "url" ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-                      </button>
+                      />
                       <a 
                         href={secret.url.startsWith("http") ? secret.url : `https://${secret.url}`} 
                         target="_blank" 
@@ -366,12 +360,11 @@ export function SecretInspector() {
                   <div className="bg-[#121212] border border-white/5 p-2.5 rounded relative">
                     <span className="block text-[9px] font-mono text-slate-500 uppercase mb-0.5">Nazwa Użytkownika / Email</span>
                     <span className="text-xs font-mono text-slate-200 select-all pr-8 break-all">{secret.username}</span>
-                    <button
-                      onClick={() => copyText(secret.username || "", secret.id!, "user")}
+                    <CopyButton
+                      isCopied={copiedId === secret.id && copiedField === "user"}
+                      onCopy={() => copyText(secret.username || "", secret.id!, "user")}
                       className="absolute right-2 top-3 text-slate-500 hover:text-white cursor-pointer"
-                    >
-                      {copiedId === secret.id && copiedField === "user" ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-                    </button>
+                    />
                   </div>
                 )}
 
@@ -388,12 +381,11 @@ export function SecretInspector() {
                       >
                         {isPassVisible ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
                       </button>
-                      <button
-                        onClick={() => copyText(secret.password || "", secret.id!, "pass")}
+                      <CopyButton
+                        isCopied={copiedId === secret.id && copiedField === "pass"}
+                        onCopy={() => copyText(secret.password || "", secret.id!, "pass")}
                         className="hover:text-white cursor-pointer"
-                      >
-                        {copiedId === secret.id && copiedField === "pass" ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-                      </button>
+                      />
                     </div>
                   </div>
                 )}
