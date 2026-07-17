@@ -178,7 +178,7 @@ export function SecretFormModal() {
           </div>
           <button 
             onClick={handleClose} 
-            className="text-slate-500 hover:text-white transition-all cursor-pointer p-1 hover:bg-white/5 rounded-lg"
+            className="text-slate-500 hover:text-white transition-all p-1 hover:bg-white/5 rounded-lg"
           >
             <X className="w-5 h-5" />
           </button>
@@ -493,7 +493,7 @@ export function SecretFormModal() {
           <div className="pt-2 shrink-0">
             <button
               type="submit"
-              className="w-full py-2.5 bg-emerald-500 hover:bg-emerald-600 text-black font-semibold text-xs rounded-lg transition-all shadow-lg hover:shadow-emerald-500/10 cursor-pointer text-center"
+              className="w-full py-2.5 bg-emerald-500 hover:bg-emerald-600 text-black font-semibold text-xs rounded-lg transition-all shadow-lg hover:shadow-emerald-500/10 text-center"
             >
               Dodaj i zaszyfruj (Save)
             </button>
