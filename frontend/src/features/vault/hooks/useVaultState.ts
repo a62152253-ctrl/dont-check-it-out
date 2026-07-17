@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DecryptedSecret } from "shared";
+import type { DecryptedSecret } from "shared";
 import { EncryptedSecretEntry, VaultConfig, ActivityLog } from "../types";
 
 export type ViewMode = "dashboard" | "all" | "favorites" | "trash" | "security" | "settings" | "activity" | "generator";

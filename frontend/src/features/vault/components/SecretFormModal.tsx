@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { X, Lock, Sliders, Database, Server, Key, Folder, Globe, Cpu } from "lucide-react";
 import { useVaultContext } from "../context/useVaultContext";
-import { DeveloperFields, DecryptedSecret } from "shared";
+import type { DeveloperFields, DecryptedSecret } from "shared";
 
 export function SecretFormModal() {
   const {

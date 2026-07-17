@@ -6,7 +6,7 @@ import { useAutoLock } from "./useAutoLock";
 import { LocalVaultRepository } from "../repositories/LocalVaultRepository";
 import { FirebaseVaultRepository } from "../repositories/FirebaseVaultRepository";
 import { VaultRepository } from "../repositories/VaultRepository";
-import { DecryptedSecret } from "shared";
+import type { DecryptedSecret } from "shared";
 import { EncryptedSecretEntry, VaultConfig, ActivityLog } from "../types";
 import * as cryptoService from "../services/crypto.service";
 import * as cryptoRandom from "../services/cryptoRandom.service";

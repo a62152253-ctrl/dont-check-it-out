@@ -4,7 +4,7 @@ import { useVaultContext } from "../context/useVaultContext";
 import { getCategoryIcon } from "../utils/categoryIcon";
 import { formatTimeAgo } from "../utils/timeAgo";
 import { mapLegacyCategory } from "../hooks/useVault";
-import { DecryptedSecret } from "shared";
+import type { DecryptedSecret } from "shared";
 
 export function SecretList() {
   const {

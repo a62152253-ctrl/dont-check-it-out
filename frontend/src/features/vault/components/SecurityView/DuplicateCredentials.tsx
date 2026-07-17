@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { AlertCircle } from "lucide-react";
 import { useVaultContext } from "../../context/useVaultContext";
-import { DecryptedSecret } from "shared";
+import type { DecryptedSecret } from "shared";
 
 export function DuplicateCredentials() {
   const { decryptedEntries, setViewMode, setSelectedCategory, setSelectedEntryId } = useVaultContext();

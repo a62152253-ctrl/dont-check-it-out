@@ -1,4 +1,4 @@
-import { DeveloperFields, DecryptedSecret } from "shared";
+import type { DeveloperFields, DecryptedSecret } from "shared";
 
 export type SecretType = 
   | "AWS"

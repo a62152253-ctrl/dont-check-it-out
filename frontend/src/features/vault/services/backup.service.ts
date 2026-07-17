@@ -1,5 +1,5 @@
 import { DecryptedSecret } from "shared";
-import { EncryptedSecretEntry, VaultConfig, ActivityLog } from "../types";
+import type { EncryptedSecretEntry, VaultConfig, ActivityLog } from "../types";
 import { encryptData } from "./crypto.service";
 
 /**
