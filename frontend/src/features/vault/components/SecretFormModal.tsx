@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { X, Lock, Sliders, Database, Server, Key, Folder, Globe, Cpu } from "lucide-react";
-import { useVaultContext } from "../../context/useVaultContext";
-import { DeveloperFields } from "../../types";
+import { useVaultContext } from "../context/useVaultContext";
+import { DeveloperFields } from "shared"; import { DecryptedSecret } from "../types";
 
 export function SecretFormModal() {
   const {
@@ -178,7 +178,7 @@ export function SecretFormModal() {
           </div>
           <button 
             onClick={handleClose} 
-            className="text-slate-500 hover:text-white transition-all cursor-pointer p-1 hover:bg-white/5 rounded-lg"
+            className="text-slate-500 hover:text-white transition-all p-1 hover:bg-white/5 rounded-lg"
           >
             <X className="w-5 h-5" />
           </button>
@@ -214,7 +214,7 @@ export function SecretFormModal() {
                   setCategory(e.target.value);
                   clearDevFields();
                 }}
-                className="w-full bg-[#121212] border border-white/10 hover:border-white/20 focus:border-white/30 rounded-lg p-2.5 text-xs text-white outline-none font-mono cursor-pointer"
+                className="w-full bg-[#121212] border border-white/10 hover:border-white/20 focus:border-white/30 rounded-lg p-2.5 text-xs text-white outline-none font-mono"
               >
                 <option value="AWS Credentials">☁️ AWS (Certyfikat / IAM)</option>
                 <option value="Database Connection">🗄️ Database (Postgres, Mongo)</option>
@@ -467,7 +467,7 @@ export function SecretFormModal() {
                 <select
                   value={environment}
                   onChange={(e) => setEnvironment(e.target.value)}
-                  className="w-full bg-[#121212] border border-white/10 hover:border-white/20 focus:border-white/30 rounded-lg p-2.5 text-xs text-white outline-none font-mono cursor-pointer"
+                  className="w-full bg-[#121212] border border-white/10 hover:border-white/20 focus:border-white/30 rounded-lg p-2.5 text-xs text-white outline-none font-mono"
                 >
                   <option value="production">🔴 Production (Serwer produkcyjny)</option>
                   <option value="staging">🟡 Staging (Serwer testowy / QA)</option>
@@ -493,7 +493,7 @@ export function SecretFormModal() {
           <div className="pt-2 shrink-0">
             <button
               type="submit"
-              className="w-full py-2.5 bg-emerald-500 hover:bg-emerald-600 text-black font-semibold text-xs rounded-lg transition-all shadow-lg hover:shadow-emerald-500/10 cursor-pointer text-center"
+              className="w-full py-2.5 bg-emerald-500 hover:bg-emerald-600 text-black font-semibold text-xs rounded-lg transition-all shadow-lg hover:shadow-emerald-500/10 text-center"
             >
               Dodaj i zaszyfruj (Save)
             </button>
