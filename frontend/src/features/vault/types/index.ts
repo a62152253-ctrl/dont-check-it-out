@@ -1,4 +1,6 @@
-import { DeveloperFields } from "shared";
+import type { DeveloperFields, DecryptedSecret } from "shared";
+
+export type { DeveloperFields, DecryptedSecret };
 
 export type SecretType = 
   | "AWS"
@@ -9,25 +11,6 @@ export type SecretType =
   | "Emails"
   | "Notes"
   | "Servers";
-
-export interface DecryptedSecret {
-  id?: string;
-  name: string;
-  username?: string;
-  password?: string;
-  url?: string;
-  notes?: string;
-  project?: string;
-  environment?: string; // production, staging, development, local
-  developerFields?: DeveloperFields;
-  category: string; // The standard group name (e.g. "AWS", "Database", etc.)
-  isFavorite?: boolean;
-  isTrash?: boolean;
-  isLegacy?: boolean;
-  isCorrupted?: boolean;
-  createdAt?: string;
-  updatedAt?: string;
-}
 
 export interface EncryptedSecretEntry {
   id?: string;
