@@ -420,6 +420,7 @@ export function useVault() {
         iv: encrypted.iv,
         isFavorite: false,
         isTrash: false,
+        createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString()
       };
 
