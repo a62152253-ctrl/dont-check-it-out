@@ -1,10 +1,10 @@
 import React, { useMemo } from "react";
 import { Search, Command, Lock, Star, Copy, Check } from "lucide-react";
-import { useVaultContext } from "../../context/useVaultContext";
-import { getCategoryIcon } from "../../utils/categoryIcon";
-import { formatTimeAgo } from "../../utils/timeAgo";
-import { mapLegacyCategory } from "../../hooks/useVault";
-import { DecryptedSecret } from "../../types";
+import { useVaultContext } from "../context/useVaultContext";
+import { getCategoryIcon } from "../utils/categoryIcon";
+import { formatTimeAgo } from "../utils/timeAgo";
+import { mapLegacyCategory } from "../hooks/useVault";
+import type { DecryptedSecret } from "shared";
 
 export function SecretList() {
   const {
@@ -117,12 +117,12 @@ export function SecretList() {
       {/* List display */}
       <div className="space-y-2.5 max-h-[650px] overflow-y-auto pr-1">
         {isDecryptingEntries ? (
-          <div className="bg-[#0c0c0c] border border-white/5 rounded-lg py-12 flex flex-col items-center justify-center text-slate-400">
+          <div className="bg-[#0f0f0f] border border-white/10 rounded-lg py-12 flex flex-col items-center justify-center text-slate-400">
             <div className="animate-spin h-5 w-5 border border-white border-t-transparent rounded-full mb-3" />
             <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">WebCrypto AES-GCM deszyfracja w toku...</span>
           </div>
         ) : filteredDecryptedEntries.length === 0 ? (
-          <div className="bg-[#0c0c0c] border border-white/5 rounded-lg py-12 text-center text-slate-400">
+          <div className="bg-[#0f0f0f] border border-white/10 rounded-lg py-12 text-center text-slate-400">
             <Lock className="w-6 h-6 text-slate-700 mx-auto mb-2" />
             <p className="text-xs font-semibold">Brak sekretów pasujących do filtra</p>
             <p className="text-[10px] text-slate-500 mt-1">Stwórz nowy wpis deweloperski klikając "Dodaj sekret".</p>
