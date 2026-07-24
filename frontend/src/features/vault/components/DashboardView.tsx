@@ -3,12 +3,12 @@ import {
   Clock, Shield, Plus, Download, Key, Lock, Activity, 
   Sparkles, CheckCircle2, AlertCircle, LayoutDashboard, Database
 } from "lucide-react";
-import { useVaultContext } from "../../context/useVaultContext";
-import { getCategoryIcon } from "../../utils/categoryIcon";
-import { formatTimeAgo } from "../../utils/timeAgo";
-import { getPasswordStrength } from "../../utils/passwordStrength";
-import { mapLegacyCategory } from "../../hooks/useVault";
-import { DecryptedSecret } from "../../types";
+import { useVaultContext } from "../context/useVaultContext";
+import { getCategoryIcon } from "../utils/categoryIcon";
+import { formatTimeAgo } from "../utils/timeAgo";
+import { getPasswordStrength } from "../utils/passwordStrength";
+import { mapLegacyCategory } from "../hooks/useVault";
+import type { DecryptedSecret } from "shared";
 
 export function DashboardView() {
   const {
@@ -154,7 +154,7 @@ export function DashboardView() {
       
       {/* Bento Grid Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-[#0c0c0c]/85 p-5 rounded-2xl border border-white/10 shadow-xl flex flex-col justify-between hover:-translate-y-0.5 hover:border-white/15 transition-all duration-300 relative group overflow-hidden">
+        <div className="bg-[#151515]/90 p-5 rounded-2xl border border-white/10 shadow-2xl flex flex-col justify-between hover:-translate-y-0.5 hover:border-white/15 transition-all duration-300 relative group overflow-hidden">
           <div className="absolute top-0 right-0 w-24 h-24 bg-white/[0.01] rounded-full blur-xl pointer-events-none group-hover:bg-white/[0.02] transition-colors" />
           <div>
             <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-500">Total Secrets</span>
@@ -163,7 +163,7 @@ export function DashboardView() {
           <p className="text-[9px] font-mono text-slate-500 mt-4">Wszystkie aktywne klucze i hasła</p>
         </div>
 
-        <div className="bg-[#0c0c0c]/85 p-5 rounded-2xl border border-white/10 shadow-xl flex flex-col justify-between hover:-translate-y-0.5 hover:border-blue-500/25 transition-all duration-300 relative group overflow-hidden">
+        <div className="bg-[#151515]/90 p-5 rounded-2xl border border-white/10 shadow-2xl flex flex-col justify-between hover:-translate-y-0.5 hover:border-blue-500/25 transition-all duration-300 relative group overflow-hidden">
           <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/[0.01] rounded-full blur-xl pointer-events-none group-hover:bg-blue-500/[0.02] transition-colors" />
           <div>
             <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-400">Categories</span>
@@ -172,7 +172,7 @@ export function DashboardView() {
           <p className="text-[9px] font-mono text-slate-500 mt-4">Aktywne grupy i typy sekretów</p>
         </div>
 
-        <div className="bg-[#0c0c0c]/85 p-5 rounded-2xl border border-white/10 shadow-xl flex flex-col justify-between hover:-translate-y-0.5 hover:border-amber-500/25 transition-all duration-300 relative group overflow-hidden">
+        <div className="bg-[#151515]/90 p-5 rounded-2xl border border-white/10 shadow-2xl flex flex-col justify-between hover:-translate-y-0.5 hover:border-amber-500/25 transition-all duration-300 relative group overflow-hidden">
           <div className="absolute top-0 right-0 w-24 h-24 bg-amber-500/[0.01] rounded-full blur-xl pointer-events-none group-hover:bg-amber-500/[0.02] transition-colors" />
           <div>
             <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-400">Recently Added</span>
@@ -181,7 +181,7 @@ export function DashboardView() {
           <p className="text-[9px] font-mono text-slate-500 mt-4">Wpisy dodane w ciągu 30 dni</p>
         </div>
 
-        <div className="bg-[#0c0c0c]/85 p-5 rounded-2xl border border-white/10 shadow-xl flex flex-col justify-between hover:-translate-y-0.5 hover:border-rose-500/25 transition-all duration-300 relative group overflow-hidden">
+        <div className="bg-[#151515]/90 p-5 rounded-2xl border border-white/10 shadow-2xl flex flex-col justify-between hover:-translate-y-0.5 hover:border-rose-500/25 transition-all duration-300 relative group overflow-hidden">
           <div className="absolute top-0 right-0 w-24 h-24 bg-rose-500/[0.01] rounded-full blur-xl pointer-events-none group-hover:bg-rose-500/[0.02] transition-colors" />
           <div>
             <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-rose-400">Favorites</span>

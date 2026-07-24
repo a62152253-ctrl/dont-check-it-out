@@ -423,7 +423,9 @@ export function useVault() {
         updatedAt: new Date().toISOString()
       };
 
-      const finalId = await repository.saveEntry(user.uid, id, id ? dbPayload : {
+      const rawEntry = id ? entries.find(e => e.id === id) : null;
+
+      const finalId = await repository.saveEntry(user.uid, id, id ? { ...dbPayload, createdAt: rawEntry?.createdAt || new Date().toISOString() } : {
         ...dbPayload,
         createdAt: new Date().toISOString()
       });
