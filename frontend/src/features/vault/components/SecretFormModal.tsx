@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { X, Lock, Sliders, Database, Server, Key, Folder, Globe, Cpu } from "lucide-react";
-import { useVaultContext } from "../../context/useVaultContext";
-import { DeveloperFields } from "../../types";
+import { useVaultContext } from "../context/useVaultContext";
+import { DeveloperFields, DecryptedSecret } from "shared";
 
 export function SecretFormModal() {
   const {
@@ -195,7 +195,7 @@ export function SecretFormModal() {
           {/* Grid fields */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5 font-bold">Tytuł / Nazwa (Plain-text)</label>
+              <label className="block text-[10px] font-mono text-slate-500 uppercase mb-2 font-bold">Tytuł / Nazwa (Plain-text)</label>
               <input
                 type="text"
                 value={name}
@@ -207,7 +207,7 @@ export function SecretFormModal() {
             </div>
 
             <div>
-              <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5 font-bold">Kategoria / Typ klucza</label>
+              <label className="block text-[10px] font-mono text-slate-500 uppercase mb-2 font-bold">Kategoria / Typ klucza</label>
               <select
                 value={category}
                 onChange={(e) => {
@@ -235,7 +235,7 @@ export function SecretFormModal() {
               <span className="block text-[10px] font-mono font-bold uppercase tracking-wider text-orange-400">AWS Identity & Access Credentials</span>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">AWS Access Key ID</label>
+                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-2">AWS Access Key ID</label>
                   <input
                     type="text"
                     value={awsAccessKeyId}
@@ -245,7 +245,7 @@ export function SecretFormModal() {
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">AWS Secret Access Key</label>
+                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-2">AWS Secret Access Key</label>
                   <input
                     type="password"
                     value={awsSecretAccessKey}
@@ -256,7 +256,7 @@ export function SecretFormModal() {
                 </div>
               </div>
               <div>
-                <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">AWS Default Region</label>
+                <label className="block text-[10px] font-mono text-slate-500 uppercase mb-2">AWS Default Region</label>
                 <input
                   type="text"
                   value={region}
@@ -275,7 +275,7 @@ export function SecretFormModal() {
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">Silnik bazy</label>
+                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-2">Silnik bazy</label>
                   <select
                     value={dbEngine}
                     onChange={(e) => setDbEngine(e.target.value)}
@@ -290,7 +290,7 @@ export function SecretFormModal() {
                 </div>
 
                 <div className="col-span-2">
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">Host serwera</label>
+                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-2">Host serwera</label>
                   <input
                     type="text"
                     value={dbHost}
@@ -303,7 +303,7 @@ export function SecretFormModal() {
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">Port połączenia</label>
+                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-2">Port połączenia</label>
                   <input
                     type="text"
                     value={dbPort}
@@ -314,7 +314,7 @@ export function SecretFormModal() {
                 </div>
 
                 <div className="col-span-2">
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">Nazwa bazy danych (DB Name)</label>
+                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-2">Nazwa bazy danych (DB Name)</label>
                   <input
                     type="text"
                     value={dbName}
@@ -327,7 +327,7 @@ export function SecretFormModal() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">Użytkownik (User)</label>
+                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-2">Użytkownik (User)</label>
                   <input
                     type="text"
                     value={dbUser}
@@ -338,7 +338,7 @@ export function SecretFormModal() {
                 </div>
 
                 <div>
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">Hasło do bazy</label>
+                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-2">Hasło do bazy</label>
                   <input
                     type="password"
                     value={dbPassword}
@@ -357,7 +357,7 @@ export function SecretFormModal() {
               <span className="block text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-400">SSH Security Credentials</span>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">Zdalny Host połączenia</label>
+                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-2">Zdalny Host połączenia</label>
                   <input
                     type="text"
                     value={sshHost}
@@ -367,7 +367,7 @@ export function SecretFormModal() {
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">Hasło do klucza (Passphrase)</label>
+                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-2">Hasło do klucza (Passphrase)</label>
                   <input
                     type="password"
                     value={sshPassphrase}
@@ -378,7 +378,7 @@ export function SecretFormModal() {
                 </div>
               </div>
               <div>
-                <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">Klucz Prywatny RSA / OpenSSH (Private Key)</label>
+                <label className="block text-[10px] font-mono text-slate-500 uppercase mb-2">Klucz Prywatny RSA / OpenSSH (Private Key)</label>
                 <textarea
                   value={sshPrivateKey}
                   onChange={(e) => setSshPrivateKey(e.target.value)}
@@ -394,7 +394,7 @@ export function SecretFormModal() {
             <div className="bg-[#0c0c0c] border border-white/5 p-4 rounded-lg space-y-4">
               <span className="block text-[10px] font-mono font-bold uppercase tracking-wider text-amber-400">Dotenv / Config file values (.env format)</span>
               <div>
-                <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">Wklej plik .env deweloperski</label>
+                <label className="block text-[10px] font-mono text-slate-500 uppercase mb-2">Wklej plik .env deweloperski</label>
                 <textarea
                   value={dotenvContent}
                   onChange={(e) => setDotenvContent(e.target.value)}
@@ -411,7 +411,7 @@ export function SecretFormModal() {
               <span className="block text-[10px] font-mono font-bold uppercase tracking-wider text-purple-400">Dane Dostępowe Logowania</span>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">Login / Email / Nazwa użytkownika</label>
+                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-2">Login / Email / Nazwa użytkownika</label>
                   <input
                     type="text"
                     value={username}
@@ -421,7 +421,7 @@ export function SecretFormModal() {
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">Hasło deweloperskie</label>
+                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-2">Hasło deweloperskie</label>
                   <input
                     type="password"
                     value={password}
@@ -433,7 +433,7 @@ export function SecretFormModal() {
               </div>
               {category === "Web Login" && (
                 <div>
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">URL Adresu WWW</label>
+                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-2">URL Adresu WWW</label>
                   <input
                     type="text"
                     value={url}
@@ -452,7 +452,7 @@ export function SecretFormModal() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">Nazwa Projektu (np. e-commerce, core-api)</label>
+                <label className="block text-[10px] font-mono text-slate-500 uppercase mb-2">Nazwa Projektu (np. e-commerce, core-api)</label>
                 <input
                   type="text"
                   value={project}
@@ -463,7 +463,7 @@ export function SecretFormModal() {
               </div>
 
               <div>
-                <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">Środowisko (Environment scope)</label>
+                <label className="block text-[10px] font-mono text-slate-500 uppercase mb-2">Środowisko (Environment scope)</label>
                 <select
                   value={environment}
                   onChange={(e) => setEnvironment(e.target.value)}
@@ -480,7 +480,7 @@ export function SecretFormModal() {
 
           {/* Notes field */}
           <div>
-            <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5 font-bold">Uwagi / Dodatkowe zaszyfrowane notatki</label>
+            <label className="block text-[10px] font-mono text-slate-500 uppercase mb-2 font-bold">Uwagi / Dodatkowe zaszyfrowane notatki</label>
             <textarea
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
