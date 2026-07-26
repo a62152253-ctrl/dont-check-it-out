@@ -4,9 +4,9 @@ import {
   Trash2, Globe, ExternalLink, Calendar, RefreshCw, Folder, Cpu 
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import { useVaultContext } from "../../context/useVaultContext";
-import { mapLegacyCategory } from "../../hooks/useVault";
-import { DeveloperFields } from "../../types";
+import { useVaultContext } from "../context/useVaultContext";
+import { mapLegacyCategory } from "../hooks/useVault";
+import { DeveloperFields } from "shared";
 
 export function SecretInspector() {
   const {
@@ -89,7 +89,7 @@ export function SecretInspector() {
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
-          className="bg-[#0c0c0c]/90 border border-white/10 rounded-2xl p-5 space-y-4 shadow-2xl relative overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(16,185,129,0.02)]"
+          className="bg-[#0c0c0c]/90 border border-white/10 rounded-xl p-6 space-y-4 shadow-2xl relative overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(16,185,129,0.02)]"
         >
           <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/[0.02] rounded-full blur-2xl pointer-events-none" />
 
@@ -107,7 +107,7 @@ export function SecretInspector() {
                   </span>
                 )}
               </div>
-            </div> </div>
+            </div>
 
             <div className="flex items-center gap-1 shrink-0">
               <button

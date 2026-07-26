@@ -38,7 +38,7 @@ export interface EncryptedSecretEntry {
   iv: string;
   isFavorite?: boolean;
   isTrash?: boolean;
-  createdAt: string;
+  createdAt?: string;
   updatedAt: string;
 }
 
