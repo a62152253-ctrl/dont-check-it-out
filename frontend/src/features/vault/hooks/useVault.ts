@@ -413,7 +413,7 @@ export function useVault() {
       });
       const encrypted = await cryptoService.encryptData(jsonStr, sessionKey);
 
-      const dbPayload = {
+      const dbPayload: any = {
         category,
         name: name.trim(),
         ciphertext: encrypted.ciphertext,
