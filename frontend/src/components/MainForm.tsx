@@ -14,7 +14,7 @@ import GeneratorView from "../features/vault/components/GeneratorView";
 import SecurityView from "../features/vault/components/SecurityView";
 import SettingsView from "../features/vault/components/SettingsView";
 import SecretList from "../features/vault/components/SecretList";
-import SecretInspector from "../features/vault/components/SecretInspector";
+import { SecretInspector } from "../features/vault/components/SecretInspector";
 import SecretFormModal from "../features/vault/components/SecretFormModal";
 import CommandPaletteModal from "../features/vault/components/CommandPaletteModal";
 
