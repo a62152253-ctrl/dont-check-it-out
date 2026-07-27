@@ -2,7 +2,7 @@ import React, { Component, ErrorInfo, ReactNode } from "react";
 import { AlertTriangle, RefreshCw } from "lucide-react";
 
 interface Props {
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 interface State {
@@ -28,7 +28,7 @@ export class VaultErrorBoundary extends Component<Props, State> {
     window.location.reload();
   };
 
-  public render() {
+  public render(): ReactNode {
     if (this.state.hasError) {
       return (
         <div className="max-w-xl mx-auto bg-[#0a0a0a]/90 backdrop-blur-md border border-red-500/20 rounded-2xl p-8 space-y-6 shadow-2xl relative my-12 text-center overflow-hidden">
@@ -52,7 +52,7 @@ export class VaultErrorBoundary extends Component<Props, State> {
 
           <button
             onClick={this.handleReload}
-            className="inline-flex items-center gap-2 py-2.5 px-4 bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-400 hover:to-pink-500 text-white font-bold text-xs rounded-xl transition-all shadow-lg shadow-rose-500/10 cursor-pointer mx-auto hover:scale-[1.01] active:scale-[0.99]"
+            className="inline-flex items-center gap-2 py-2.5 px-4 bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-400 hover:to-pink-500 text-white font-bold text-xs rounded-xl transition-all shadow-lg shadow-rose-500/10 mx-auto hover:scale-[1.01] active:scale-[0.99]"
           >
             <RefreshCw className="w-3.5 h-3.5" />
             <span>Odśwież aplikację</span>
@@ -61,7 +61,8 @@ export class VaultErrorBoundary extends Component<Props, State> {
       );
     }
 
-    return this.children;
+    // @ts-ignore
+    return this.props.children;
   }
 }
 export default VaultErrorBoundary;
