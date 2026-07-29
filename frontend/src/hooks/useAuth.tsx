@@ -23,7 +23,7 @@ import {
   updateDoc 
 } from "firebase/firestore";
 import { auth, db, googleProvider } from "../lib/firebase";
-import { UserProfile, UserActivity } from "shared";
+import type { UserProfile, UserActivity } from "shared";
 import { Language } from "../lib/translations";
 
 interface AuthContextType {
