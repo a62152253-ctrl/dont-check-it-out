@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+import { EnhancedUIDecoration } from "../EnhancedUIDecoration";
 import { Shield } from "lucide-react";
 import { useVaultContext } from "../../context/useVaultContext";
 import { getPasswordStrength } from "../../utils/passwordStrength";
@@ -65,28 +66,7 @@ export function SecurityScoreCard() {
 
   return (
     <div className="relative bg-[#0c0c0c] border border-white/5 rounded-lg p-6 space-y-4 shadow-xl">
-      {/* Enhanced UI Decoration */}
-      <div
-        className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/[0.01] rounded-full blur-2xl pointer-events-none"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute bottom-0 left-0 w-24 h-24 bg-blue-500/[0.01] rounded-full blur-2xl pointer-events-none"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-purple-500/[0.005] rounded-full blur-3xl pointer-events-none"
-        aria-hidden="true"
-      />
-      <div
-        className="hidden lg:block absolute left-4 top-4 w-1 h-1 bg-white/10 rounded-full"
-        aria-hidden="true"
-      />
-      <div
-        className="hidden lg:block absolute right-4 bottom-4 w-1.5 h-1.5 bg-emerald-500/10 rounded-full"
-        aria-hidden="true"
-      />
-      {/* End Enhanced UI Decoration */}
+      <EnhancedUIDecoration />
 
       <div className="flex items-center gap-2.5 border-b border-white/5 pb-3">
         <Shield className="w-5 h-5 text-emerald-400" />

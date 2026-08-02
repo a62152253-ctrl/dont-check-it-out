@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { EnhancedUIDecoration } from "./EnhancedUIDecoration";
 import {
   X,
   Lock,
@@ -176,28 +177,7 @@ export function SecretFormModal() {
 
   return (
     <div className="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4 overflow-y-auto">
-      {/* Enhanced UI Decoration */}
-      <div
-        className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/[0.01] rounded-full blur-2xl pointer-events-none"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute bottom-0 left-0 w-24 h-24 bg-blue-500/[0.01] rounded-full blur-2xl pointer-events-none"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-purple-500/[0.005] rounded-full blur-3xl pointer-events-none"
-        aria-hidden="true"
-      />
-      <div
-        className="hidden lg:block absolute left-4 top-4 w-1 h-1 bg-white/10 rounded-full"
-        aria-hidden="true"
-      />
-      <div
-        className="hidden lg:block absolute right-4 bottom-4 w-1.5 h-1.5 bg-emerald-500/10 rounded-full"
-        aria-hidden="true"
-      />
-      {/* End Enhanced UI Decoration */}
+      <EnhancedUIDecoration />
 
       <div className="bg-[#080808]/95 border border-white/10 w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col my-8 relative">
         <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-emerald-500 to-transparent" />
