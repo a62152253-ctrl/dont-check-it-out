@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+import { CopyButton } from "./CopyButton";
 import { EnhancedUIDecoration } from "./EnhancedUIDecoration";
 import { Search, Command, Lock, Star, Copy, Check } from "lucide-react";
 import { useVaultContext } from "../context/useVaultContext";
@@ -230,24 +231,12 @@ export function SecretList() {
                 <div className="flex items-center gap-2 shrink-0">
                   <div className="opacity-0 group-hover:opacity-100 flex items-center gap-1 transition-all">
                     {hasStrongValue && (
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          copyText(hasStrongValue, secret.id || "", "pass");
-                        }}
-                        className={`p-1.5 rounded transition-all ${
-                          isSelected
-                            ? "hover:bg-black/10 text-black"
-                            : "hover:bg-white/10 text-slate-400 hover:text-white"
-                        }`}
-                        title="Skopiuj hasło / klucz"
-                      >
-                        {copiedId === secret.id && copiedField === "pass" ? (
-                          <Check className="w-3.5 h-3.5 text-emerald-600" />
-                        ) : (
-                          <Copy className="w-3.5 h-3.5" />
-                        )}
-                      </button>
+                      <CopyButton
+                      onCopy={() => copyText(hasStrongValue, secret.id || "", "pass")}
+                      isCopied={copiedId === (secret.id || "") && copiedField === "pass"}
+                      className="w-3.5 h-3.5 text-emerald-600"
+                      title="Skopiuj hasło / klucz"
+                    />
                     )}
                   </div>
 

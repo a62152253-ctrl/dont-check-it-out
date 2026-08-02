@@ -1,3 +1,4 @@
+import { InputField } from "./InputField";
 import React, { useState, useEffect } from "react";
 import { EnhancedUIDecoration } from "./EnhancedUIDecoration";
 import {
@@ -265,43 +266,28 @@ export function SecretFormModal() {
                 AWS Identity & Access Credentials
               </span>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">
-                    AWS Access Key ID
-                  </label>
-                  <input
-                    type="text"
-                    value={awsAccessKeyId}
-                    onChange={(e) => setAwsAccessKeyId(e.target.value)}
-                    placeholder="AKIA..."
-                    className="w-full bg-[#121212] border border-white/5 focus:border-white/20 rounded p-2 text-xs text-white outline-none font-mono"
-                  />
-                </div>
-                <div>
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">
-                    AWS Secret Access Key
-                  </label>
-                  <input
-                    type="password"
-                    value={awsSecretAccessKey}
-                    onChange={(e) => setAwsSecretAccessKey(e.target.value)}
-                    placeholder="Wpisz klucz tajny AWS..."
-                    className="w-full bg-[#121212] border border-white/5 focus:border-white/20 rounded p-2 text-xs text-white outline-none font-mono"
-                  />
-                </div>
-              </div>
-              <div>
-                <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">
-                  AWS Default Region
-                </label>
-                <input
+                <InputField
+                  label="AWS Access Key ID"
                   type="text"
-                  value={region}
-                  onChange={(e) => setRegion(e.target.value)}
-                  placeholder="us-east-1"
-                  className="w-full bg-[#121212] border border-white/5 focus:border-white/20 rounded p-2 text-xs text-white outline-none font-mono"
+                  value={awsAccessKeyId}
+                  onChange={(e) => setAwsAccessKeyId(e.target.value)}
+                  placeholder="AKIA..."
+                />
+                <InputField
+                  label="AWS Secret Access Key"
+                  type="password"
+                  value={awsSecretAccessKey}
+                  onChange={(e) => setAwsSecretAccessKey(e.target.value)}
+                  placeholder="Wpisz klucz tajny AWS..."
                 />
               </div>
+              <InputField
+                label="AWS Default Region"
+                type="text"
+                value={region}
+                onChange={(e) => setRegion(e.target.value)}
+                placeholder="us-east-1"
+              />
             </div>
           )}
 
@@ -345,18 +331,13 @@ export function SecretFormModal() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div>
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">
-                    Port połączenia
-                  </label>
-                  <input
-                    type="text"
-                    value={dbPort}
-                    onChange={(e) => setDbPort(e.target.value)}
-                    placeholder="5432"
-                    className="w-full bg-[#121212] border border-white/5 focus:border-white/20 rounded p-2 text-xs text-white outline-none font-mono"
-                  />
-                </div>
+                <InputField
+                  label="Port połączenia"
+                  type="text"
+                  value={dbPort}
+                  onChange={(e) => setDbPort(e.target.value)}
+                  placeholder="5432"
+                />
 
                 <div className="col-span-2">
                   <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">
@@ -373,31 +354,21 @@ export function SecretFormModal() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">
-                    Użytkownik (User)
-                  </label>
-                  <input
-                    type="text"
-                    value={dbUser}
-                    onChange={(e) => setDbUser(e.target.value)}
-                    placeholder="postgres"
-                    className="w-full bg-[#121212] border border-white/5 focus:border-white/20 rounded p-2 text-xs text-white outline-none font-mono"
-                  />
-                </div>
+                <InputField
+                  label="Użytkownik (User)"
+                  type="text"
+                  value={dbUser}
+                  onChange={(e) => setDbUser(e.target.value)}
+                  placeholder="postgres"
+                />
 
-                <div>
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">
-                    Hasło do bazy
-                  </label>
-                  <input
-                    type="password"
-                    value={dbPassword}
-                    onChange={(e) => setDbPassword(e.target.value)}
-                    placeholder="Wpisz hasło do bazy danych..."
-                    className="w-full bg-[#121212] border border-white/5 focus:border-white/20 rounded p-2 text-xs text-white outline-none font-mono"
-                  />
-                </div>
+                <InputField
+                  label="Hasło do bazy"
+                  type="password"
+                  value={dbPassword}
+                  onChange={(e) => setDbPassword(e.target.value)}
+                  placeholder="Wpisz hasło do bazy danych..."
+                />
               </div>
             </div>
           )}
@@ -409,30 +380,20 @@ export function SecretFormModal() {
                 SSH Security Credentials
               </span>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">
-                    Zdalny Host połączenia
-                  </label>
-                  <input
-                    type="text"
-                    value={sshHost}
-                    onChange={(e) => setSshHost(e.target.value)}
-                    placeholder="ubuntu@192.168.1.50"
-                    className="w-full bg-[#121212] border border-white/5 focus:border-white/20 rounded p-2 text-xs text-white outline-none font-mono"
-                  />
-                </div>
-                <div>
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">
-                    Hasło do klucza (Passphrase)
-                  </label>
-                  <input
-                    type="password"
-                    value={sshPassphrase}
-                    onChange={(e) => setSshPassphrase(e.target.value)}
-                    placeholder="Wpisz passphrase klucza (opcjonalnie)..."
-                    className="w-full bg-[#121212] border border-white/5 focus:border-white/20 rounded p-2 text-xs text-white outline-none font-mono"
-                  />
-                </div>
+                <InputField
+                  label="Zdalny Host połączenia"
+                  type="text"
+                  value={sshHost}
+                  onChange={(e) => setSshHost(e.target.value)}
+                  placeholder="ubuntu@192.168.1.50"
+                />
+                <InputField
+                  label="Hasło do klucza (Passphrase)"
+                  type="password"
+                  value={sshPassphrase}
+                  onChange={(e) => setSshPassphrase(e.target.value)}
+                  placeholder="Wpisz passphrase klucza (opcjonalnie)..."
+                />
               </div>
               <div>
                 <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">
@@ -475,44 +436,29 @@ export function SecretFormModal() {
                 Dane Dostępowe Logowania
               </span>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">
-                    Login / Email / Nazwa użytkownika
-                  </label>
-                  <input
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    placeholder="Wpisz login..."
-                    className="w-full bg-[#121212] border border-white/5 focus:border-white/20 rounded p-2 text-xs text-white outline-none font-mono"
-                  />
-                </div>
-                <div>
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">
-                    Hasło deweloperskie
-                  </label>
-                  <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Wpisz hasło..."
-                    className="w-full bg-[#121212] border border-white/5 focus:border-white/20 rounded p-2 text-xs text-white outline-none font-mono"
-                  />
-                </div>
+                <InputField
+                  label="Login / Email / Nazwa użytkownika"
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder="Wpisz login..."
+                />
+                <InputField
+                  label="Hasło deweloperskie"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Wpisz hasło..."
+                />
               </div>
               {category === "Web Login" && (
-                <div>
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">
-                    URL Adresu WWW
-                  </label>
-                  <input
-                    type="text"
-                    value={url}
-                    onChange={(e) => setUrl(e.target.value)}
-                    placeholder="https://dashboard.stripe.com"
-                    className="w-full bg-[#121212] border border-white/5 focus:border-white/20 rounded p-2 text-xs text-white outline-none font-mono"
-                  />
-                </div>
+                <InputField
+                  label="URL Adresu WWW"
+                  type="text"
+                  value={url}
+                  onChange={(e) => setUrl(e.target.value)}
+                  placeholder="https://dashboard.stripe.com"
+                />
               )}
             </div>
           )}
