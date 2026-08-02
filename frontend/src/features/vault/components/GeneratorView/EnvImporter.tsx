@@ -1,23 +1,29 @@
 import React, { useState } from "react";
 import { Terminal, RefreshCw, Lock } from "lucide-react";
-import { useVaultContext } from "../../../context/useVaultContext";
-import { parseDotenvContent, ParsedDotenvItem } from "../../../utils/dotenvParser";
+import { useVaultContext } from "../../context/useVaultContext";
+import { parseDotenvContent, ParsedDotenvItem } from "../../utils/dotenvParser";
 
 export function EnvImporter() {
-  const { saveSecret, language, setSuccessMsg, addActivityLog } = useVaultContext();
+  const { saveSecret, language, setSuccessMsg, addActivityLog } =
+    useVaultContext();
 
   const [dotenvPaste, setDotenvPaste] = useState("");
-  const [parsedDotenvList, setParsedDotenvList] = useState<ParsedDotenvItem[]>([]);
+  const [parsedDotenvList, setParsedDotenvList] = useState<ParsedDotenvItem[]>(
+    [],
+  );
   const [loading, setLoading] = useState(false);
 
   const handleAnalyze = () => {
     const list = parseDotenvContent(dotenvPaste);
     setParsedDotenvList(list);
-    addActivityLog("Analyzed Dotenv Paste", `Wykryto ${list.length} kluczy w formacie .env`);
+    addActivityLog(
+      "Analyzed Dotenv Paste",
+      `Wykryto ${list.length} kluczy w formacie .env`,
+    );
   };
 
   const handleBatchImport = async () => {
-    const selectedItems = parsedDotenvList.filter(item => item.checked);
+    const selectedItems = parsedDotenvList.filter((item) => item.checked);
     if (selectedItems.length === 0) return;
 
     setLoading(true);
@@ -26,17 +32,17 @@ export function EnvImporter() {
     try {
       for (const item of selectedItems) {
         const cat = item.category;
-        const mappedCat = 
-          cat === "Database" 
-            ? "Database Connection" 
-            : cat === "API Keys" 
-              ? "Dotenv / Config" 
-              : cat === "SSH Keys" 
-                ? "SSH Key" 
-                : cat === "AWS" 
-                  ? "AWS Credentials" 
+        const mappedCat =
+          cat === "Database"
+            ? "Database Connection"
+            : cat === "API Keys"
+              ? "Dotenv / Config"
+              : cat === "SSH Keys"
+                ? "SSH Key"
+                : cat === "AWS"
+                  ? "AWS Credentials"
                   : "Notes";
-        
+
         const developerFields: any = {};
         if (mappedCat === "AWS Credentials") {
           developerFields.awsAccessKeyId = item.key;
@@ -61,15 +67,28 @@ export function EnvImporter() {
           username: item.key,
           password: item.val,
           notes: `Zaszyfrowano automatycznie z importu .env\n${item.key}=${item.val}`,
-          developerFields: Object.keys(developerFields).length > 0 ? developerFields : undefined
+          developerFields:
+            Object.keys(developerFields).length > 0
+              ? developerFields
+              : undefined,
         };
 
-        await saveSecret(null, `Import: ${item.key}`, mappedCat, unencryptedPayload);
+        await saveSecret(
+          null,
+          `Import: ${item.key}`,
+          mappedCat,
+          unencryptedPayload,
+        );
         importedCount++;
       }
 
-      addActivityLog("Batch Imported Dotenv", `Pomyślnie zaimportowano ${importedCount} kluczy .env`);
-      setSuccessMsg(`Pomyślnie zaimportowano ${importedCount} kluczy deweloperskich!`);
+      addActivityLog(
+        "Batch Imported Dotenv",
+        `Pomyślnie zaimportowano ${importedCount} kluczy .env`,
+      );
+      setSuccessMsg(
+        `Pomyślnie zaimportowano ${importedCount} kluczy deweloperskich!`,
+      );
       setParsedDotenvList([]);
       setDotenvPaste("");
       setTimeout(() => setSuccessMsg(null), 4000);
@@ -81,14 +100,39 @@ export function EnvImporter() {
   };
 
   return (
-    <div className="bg-[#0c0c0c] border border-white/5 rounded-xl p-6 space-y-4 shadow-2xl relative overflow-hidden">
+    <div className="relative bg-[#0c0c0c] border border-white/5 rounded-xl p-6 space-y-4 shadow-2xl relative overflow-hidden">
+      {/* Enhanced UI Decoration */}
+      <div
+        className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/[0.01] rounded-full blur-2xl pointer-events-none"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute bottom-0 left-0 w-24 h-24 bg-blue-500/[0.01] rounded-full blur-2xl pointer-events-none"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-purple-500/[0.005] rounded-full blur-3xl pointer-events-none"
+        aria-hidden="true"
+      />
+      <div
+        className="hidden lg:block absolute left-4 top-4 w-1 h-1 bg-white/10 rounded-full"
+        aria-hidden="true"
+      />
+      <div
+        className="hidden lg:block absolute right-4 bottom-4 w-1.5 h-1.5 bg-emerald-500/10 rounded-full"
+        aria-hidden="true"
+      />
+      {/* End Enhanced UI Decoration */}
+
       <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-amber-500 to-transparent opacity-30" />
-      
+
       <div className="flex items-center justify-between border-b border-white/5 pb-3">
         <div className="flex items-center gap-2">
           <Terminal className="w-4 h-4 text-amber-400 shrink-0" />
           <h4 className="text-xs font-bold uppercase text-slate-300 font-mono tracking-wider">
-            {language === "PL" ? "Grupowy Importer Plików .env" : "Batch .env Importer"}
+            {language === "PL"
+              ? "Grupowy Importer Plików .env"
+              : "Batch .env Importer"}
           </h4>
         </div>
       </div>
@@ -97,7 +141,11 @@ export function EnvImporter() {
         <textarea
           value={dotenvPaste}
           onChange={(e) => setDotenvPaste(e.target.value)}
-          placeholder={language === "PL" ? "Wklej tutaj zawartość pliku .env (np. API_KEY=sk_live_abc...)" : "Paste your .env file here (e.g. API_KEY=sk_live_abc...)"}
+          placeholder={
+            language === "PL"
+              ? "Wklej tutaj zawartość pliku .env (np. API_KEY=sk_live_abc...)"
+              : "Paste your .env file here (e.g. API_KEY=sk_live_abc...)"
+          }
           className="w-full h-32 bg-[#121212] border border-white/5 rounded-lg p-3 text-xs font-mono text-white placeholder-slate-600 focus:outline-none focus:border-white/20 resize-none leading-relaxed"
         />
 
@@ -105,10 +153,14 @@ export function EnvImporter() {
           type="button"
           onClick={handleAnalyze}
           disabled={!dotenvPaste.trim()}
-          className="w-full py-2 bg-white/5 hover:bg-white/10 text-white font-mono text-xs rounded-lg border border-white/5 hover:border-white/20 transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          className="w-full py-2 bg-white/5 hover:bg-white/10 text-white font-mono text-xs rounded-lg border border-white/5 hover:border-white/20 transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
         >
           <RefreshCw className="w-3.5 h-3.5" />
-          <span>{language === "PL" ? "Analizuj i Paruj Klucze .env" : "Analyze .env Keys"}</span>
+          <span>
+            {language === "PL"
+              ? "Analizuj i Paruj Klucze .env"
+              : "Analyze .env Keys"}
+          </span>
         </button>
       </div>
 
@@ -117,10 +169,13 @@ export function EnvImporter() {
           <h5 className="text-[10px] font-bold uppercase font-mono text-slate-400 tracking-wider">
             Wykryte Sekrety deweloperskie ({parsedDotenvList.length})
           </h5>
-          
+
           <div className="max-h-[180px] overflow-y-auto space-y-2 pr-1">
             {parsedDotenvList.map((item, idx) => (
-              <div key={idx} className="flex items-center justify-between bg-white/[0.01] border border-white/5 rounded p-2 text-[11px] font-mono">
+              <div
+                key={idx}
+                className="flex items-center justify-between bg-white/[0.01] border border-white/5 rounded p-2 text-[11px] font-mono"
+              >
                 <div className="flex items-center gap-2 overflow-hidden mr-2">
                   <input
                     type="checkbox"
@@ -133,7 +188,9 @@ export function EnvImporter() {
                     className="accent-emerald-500 rounded shrink-0 cursor-pointer"
                   />
                   <div className="overflow-hidden">
-                    <span className="text-white font-semibold truncate block">{item.key}</span>
+                    <span className="text-white font-semibold truncate block">
+                      {item.key}
+                    </span>
                     <span className="text-slate-500 truncate block text-[10px]">
                       {item.val.substring(0, 8)}... (długość: {item.val.length})
                     </span>
@@ -162,10 +219,12 @@ export function EnvImporter() {
             type="button"
             disabled={loading}
             onClick={handleBatchImport}
-            className="w-full py-2.5 bg-emerald-500 hover:bg-emerald-600 text-black font-bold font-mono text-xs rounded-lg transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-emerald-500/10 active:scale-95 cursor-pointer disabled:bg-emerald-950/40"
+            className="w-full py-2.5 bg-emerald-500 hover:bg-emerald-600 text-black font-bold font-mono text-xs rounded-lg transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-emerald-500/10 active:scale-95 disabled:bg-emerald-950/40"
           >
             <Lock className="w-3.5 h-3.5" />
-            <span>{loading ? "Importowanie..." : "Zaszyfruj i Importuj Zaznaczone"}</span>
+            <span>
+              {loading ? "Importowanie..." : "Zaszyfruj i Importuj Zaznaczone"}
+            </span>
           </button>
         </div>
       )}
