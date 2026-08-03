@@ -3,12 +3,12 @@ import {
   Clock, Shield, Plus, Download, Key, Lock, Activity, 
   Sparkles, CheckCircle2, AlertCircle, LayoutDashboard, Database
 } from "lucide-react";
-import { useVaultContext } from "../../context/useVaultContext";
-import { getCategoryIcon } from "../../utils/categoryIcon";
-import { formatTimeAgo } from "../../utils/timeAgo";
-import { getPasswordStrength } from "../../utils/passwordStrength";
-import { mapLegacyCategory } from "../../hooks/useVault";
-import { DecryptedSecret } from "../../types";
+import { useVaultContext } from "../context/useVaultContext";
+import { getCategoryIcon } from "../utils/categoryIcon";
+import { formatTimeAgo } from "../utils/timeAgo";
+import { getPasswordStrength } from "../utils/passwordStrength";
+import { mapLegacyCategory } from "../hooks/useVault";
+import type {  DecryptedSecret  } from "../types";
 
 export function DashboardView() {
   const {
@@ -218,7 +218,7 @@ export function DashboardView() {
                       setSelectedCategory("All");
                       setSelectedEntryId(secret.id!);
                     }}
-                    className="w-full flex items-center justify-between p-3 bg-white/[0.01] border border-white/5 hover:border-white/10 rounded-lg hover:bg-white/[0.03] transition-all text-left group cursor-pointer"
+                    className="w-full flex items-center justify-between p-3 bg-white/[0.01] border border-white/5 hover:border-white/10 rounded-lg hover:bg-white/[0.03] transition-all text-left group "
                   >
                     <div className="flex items-center gap-3">
                       <div className="p-2 bg-white/5 rounded text-slate-400 group-hover:text-white transition-colors">
@@ -375,7 +375,7 @@ export function DashboardView() {
                   setEditingId(null);
                   setIsFormOpen(true);
                 }}
-                className="w-full flex items-center justify-center gap-2.5 py-4 px-4 bg-emerald-500 hover:bg-emerald-600 text-black font-bold text-sm rounded-lg transition-all shadow-lg hover:shadow-emerald-500/10 cursor-pointer text-center"
+                className="w-full flex items-center justify-center gap-2.5 py-4 px-4 bg-emerald-500 hover:bg-emerald-600 text-black font-bold text-sm rounded-lg transition-all shadow-lg hover:shadow-emerald-500/10  text-center"
               >
                 <Plus className="w-5 h-5 text-black" />
                 Dodaj Sekret
@@ -384,7 +384,7 @@ export function DashboardView() {
               <div className="grid grid-cols-2 gap-2">
                 <button
                   onClick={() => setViewMode("generator")}
-                  className="flex flex-col items-center justify-center p-3.5 bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white rounded-lg transition-all border border-white/5 gap-2 text-xs font-mono cursor-pointer"
+                  className="flex flex-col items-center justify-center p-3.5 bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white rounded-lg transition-all border border-white/5 gap-2 text-xs font-mono "
                 >
                   <Download className="w-4 h-4 text-blue-400 rotate-180" />
                   <span>Import Vault</span>
@@ -392,7 +392,7 @@ export function DashboardView() {
 
                 <button
                   onClick={() => setViewMode("generator")}
-                  className="flex flex-col items-center justify-center p-3.5 bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white rounded-lg transition-all border border-white/5 gap-2 text-xs font-mono cursor-pointer"
+                  className="flex flex-col items-center justify-center p-3.5 bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white rounded-lg transition-all border border-white/5 gap-2 text-xs font-mono "
                 >
                   <Key className="w-4 h-4 text-emerald-400" />
                   <span>Generate Key</span>
@@ -401,7 +401,7 @@ export function DashboardView() {
 
               <button
                 onClick={lockVault}
-                className="w-full flex items-center justify-center gap-2 py-2 px-3 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 font-mono text-[10px] uppercase border border-rose-500/20 rounded-lg transition-all cursor-pointer mt-1"
+                className="w-full flex items-center justify-center gap-2 py-2 px-3 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 font-mono text-[10px] uppercase border border-rose-500/20 rounded-lg transition-all  mt-1"
               >
                 <Lock className="w-3.5 h-3.5" />
                 Lock Vault (Zablokuj RAM)

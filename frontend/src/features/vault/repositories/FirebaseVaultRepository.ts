@@ -12,7 +12,7 @@ import {
 } from "firebase/firestore";
 import { db, auth } from "../../../lib/firebase";
 import { VaultRepository } from "./VaultRepository";
-import { EncryptedSecretEntry, VaultConfig } from "../types";
+import type {  EncryptedSecretEntry, VaultConfig  } from "../types";
 
 enum OperationType {
   CREATE = 'create',

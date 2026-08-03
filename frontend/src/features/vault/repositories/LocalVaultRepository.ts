@@ -1,5 +1,5 @@
 import { VaultRepository } from "./VaultRepository";
-import { EncryptedSecretEntry, VaultConfig } from "../types";
+import type {  EncryptedSecretEntry, VaultConfig  } from "../types";
 import * as vaultStorage from "../services/vaultStorage.service";
 
 export class LocalVaultRepository implements VaultRepository {
