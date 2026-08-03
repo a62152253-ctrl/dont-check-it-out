@@ -1,4 +1,4 @@
-import { EncryptedSecretEntry, VaultConfig } from "../types";
+import type {  EncryptedSecretEntry, VaultConfig  } from "../types";
 
 export interface VaultRepository {
   subscribeToEntries(
