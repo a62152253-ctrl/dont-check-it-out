@@ -1,8 +1,8 @@
 import React, { useMemo } from "react";
 import { AlertCircle } from "lucide-react";
-import { useVaultContext } from "../../../context/useVaultContext";
-import { getPasswordStrength } from "../../../utils/passwordStrength";
-import { generateSecurePassword } from "../../../utils/generators";
+import { useVaultContext } from '../../context/useVaultContext';
+import { getPasswordStrength } from '../../utils/passwordStrength';
+import { generateSecurePassword } from '../../utils/generators';
 
 export function WeakPasswordList() {
   const { decryptedEntries, saveSecret, setSuccessMsg, addActivityLog } = useVaultContext();

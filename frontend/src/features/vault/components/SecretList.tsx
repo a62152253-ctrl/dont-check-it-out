@@ -1,10 +1,10 @@
 import React, { useMemo } from "react";
 import { Search, Command, Lock, Star, Copy, Check } from "lucide-react";
-import { useVaultContext } from "../../context/useVaultContext";
-import { getCategoryIcon } from "../../utils/categoryIcon";
-import { formatTimeAgo } from "../../utils/timeAgo";
-import { mapLegacyCategory } from "../../hooks/useVault";
-import { DecryptedSecret } from "../../types";
+import { useVaultContext } from '../context/useVaultContext';
+import { getCategoryIcon } from '../utils/categoryIcon';
+import { formatTimeAgo } from '../utils/timeAgo';
+import { mapLegacyCategory } from '../hooks/useVault';
+import { DecryptedSecret } from '../types';
 
 export function SecretList() {
   const {
@@ -84,7 +84,7 @@ export function SecretList() {
               className={`px-3 py-1.5 rounded-lg text-[10px] font-mono font-medium transition-all flex items-center gap-1.5 shrink-0 cursor-pointer border ${
                 isActive
                   ? "bg-white text-black border-white font-bold"
-                  : "bg-white/5 text-slate-400 border-white/5 hover:text-white hover:bg-white/10"
+                  : "bg-white/5 text-slate-400 border-white/5 hover:text-white hover:bg-white/20"
               }`}
             >
               <span>{item.icon}</span>
@@ -142,7 +142,7 @@ export function SecretList() {
                 className={`group relative text-left w-full p-4 rounded-xl border transition-all duration-200 cursor-pointer flex items-center justify-between gap-3 ${
                   isSelected
                     ? "bg-white text-black shadow-xl shadow-white/5 border-white"
-                    : "bg-[#0c0c0c]/80 border-white/5 hover:border-emerald-500/30 text-white hover:bg-[#0c0c0c] hover:shadow-[0_0_15px_rgba(16,185,129,0.03)]"
+                    : "bg-[#0c0c0c]/80 border-white/5 hover:border-emerald-400/40 text-white hover:bg-[#0c0c0c] hover:shadow-[0_0_15px_rgba(16,185,129,0.03)]"
                 }`}
               >
                 <div className="min-w-0 flex-1 flex items-center gap-3">
@@ -196,7 +196,7 @@ export function SecretList() {
                           copyText(hasStrongValue, secret.id || "", "pass");
                         }}
                         className={`p-1.5 rounded transition-all ${
-                          isSelected ? "hover:bg-black/10 text-black" : "hover:bg-white/10 text-slate-400 hover:text-white"
+                          isSelected ? "hover:bg-black/10 text-black" : "hover:bg-white/20 text-slate-400 hover:text-white"
                         }`}
                         title="Skopiuj hasło / klucz"
                       >

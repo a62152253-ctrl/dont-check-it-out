@@ -4,9 +4,9 @@ import {
   Trash2, Globe, ExternalLink, Calendar, RefreshCw, Folder, Cpu 
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import { useVaultContext } from "../../context/useVaultContext";
-import { mapLegacyCategory } from "../../hooks/useVault";
-import { DeveloperFields } from "../../types";
+import { useVaultContext } from '../context/useVaultContext';
+import { mapLegacyCategory } from '../hooks/useVault';
+import { DeveloperFields } from '../types';
 
 export function SecretInspector() {
   const {
@@ -107,7 +107,7 @@ export function SecretInspector() {
                   </span>
                 )}
               </div>
-            </div> </div>
+            </div>
 
             <div className="flex items-center gap-1 shrink-0">
               <button
@@ -135,7 +135,7 @@ export function SecretInspector() {
                 <p className="font-semibold">⚠️ Ten wpis jest przechowywany w czystym tekście (legacy).</p>
                 <button
                   onClick={() => migrateLegacyEntry(secret)}
-                  className="w-full py-1.5 bg-amber-400 hover:bg-amber-500 text-black font-bold font-mono text-[9px] uppercase rounded transition-all cursor-pointer"
+                  className="w-full py-1.5 bg-amber-500 hover:bg-amber-400 text-black font-bold font-mono text-[9px] uppercase rounded transition-all cursor-pointer"
                 >
                   🔒 Zaszyfruj w locie kluczem AES
                 </button>
@@ -191,7 +191,7 @@ export function SecretInspector() {
 
                 <button
                   onClick={() => handleCopyAWSExports(secret.developerFields)}
-                  className="w-full py-2 bg-orange-500/10 hover:bg-orange-500/20 border border-orange-500/20 text-orange-300 font-semibold font-mono text-[10px] rounded transition-all cursor-pointer flex items-center justify-center gap-1.5"
+                  className="w-full py-2 bg-orange-600/10 hover:bg-orange-600/20 border border-orange-600/20 text-orange-300 font-semibold font-mono text-[10px] rounded transition-all cursor-pointer flex items-center justify-center gap-1.5"
                 >
                   <Terminal className="w-3.5 h-3.5" />
                   <span>Kopiuj eksport AWS (Shell env)</span>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { Search } from "lucide-react";
-import { useVaultContext } from "../../context/useVaultContext";
+import { useVaultContext } from '../context/useVaultContext';
 
 export function CommandPaletteModal() {
   const {
