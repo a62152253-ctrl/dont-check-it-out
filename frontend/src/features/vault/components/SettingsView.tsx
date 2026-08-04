@@ -40,7 +40,7 @@ export function SettingsView() {
           <select
             value={autoLockMinutes}
             onChange={(e) => setAutoLockMinutes(parseInt(e.target.value))}
-            className="bg-[#121212] border border-white/10 hover:border-white/20 text-white rounded p-2 text-xs font-mono outline-none cursor-pointer"
+            className="bg-[#121212] border border-white/10 hover:border-white/20 text-white rounded p-2 text-xs font-mono outline-none"
           >
             <option value={1}>1 Minuta</option>
             <option value={5}>5 Minut</option>
@@ -77,7 +77,7 @@ export function SettingsView() {
                   key={themeName}
                   type="button"
                   onClick={() => changeAccentTheme(themeName)}
-                  className={`flex items-center gap-2 px-3 py-1.5 rounded-lg border text-xs font-mono transition-all cursor-pointer ${
+                  className={`flex items-center gap-2 px-3 py-1.5 rounded-lg border text-xs font-mono transition-all ${
                     isSelected 
                       ? "bg-white/[0.04] text-white border-white/40 shadow-md font-bold" 
                       : "bg-white/5 text-slate-400 border-transparent hover:text-white"
@@ -104,7 +104,7 @@ export function SettingsView() {
                   key={lang}
                   type="button"
                   onClick={() => setLanguage(lang)}
-                  className={`px-3 py-1.5 rounded-lg border text-xs font-mono transition-all cursor-pointer ${
+                  className={`px-3 py-1.5 rounded-lg border text-xs font-mono transition-all ${
                     isSelected 
                       ? "bg-white text-black border-white font-bold" 
                       : "bg-white/5 text-slate-400 border-transparent hover:text-white"
@@ -125,7 +125,7 @@ export function SettingsView() {
             <p className="text-[10px] font-mono text-slate-500">Pobierz kopię zapasową wszystkich wpisów w bezpiecznym formacie.</p>
             <button
               onClick={handleExportBackup}
-              className="px-3 py-1.5 bg-white/5 hover:bg-white/10 text-white rounded border border-white/5 text-[10px] font-mono transition-all cursor-pointer"
+              className="px-3 py-1.5 bg-white/5 hover:bg-white/10 text-white rounded border border-white/5 text-[10px] font-mono transition-all"
             >
               Pobierz kopie JSON
             </button>
@@ -159,7 +159,7 @@ export function SettingsView() {
           </p>
           <button
             onClick={resetVault}
-            className="px-3 py-1.5 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 rounded border border-rose-500/20 text-[10px] font-mono transition-all cursor-pointer"
+            className="px-3 py-1.5 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 rounded border border-rose-500/20 text-[10px] font-mono transition-all"
           >
             Skasuj i zresetuj sejf
           </button>
