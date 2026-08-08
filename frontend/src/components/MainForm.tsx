@@ -127,7 +127,7 @@ export default function MainForm() {
                   setEditingId(null);
                   setIsFormOpen(true);
                 }}
-                className="flex items-center gap-2 py-2 px-3.5 text-xs font-semibold bg-emerald-500 hover:bg-emerald-600 text-black rounded-lg transition-all shadow-lg shadow-emerald-500/5 cursor-pointer border-0"
+                className="flex items-center gap-2 py-2 px-3.5 text-xs font-semibold bg-emerald-500 hover:bg-emerald-600 text-black rounded-lg transition-all shadow-lg shadow-emerald-500/5 border-0"
               >
                 <Plus className="w-4 h-4" />
                 Dodaj Sekret
@@ -135,7 +135,7 @@ export default function MainForm() {
 
               <button
                 onClick={lockVault}
-                className="flex items-center gap-2 py-2 px-3.5 text-xs font-semibold bg-white/5 hover:bg-white/10 text-rose-400 hover:text-rose-300 rounded-lg transition-all border border-white/5 cursor-pointer"
+                className="flex items-center gap-2 py-2 px-3.5 text-xs font-semibold bg-white/5 hover:bg-white/10 text-rose-400 hover:text-rose-300 rounded-lg transition-all border border-white/5"
                 title="Wyczyść RAM i zablokuj"
               >
                 <Lock className="w-3.5 h-3.5" />
@@ -183,7 +183,7 @@ export default function MainForm() {
                   setEditingId(null);
                   setIsFormOpen(true);
                 }}
-                className="px-3 py-1.5 bg-white/5 hover:bg-white/10 text-emerald-400 hover:text-emerald-300 rounded border border-white/5 transition-all flex items-center gap-1.5 cursor-pointer text-xs"
+                className="px-3 py-1.5 bg-white/5 hover:bg-white/10 text-emerald-400 hover:text-emerald-300 rounded border border-white/5 transition-all flex items-center gap-1.5 text-xs"
               >
                 <Plus className="w-3.5 h-3.5" />
                 <span>Add Secret</span>
@@ -193,7 +193,7 @@ export default function MainForm() {
                 onClick={() => {
                   setShowCommandPalette(true);
                 }}
-                className="px-3 py-1.5 bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white rounded border border-white/5 transition-all flex items-center gap-1.5 cursor-pointer text-xs"
+                className="px-3 py-1.5 bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white rounded border border-white/5 transition-all flex items-center gap-1.5 text-xs"
               >
                 <Search className="w-3.5 h-3.5" />
                 <span>Search</span>
@@ -204,7 +204,7 @@ export default function MainForm() {
                 onClick={() => {
                   setViewMode("generator");
                 }}
-                className="px-3 py-1.5 bg-white/5 hover:bg-white/10 text-amber-400 hover:text-amber-300 rounded border border-white/5 transition-all flex items-center gap-1.5 cursor-pointer text-xs"
+                className="px-3 py-1.5 bg-white/5 hover:bg-white/10 text-amber-400 hover:text-amber-300 rounded border border-white/5 transition-all flex items-center gap-1.5 text-xs"
               >
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Generate Token</span>
@@ -226,7 +226,7 @@ export default function MainForm() {
                 <div className="flex flex-col gap-1.5">
                   <button
                     onClick={() => { setViewMode("dashboard"); setSelectedCategory("All"); }}
-                    className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-xs font-semibold transition-all text-left cursor-pointer border-0 ${
+                    className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-xs font-semibold transition-all text-left border-0 ${
                       viewMode === "dashboard"
                         ? "bg-emerald-500 text-black font-semibold shadow-md shadow-emerald-500/10"
                         : "bg-transparent text-slate-400 hover:bg-white/5 hover:text-white"
@@ -238,7 +238,7 @@ export default function MainForm() {
 
                   <button
                     onClick={() => { setViewMode("all"); setSelectedCategory("All"); }}
-                    className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-xs font-semibold transition-all text-left cursor-pointer border-0 ${
+                    className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-xs font-semibold transition-all text-left border-0 ${
                       (viewMode === "all" || viewMode === "favorites" || viewMode === "trash")
                         ? "bg-white text-black font-semibold shadow-md"
                         : "bg-transparent text-slate-400 hover:bg-white/5 hover:text-white"
@@ -257,7 +257,7 @@ export default function MainForm() {
 
                   <button
                     onClick={() => { setViewMode("generator"); }}
-                    className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-xs font-semibold transition-all text-left cursor-pointer border-0 ${
+                    className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-xs font-semibold transition-all text-left border-0 ${
                       viewMode === "generator"
                         ? "bg-[#161616] text-amber-400 border border-white/10 font-bold"
                         : "bg-transparent text-slate-400 hover:bg-white/5 hover:text-white"
@@ -269,7 +269,7 @@ export default function MainForm() {
 
                   <button
                     onClick={() => { setViewMode("security"); setSelectedCategory("All"); }}
-                    className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-xs font-semibold transition-all text-left cursor-pointer border-0 ${
+                    className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-xs font-semibold transition-all text-left border-0 ${
                       viewMode === "security"
                         ? "bg-[#161616] text-emerald-400 border border-white/10 font-bold"
                         : "bg-transparent text-slate-400 hover:bg-white/5 hover:text-white"
@@ -283,7 +283,7 @@ export default function MainForm() {
 
                   <button
                     onClick={() => { setViewMode("settings"); setSelectedCategory("All"); }}
-                    className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-xs font-semibold transition-all text-left cursor-pointer border-0 ${
+                    className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-xs font-semibold transition-all text-left border-0 ${
                       (viewMode === "settings" || viewMode === "activity")
                         ? "bg-[#161616] text-white border border-white/10 font-bold"
                         : "bg-transparent text-slate-400 hover:bg-white/5 hover:text-white"
@@ -298,7 +298,7 @@ export default function MainForm() {
                   <button
                     type="button"
                     onClick={lockVault}
-                    className="w-full flex items-center justify-center gap-1.5 py-1.5 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/20 rounded-md transition-all cursor-pointer uppercase text-[9px] font-bold"
+                    className="w-full flex items-center justify-center gap-1.5 py-1.5 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/20 rounded-md transition-all uppercase text-[9px] font-bold"
                   >
                     <Lock className="w-3.5 h-3.5" />
                     Zablokuj Sejf
