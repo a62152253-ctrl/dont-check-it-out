@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from "react";
 import { Shield, Key, AlertCircle, Info } from "lucide-react";
-import { translations } from "../../../../lib/translations";
-import { getPasswordStrength } from "../../utils/passwordStrength";
+import { translations } from "../../../lib/translations";
+import { getPasswordStrength } from "../utils/passwordStrength";
 
 interface VaultSetupProps {
   onInitialize: (password: string) => Promise<void>;
@@ -109,10 +109,10 @@ export function VaultSetup({ onInitialize, error, loading, language }: VaultSetu
         )}
 
         <button
-          type="submit"
-          disabled={loading}
-          className="w-full py-3 px-4 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 disabled:from-emerald-950/40 disabled:to-emerald-950/40 text-black font-bold text-xs rounded-xl transition-all shadow-lg shadow-emerald-500/10 cursor-pointer flex items-center justify-center gap-2 hover:scale-[1.01] active:scale-[0.99] duration-150"
-        >
+     type="submit"
+     disabled={loading}
+     className="w-full py-3 px-4 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 disabled:from-emerald-950/40 disabled:to-emerald-950/40 text-black font-bold text-xs rounded-xl transition-all shadow-lg shadow-emerald-500/10 flex items-center justify-center gap-2 hover:scale-[1.01] active:scale-[0.99] duration-150"
+    >
           {loading ? (
             <>
               <div className="animate-spin h-3.5 w-3.5 border-2 border-black border-t-transparent rounded-full" />
@@ -129,8 +129,8 @@ export function VaultSetup({ onInitialize, error, loading, language }: VaultSetu
 
       <div className="border-t border-white/5 pt-4">
         <button 
-          type="button" 
-          onClick={() => setShowConfigHint(!showConfigHint)} 
+     type="button"
+     onClick={() => setShowConfigHint(!showConfigHint)}
           className="text-[10px] font-mono text-slate-500 hover:text-slate-300 flex items-center gap-1.5 transition-all cursor-pointer"
         >
           <Info className="w-3.5 h-3.5" />

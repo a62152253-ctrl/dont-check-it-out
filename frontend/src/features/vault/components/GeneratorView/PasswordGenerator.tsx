@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { Key, Copy, Sparkles } from "lucide-react";
-import { useVaultContext } from "../../../context/useVaultContext";
-import { generateSecurePassword } from "../../../utils/generators";
-import { getEntropyDetails } from "../../../utils/passwordStrength";
+import { useVaultContext } from "../../context/useVaultContext";
+import { generateSecurePassword } from "../../utils/generators";
+import { getEntropyDetails } from "../../utils/passwordStrength";
 
 export function PasswordGenerator() {
   const { theme, language, setSuccessMsg } = useVaultContext();
@@ -86,11 +86,11 @@ export function PasswordGenerator() {
             {generatedPassword}
           </p>
           <button
-            type="button"
-            onClick={handleCopy}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white bg-white/5 p-2 rounded-lg border border-white/5 transition-all hover:bg-white/10 active:scale-95 cursor-pointer"
-            title={language === "PL" ? "Kopiuj" : "Copy"}
-          >
+      type="button"
+      onClick={handleCopy}
+      className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white bg-white/5 p-2 rounded-lg border border-white/5 transition-all hover:bg-white/10 active:scale-95 "
+      title={language === "PL" ? "Kopiuj" : "Copy"}
+     >
             <Copy className="w-3.5 h-3.5" />
           </button>
         </div>
@@ -103,9 +103,9 @@ export function PasswordGenerator() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-1.5">
             {(["PASSWORD", "PASSPHRASE", "API_KEY", "TOKEN"] as const).map((pr) => (
               <button
-                key={pr}
-                type="button"
-                onClick={() => {
+        key={pr}
+        type="button"
+        onClick={() => {
                   setGenPreset(pr);
                   if (pr === "API_KEY") setGenLength(24);
                   else if (pr === "TOKEN") setGenLength(16);
@@ -257,10 +257,10 @@ export function PasswordGenerator() {
         </div>
 
         <button
-          type="button"
-          onClick={handleGenerate}
-          className={`w-full py-2.5 ${theme.primary} rounded-lg text-xs font-mono font-bold transition-all cursor-pointer flex items-center justify-center gap-2 shadow-lg active:scale-95`}
-        >
+     type="button"
+     onClick={handleGenerate}
+     className={`w-full py-2.5 ${theme.primary} rounded-lg text-xs font-mono font-bold transition-all flex items-center justify-center gap-2 shadow-lg active:scale-95`}
+    >
           <Sparkles className="w-3.5 h-3.5" />
           <span>{language === "PL" ? "Regeneruj Nowy Klucz" : "Regenerate New Dev Key"}</span>
         </button>

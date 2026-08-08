@@ -123,7 +123,7 @@ export default function MainForm() {
             
             <div className="flex items-center gap-3">
               <button
-                onClick={() => {
+        onClick={() => {
                   setEditingId(null);
                   setIsFormOpen(true);
                 }}
@@ -134,10 +134,10 @@ export default function MainForm() {
               </button>
 
               <button
-                onClick={lockVault}
-                className="flex items-center gap-2 py-2 px-3.5 text-xs font-semibold bg-white/5 hover:bg-white/10 text-rose-400 hover:text-rose-300 rounded-lg transition-all border border-white/5 cursor-pointer"
-                title="Wyczyść RAM i zablokuj"
-              >
+        onClick={lockVault}
+        className="flex items-center gap-2 py-2 px-3.5 text-xs font-semibold bg-white/5 hover:bg-white/10 text-rose-400 hover:text-rose-300 rounded-lg transition-all border border-white/5 "
+        title="Wyczyść RAM i zablokuj"
+       >
                 <Lock className="w-3.5 h-3.5" />
                 Zablokuj
               </button>
@@ -179,7 +179,7 @@ export default function MainForm() {
             </div>
             <div className="flex flex-wrap gap-2">
               <button
-                onClick={() => {
+        onClick={() => {
                   setEditingId(null);
                   setIsFormOpen(true);
                 }}
@@ -190,7 +190,7 @@ export default function MainForm() {
               </button>
               
               <button
-                onClick={() => {
+        onClick={() => {
                   setShowCommandPalette(true);
                 }}
                 className="px-3 py-1.5 bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white rounded border border-white/5 transition-all flex items-center gap-1.5 cursor-pointer text-xs"
@@ -201,7 +201,7 @@ export default function MainForm() {
               </button>
 
               <button
-                onClick={() => {
+        onClick={() => {
                   setViewMode("generator");
                 }}
                 className="px-3 py-1.5 bg-white/5 hover:bg-white/10 text-amber-400 hover:text-amber-300 rounded border border-white/5 transition-all flex items-center gap-1.5 cursor-pointer text-xs"
@@ -225,7 +225,7 @@ export default function MainForm() {
 
                 <div className="flex flex-col gap-1.5">
                   <button
-                    onClick={() => { setViewMode("dashboard"); setSelectedCategory("All"); }}
+          onClick={() => { setViewMode("dashboard"); setSelectedCategory("All"); }}
                     className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-xs font-semibold transition-all text-left cursor-pointer border-0 ${
                       viewMode === "dashboard"
                         ? "bg-emerald-500 text-black font-semibold shadow-md shadow-emerald-500/10"
@@ -237,7 +237,7 @@ export default function MainForm() {
                   </button>
 
                   <button
-                    onClick={() => { setViewMode("all"); setSelectedCategory("All"); }}
+          onClick={() => { setViewMode("all"); setSelectedCategory("All"); }}
                     className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-xs font-semibold transition-all text-left cursor-pointer border-0 ${
                       (viewMode === "all" || viewMode === "favorites" || viewMode === "trash")
                         ? "bg-white text-black font-semibold shadow-md"
@@ -256,7 +256,7 @@ export default function MainForm() {
                   </button>
 
                   <button
-                    onClick={() => { setViewMode("generator"); }}
+          onClick={() => { setViewMode("generator"); }}
                     className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-xs font-semibold transition-all text-left cursor-pointer border-0 ${
                       viewMode === "generator"
                         ? "bg-[#161616] text-amber-400 border border-white/10 font-bold"
@@ -268,7 +268,7 @@ export default function MainForm() {
                   </button>
 
                   <button
-                    onClick={() => { setViewMode("security"); setSelectedCategory("All"); }}
+          onClick={() => { setViewMode("security"); setSelectedCategory("All"); }}
                     className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-xs font-semibold transition-all text-left cursor-pointer border-0 ${
                       viewMode === "security"
                         ? "bg-[#161616] text-emerald-400 border border-white/10 font-bold"
@@ -282,7 +282,7 @@ export default function MainForm() {
                   </button>
 
                   <button
-                    onClick={() => { setViewMode("settings"); setSelectedCategory("All"); }}
+          onClick={() => { setViewMode("settings"); setSelectedCategory("All"); }}
                     className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-xs font-semibold transition-all text-left cursor-pointer border-0 ${
                       (viewMode === "settings" || viewMode === "activity")
                         ? "bg-[#161616] text-white border border-white/10 font-bold"
@@ -296,10 +296,10 @@ export default function MainForm() {
                 
                 <div className="border-t border-white/5 pt-3">
                   <button
-                    type="button"
-                    onClick={lockVault}
-                    className="w-full flex items-center justify-center gap-1.5 py-1.5 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/20 rounded-md transition-all cursor-pointer uppercase text-[9px] font-bold"
-                  >
+          type="button"
+          onClick={lockVault}
+          className="w-full flex items-center justify-center gap-1.5 py-1.5 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/20 rounded-md transition-all uppercase text-[9px] font-bold"
+         >
                     <Lock className="w-3.5 h-3.5" />
                     Zablokuj Sejf
                   </button>

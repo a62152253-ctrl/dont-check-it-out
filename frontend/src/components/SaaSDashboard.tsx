@@ -59,8 +59,8 @@ export default function SaasDashboard() {
             {/* Header Language Switcher */}
             <div className="flex gap-1 bg-white/5 border border-white/5 rounded-lg p-0.5 text-[10px]">
               <button
-                type="button"
-                onClick={() => setLanguage("PL")}
+        type="button"
+        onClick={() => setLanguage("PL")}
                 className={`px-2.5 py-1 rounded-md font-mono transition-all duration-200 cursor-pointer ${
                   language === "PL" 
                     ? "bg-white/10 text-white font-bold shadow-sm" 
@@ -70,8 +70,8 @@ export default function SaasDashboard() {
                 PL
               </button>
               <button
-                type="button"
-                onClick={() => setLanguage("EN")}
+        type="button"
+        onClick={() => setLanguage("EN")}
                 className={`px-2.5 py-1 rounded-md font-mono transition-all duration-200 cursor-pointer ${
                   language === "EN" 
                     ? "bg-white/10 text-white font-bold shadow-sm" 
@@ -100,13 +100,13 @@ export default function SaasDashboard() {
               {showLogoutConfirm ? (
                 <div className="flex items-center gap-1.5 bg-[#0a0a0a] px-2 py-1 rounded-lg border border-white/10 shadow-xl">
                   <button
-                    onClick={() => logout()}
+          onClick={() => logout()}
                     className="px-2.5 py-1 text-[10px] bg-rose-600 hover:bg-rose-700 text-white font-bold rounded transition-all cursor-pointer"
                   >
                     {t.confirm}
                   </button>
                   <button
-                    onClick={() => setShowLogoutConfirm(false)}
+          onClick={() => setShowLogoutConfirm(false)}
                     className="px-2.5 py-1 text-[10px] bg-white/5 hover:bg-white/10 text-slate-300 rounded font-semibold cursor-pointer transition-all"
                   >
                     {t.cancel}
@@ -114,7 +114,7 @@ export default function SaasDashboard() {
                 </div>
               ) : (
                 <button
-                  onClick={() => setShowLogoutConfirm(true)}
+         onClick={() => setShowLogoutConfirm(true)}
                   className="flex items-center gap-2 py-1.5 px-3 rounded-lg border border-white/5 hover:border-white/10 hover:bg-white/5 text-xs text-rose-400 font-semibold cursor-pointer transition-all"
                   title={t.signOut}
                 >

@@ -1,8 +1,8 @@
 import React from "react";
 import { Settings, RefreshCw } from "lucide-react";
-import { useVaultContext } from "../../context/useVaultContext";
-import { triggerBackupDownload } from "../../services/backup.service";
-import { AccentThemeName } from "../../hooks/useVaultTheme";
+import { useVaultContext } from "../context/useVaultContext";
+import { triggerBackupDownload } from "../services/backup.service";
+import { AccentThemeName } from "../hooks/useVaultTheme";
 
 export function SettingsView() {
   const {
@@ -74,9 +74,9 @@ export function SettingsView() {
               const isSelected = accentTheme === themeName;
               return (
                 <button
-                  key={themeName}
-                  type="button"
-                  onClick={() => changeAccentTheme(themeName)}
+         key={themeName}
+         type="button"
+         onClick={() => changeAccentTheme(themeName)}
                   className={`flex items-center gap-2 px-3 py-1.5 rounded-lg border text-xs font-mono transition-all cursor-pointer ${
                     isSelected 
                       ? "bg-white/[0.04] text-white border-white/40 shadow-md font-bold" 
@@ -101,9 +101,9 @@ export function SettingsView() {
               const isSelected = language === lang;
               return (
                 <button
-                  key={lang}
-                  type="button"
-                  onClick={() => setLanguage(lang)}
+         key={lang}
+         type="button"
+         onClick={() => setLanguage(lang)}
                   className={`px-3 py-1.5 rounded-lg border text-xs font-mono transition-all cursor-pointer ${
                     isSelected 
                       ? "bg-white text-black border-white font-bold" 
@@ -124,9 +124,9 @@ export function SettingsView() {
             <h5 className="text-xs font-semibold text-white">Eksportuj Sejf (Zaszyfrowany JSON)</h5>
             <p className="text-[10px] font-mono text-slate-500">Pobierz kopię zapasową wszystkich wpisów w bezpiecznym formacie.</p>
             <button
-              onClick={handleExportBackup}
-              className="px-3 py-1.5 bg-white/5 hover:bg-white/10 text-white rounded border border-white/5 text-[10px] font-mono transition-all cursor-pointer"
-            >
+       onClick={handleExportBackup}
+       className="px-3 py-1.5 bg-white/5 hover:bg-white/10 text-white rounded border border-white/5 text-[10px] font-mono transition-all "
+      >
               Pobierz kopie JSON
             </button>
           </div>
@@ -158,9 +158,9 @@ export function SettingsView() {
             Chcesz całkowicie skasować swoje hasła, klucze oraz konfigurację PBKDF2 sejfu, aby zacząć od nowa? Tej akcji nie można cofnąć.
           </p>
           <button
-            onClick={resetVault}
-            className="px-3 py-1.5 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 rounded border border-rose-500/20 text-[10px] font-mono transition-all cursor-pointer"
-          >
+      onClick={resetVault}
+      className="px-3 py-1.5 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 rounded border border-rose-500/20 text-[10px] font-mono transition-all "
+     >
             Skasuj i zresetuj sejf
           </button>
         </div>

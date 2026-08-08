@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { AlertCircle } from "lucide-react";
-import { useVaultContext } from "../../../context/useVaultContext";
-import { DecryptedSecret } from "../../../types";
+import { useVaultContext } from "../../context/useVaultContext";
+import { DecryptedSecret } from "../../types";
 
 export function DuplicateCredentials() {
   const { decryptedEntries, setViewMode, setSelectedCategory, setSelectedEntryId } = useVaultContext();
@@ -54,8 +54,8 @@ export function DuplicateCredentials() {
                 <div className="flex flex-wrap gap-1.5">
                   {group.map(e => (
                     <button
-                      key={e.id}
-                      onClick={() => handleSelectEntry(e.id!)}
+           key={e.id}
+           onClick={() => handleSelectEntry(e.id!)}
                       className="px-2 py-0.5 bg-white/5 hover:bg-white/10 text-white rounded border border-white/5 cursor-pointer text-[9px] font-mono"
                     >
                       {e.name}
