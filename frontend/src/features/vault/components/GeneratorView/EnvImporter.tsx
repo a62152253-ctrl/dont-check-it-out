@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Terminal, RefreshCw, Lock } from "lucide-react";
-import { useVaultContext } from "../../../context/useVaultContext";
-import { parseDotenvContent, ParsedDotenvItem } from "../../../utils/dotenvParser";
+import { useVaultContext } from "../../context/useVaultContext";
+import { parseDotenvContent, ParsedDotenvItem } from "../../utils/dotenvParser";
 
 export function EnvImporter() {
   const { saveSecret, language, setSuccessMsg, addActivityLog } = useVaultContext();
@@ -105,7 +105,7 @@ export function EnvImporter() {
           type="button"
           onClick={handleAnalyze}
           disabled={!dotenvPaste.trim()}
-          className="w-full py-2 bg-white/5 hover:bg-white/10 text-white font-mono text-xs rounded-lg border border-white/5 hover:border-white/20 transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          className="w-full py-2 bg-white/5 hover:bg-white/10 text-white font-mono text-xs rounded-lg border border-white/5 hover:border-white/20 transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
         >
           <RefreshCw className="w-3.5 h-3.5" />
           <span>{language === "PL" ? "Analizuj i Paruj Klucze .env" : "Analyze .env Keys"}</span>
@@ -130,7 +130,7 @@ export function EnvImporter() {
                       copy[idx].checked = e.target.checked;
                       setParsedDotenvList(copy);
                     }}
-                    className="accent-emerald-500 rounded shrink-0 cursor-pointer"
+                    className="accent-emerald-500 rounded shrink-0"
                   />
                   <div className="overflow-hidden">
                     <span className="text-white font-semibold truncate block">{item.key}</span>
@@ -147,7 +147,7 @@ export function EnvImporter() {
                     copy[idx].category = e.target.value;
                     setParsedDotenvList(copy);
                   }}
-                  className="bg-[#121212] border border-white/5 text-[9px] text-slate-300 rounded px-1.5 py-1 focus:outline-none shrink-0 cursor-pointer"
+                  className="bg-[#121212] border border-white/5 text-[9px] text-slate-300 rounded px-1.5 py-1 focus:outline-none shrink-0"
                 >
                   <option value="API Keys">API Keys</option>
                   <option value="Database">Database</option>
@@ -162,7 +162,7 @@ export function EnvImporter() {
             type="button"
             disabled={loading}
             onClick={handleBatchImport}
-            className="w-full py-2.5 bg-emerald-500 hover:bg-emerald-600 text-black font-bold font-mono text-xs rounded-lg transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-emerald-500/10 active:scale-95 cursor-pointer disabled:bg-emerald-950/40"
+            className="w-full py-2.5 bg-emerald-500 hover:bg-emerald-600 text-black font-bold font-mono text-xs rounded-lg transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-emerald-500/10 active:scale-95 disabled:bg-emerald-950/40"
           >
             <Lock className="w-3.5 h-3.5" />
             <span>{loading ? "Importowanie..." : "Zaszyfruj i Importuj Zaznaczone"}</span>
