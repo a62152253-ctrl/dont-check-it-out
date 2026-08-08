@@ -226,8 +226,8 @@ export default function AuthForms() {
       {/* Floating Language Switcher */}
       <div className="absolute top-6 right-6 flex gap-1 bg-white/5 border border-white/5 rounded-lg p-0.5 text-[10px] z-20">
         <button
-          type="button"
-          onClick={() => setLanguage("PL")}
+     type="button"
+     onClick={() => setLanguage("PL")}
           className={`px-2.5 py-1 rounded-md font-mono transition-all duration-200 cursor-pointer ${
             language === "PL" 
               ? "bg-white/10 text-white font-bold shadow-sm" 
@@ -237,8 +237,8 @@ export default function AuthForms() {
           PL
         </button>
         <button
-          type="button"
-          onClick={() => setLanguage("EN")}
+     type="button"
+     onClick={() => setLanguage("EN")}
           className={`px-2.5 py-1 rounded-md font-mono transition-all duration-200 cursor-pointer ${
             language === "EN" 
               ? "bg-white/10 text-white font-bold shadow-sm" 
@@ -425,8 +425,8 @@ export default function AuthForms() {
                 </label>
                 {tab === "login" && (
                   <button
-                    type="button"
-                    onClick={() => setTab("forgot")}
+          type="button"
+          onClick={() => setTab("forgot")}
                     className="text-xs text-white hover:underline font-medium focus:outline-none cursor-pointer"
                   >
                     {t.forgotPassword}
@@ -446,8 +446,8 @@ export default function AuthForms() {
                   className="w-full pl-10 pr-10 py-3 bg-[#121212] border border-white/10 hover:border-white/20 focus:bg-[#161616] focus:border-white/30 focus:ring-1 focus:ring-white/10 rounded-lg outline-none text-sm transition-all text-white placeholder-slate-600"
                 />
                 <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
+         type="button"
+         onClick={() => setShowPassword(!showPassword)}
                   className="absolute right-3 top-1/2 -translate-y-1/2 p-1 hover:bg-white/5 rounded text-slate-400 transition-colors cursor-pointer"
                 >
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -552,10 +552,10 @@ export default function AuthForms() {
 
           {/* CTA Submit Button */}
           <button
-            type="submit"
-            disabled={loading}
-            className="group relative w-full flex items-center justify-center gap-1.5 py-3 px-4 rounded-lg font-semibold text-black bg-white hover:bg-slate-200 active:scale-[0.98] transition-all disabled:opacity-50 disabled:pointer-events-none cursor-pointer text-sm shadow-xl shadow-white/5"
-          >
+      type="submit"
+      disabled={loading}
+      className="group relative w-full flex items-center justify-center gap-1.5 py-3 px-4 rounded-lg font-semibold text-black bg-white hover:bg-slate-200 active:scale-[0.98] transition-all disabled:opacity-50 disabled:pointer-events-none text-sm shadow-xl shadow-white/5"
+     >
             {loading ? (
               <span className="flex items-center gap-2">
                 <svg className="animate-spin h-4 w-4 text-black" fill="none" viewBox="0 0 24 24">
@@ -577,11 +577,11 @@ export default function AuthForms() {
           {/* Fast Login Button for effortless demo evaluation */}
           {tab === "login" && (
             <button
-              type="button"
-              disabled={loading}
-              onClick={handleFastLogin}
-              className="relative w-full flex items-center justify-center gap-2 py-3 px-4 rounded-lg font-bold text-white bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 active:scale-[0.98] transition-all disabled:opacity-50 disabled:pointer-events-none cursor-pointer text-sm shadow-[0_4px_20px_rgba(124,58,237,0.3)] mt-3.5 border border-violet-400/20 overflow-hidden group"
-            >
+       type="button"
+       disabled={loading}
+       onClick={handleFastLogin}
+       className="relative w-full flex items-center justify-center gap-2 py-3 px-4 rounded-lg font-bold text-white bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 active:scale-[0.98] transition-all disabled:opacity-50 disabled:pointer-events-none text-sm shadow-[0_4px_20px_rgba(124,58,237,0.3)] mt-3.5 border border-violet-400/20 overflow-hidden group"
+      >
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
               <Zap className="w-4 h-4 text-amber-300 fill-amber-300 animate-bounce shrink-0" />
               <span className="tracking-wide">{t.fastLoginBtn}</span>
@@ -592,8 +592,8 @@ export default function AuthForms() {
         {/* Back option on password reset */}
         {tab === "forgot" && (
           <button
-            type="button"
-            onClick={() => setTab("login")}
+      type="button"
+      onClick={() => setTab("login")}
             className="flex items-center justify-center gap-1.5 text-xs text-slate-400 hover:text-white mt-5 mx-auto font-medium transition-colors focus:outline-none cursor-pointer"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
@@ -615,11 +615,11 @@ export default function AuthForms() {
 
             {/* Google Single Sign-On Button */}
             <button
-              type="button"
-              onClick={handleGoogleSignIn}
-              disabled={loading}
-              className="w-full flex items-center justify-center gap-2.5 py-3 px-4 rounded-lg border border-white/10 hover:bg-white/5 text-white font-medium text-xs active:scale-[0.98] transition-all focus:outline-none disabled:opacity-50 cursor-pointer"
-            >
+       type="button"
+       onClick={handleGoogleSignIn}
+       disabled={loading}
+       className="w-full flex items-center justify-center gap-2.5 py-3 px-4 rounded-lg border border-white/10 hover:bg-white/5 text-white font-medium text-xs active:scale-[0.98] transition-all focus:outline-none disabled:opacity-50 "
+      >
               <Chrome className="w-4 h-4 text-white" />
               {t.googleAuth}
             </button>
@@ -639,8 +639,8 @@ export default function AuthForms() {
               >
                 {t.noAccount}{" "}
                 <button
-                  type="button"
-                  onClick={() => setTab("register")}
+         type="button"
+         onClick={() => setTab("register")}
                   className="text-white hover:underline font-semibold cursor-pointer focus:outline-none"
                 >
                   {t.createWorkspace}
@@ -657,8 +657,8 @@ export default function AuthForms() {
                 >
                   {t.alreadyRegistered}{" "}
                   <button
-                     type="button"
-                     onClick={() => setTab("login")}
+           type="button"
+           onClick={() => setTab("login")}
                      className="text-white hover:underline font-semibold cursor-pointer focus:outline-none"
                   >
                     {t.logInAccount}

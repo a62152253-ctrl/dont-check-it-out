@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Key, Copy, Sparkles } from "lucide-react";
-import { useVaultContext } from "../../../context/useVaultContext";
-import { generateSecurePassword } from "../../../utils/generators";
+import { useVaultContext } from "../../context/useVaultContext";
+import { generateSecurePassword } from "../../utils/generators";
 
 export function SSHKeyGenerator() {
   const { theme, language, setSuccessMsg } = useVaultContext();
@@ -54,20 +54,20 @@ export function SSHKeyGenerator() {
             {generatedKey}
           </pre>
           <button
-            type="button"
-            onClick={handleCopy}
-            className="absolute right-3 top-4 text-slate-400 hover:text-white bg-white/5 p-2 rounded-md border border-white/5 transition-all hover:bg-white/10 active:scale-95 cursor-pointer"
-            title="Copy Key"
-          >
+      type="button"
+      onClick={handleCopy}
+      className="absolute right-3 top-4 text-slate-400 hover:text-white bg-white/5 p-2 rounded-md border border-white/5 transition-all hover:bg-white/10 active:scale-95 "
+      title="Copy Key"
+     >
             <Copy className="w-3.5 h-3.5" />
           </button>
         </div>
 
         <button
-          type="button"
-          onClick={handleGenerate}
-          className={`w-full py-2.5 ${theme.primary} rounded-lg text-xs font-mono font-bold transition-all cursor-pointer flex items-center justify-center gap-2 shadow-lg active:scale-95`}
-        >
+     type="button"
+     onClick={handleGenerate}
+     className={`w-full py-2.5 ${theme.primary} rounded-lg text-xs font-mono font-bold transition-all flex items-center justify-center gap-2 shadow-lg active:scale-95`}
+    >
           <Sparkles className="w-3.5 h-3.5" />
           <span>Regenerate SSH Key</span>
         </button>
