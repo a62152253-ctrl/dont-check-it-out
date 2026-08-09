@@ -3,12 +3,12 @@ import {
   Clock, Shield, Plus, Download, Key, Lock, Activity, 
   Sparkles, CheckCircle2, AlertCircle, LayoutDashboard, Database
 } from "lucide-react";
-import { useVaultContext } from "../../context/useVaultContext";
-import { getCategoryIcon } from "../../utils/categoryIcon";
-import { formatTimeAgo } from "../../utils/timeAgo";
-import { getPasswordStrength } from "../../utils/passwordStrength";
-import { mapLegacyCategory } from "../../hooks/useVault";
-import { DecryptedSecret } from "../../types";
+import { useVaultContext } from "../context/useVaultContext";
+import { getCategoryIcon } from "../utils/categoryIcon";
+import { formatTimeAgo } from "../utils/timeAgo";
+import { getPasswordStrength } from "../utils/passwordStrength";
+import { mapLegacyCategory } from "../hooks/useVault";
+import { DecryptedSecret } from "../types";
 
 export function DashboardView() {
   const {
@@ -150,58 +150,58 @@ export function DashboardView() {
   }, [recentlyOpenedIds, decryptedEntries]);
 
   return (
-    <div className="lg:col-span-9 space-y-6">
+    <div className="lg:col-span-9 space-y-8">
       
       {/* Bento Grid Stats */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-[#0c0c0c]/85 p-5 rounded-2xl border border-white/10 shadow-xl flex flex-col justify-between hover:-translate-y-0.5 hover:border-white/15 transition-all duration-300 relative group overflow-hidden">
-          <div className="absolute top-0 right-0 w-24 h-24 bg-white/[0.01] rounded-full blur-xl pointer-events-none group-hover:bg-white/[0.02] transition-colors" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="bg-white/[0.02] backdrop-blur-md p-6 rounded-3xl border border-white/5 shadow-2xl flex flex-col justify-between hover:-translate-y-1 hover:border-white/20 transition-all duration-500 relative group overflow-hidden">
+          <div className="absolute top-[-20%] right-[-20%] w-32 h-32 bg-white/[0.02] rounded-full blur-2xl pointer-events-none group-hover:bg-white/[0.04] transition-colors duration-500" />
           <div>
-            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-500">Total Secrets</span>
-            <h3 className="text-3xl font-display font-semibold text-white mt-1.5">{stats.total}</h3>
+            <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-slate-500">Total Secrets</span>
+            <h3 className="text-5xl font-display font-light text-white mt-2 tracking-tight group-hover:scale-105 origin-left transition-transform duration-500">{stats.total}</h3>
           </div>
-          <p className="text-[9px] font-mono text-slate-500 mt-4">Wszystkie aktywne klucze i hasła</p>
+          <p className="text-[10px] font-mono text-slate-500 mt-6">Wszystkie aktywne klucze i hasła</p>
         </div>
 
-        <div className="bg-[#0c0c0c]/85 p-5 rounded-2xl border border-white/10 shadow-xl flex flex-col justify-between hover:-translate-y-0.5 hover:border-blue-500/25 transition-all duration-300 relative group overflow-hidden">
-          <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/[0.01] rounded-full blur-xl pointer-events-none group-hover:bg-blue-500/[0.02] transition-colors" />
+        <div className="bg-white/[0.02] backdrop-blur-md p-6 rounded-3xl border border-white/5 shadow-2xl flex flex-col justify-between hover:-translate-y-1 hover:border-blue-500/30 transition-all duration-500 relative group overflow-hidden">
+          <div className="absolute top-[-20%] right-[-20%] w-32 h-32 bg-blue-500/[0.02] rounded-full blur-2xl pointer-events-none group-hover:bg-blue-500/[0.04] transition-colors duration-500" />
           <div>
-            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-400">Categories</span>
-            <h3 className="text-3xl font-display font-semibold text-blue-400 mt-1.5">{stats.categoriesCount}</h3>
+            <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-blue-400">Categories</span>
+            <h3 className="text-5xl font-display font-light text-blue-400 mt-2 tracking-tight group-hover:scale-105 origin-left transition-transform duration-500">{stats.categoriesCount}</h3>
           </div>
-          <p className="text-[9px] font-mono text-slate-500 mt-4">Aktywne grupy i typy sekretów</p>
+          <p className="text-[10px] font-mono text-slate-500 mt-6">Aktywne grupy i typy sekretów</p>
         </div>
 
-        <div className="bg-[#0c0c0c]/85 p-5 rounded-2xl border border-white/10 shadow-xl flex flex-col justify-between hover:-translate-y-0.5 hover:border-amber-500/25 transition-all duration-300 relative group overflow-hidden">
-          <div className="absolute top-0 right-0 w-24 h-24 bg-amber-500/[0.01] rounded-full blur-xl pointer-events-none group-hover:bg-amber-500/[0.02] transition-colors" />
+        <div className="bg-white/[0.02] backdrop-blur-md p-6 rounded-3xl border border-white/5 shadow-2xl flex flex-col justify-between hover:-translate-y-1 hover:border-amber-500/30 transition-all duration-500 relative group overflow-hidden">
+          <div className="absolute top-[-20%] right-[-20%] w-32 h-32 bg-amber-500/[0.02] rounded-full blur-2xl pointer-events-none group-hover:bg-amber-500/[0.04] transition-colors duration-500" />
           <div>
-            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-400">Recently Added</span>
-            <h3 className="text-3xl font-display font-semibold text-amber-400 mt-1.5">{stats.recentlyAdded}</h3>
+            <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-amber-400">Recently Added</span>
+            <h3 className="text-5xl font-display font-light text-amber-400 mt-2 tracking-tight group-hover:scale-105 origin-left transition-transform duration-500">{stats.recentlyAdded}</h3>
           </div>
-          <p className="text-[9px] font-mono text-slate-500 mt-4">Wpisy dodane w ciągu 30 dni</p>
+          <p className="text-[10px] font-mono text-slate-500 mt-6">Wpisy dodane w ciągu 30 dni</p>
         </div>
 
-        <div className="bg-[#0c0c0c]/85 p-5 rounded-2xl border border-white/10 shadow-xl flex flex-col justify-between hover:-translate-y-0.5 hover:border-rose-500/25 transition-all duration-300 relative group overflow-hidden">
-          <div className="absolute top-0 right-0 w-24 h-24 bg-rose-500/[0.01] rounded-full blur-xl pointer-events-none group-hover:bg-rose-500/[0.02] transition-colors" />
+        <div className="bg-white/[0.02] backdrop-blur-md p-6 rounded-3xl border border-white/5 shadow-2xl flex flex-col justify-between hover:-translate-y-1 hover:border-rose-500/30 transition-all duration-500 relative group overflow-hidden">
+          <div className="absolute top-[-20%] right-[-20%] w-32 h-32 bg-rose-500/[0.02] rounded-full blur-2xl pointer-events-none group-hover:bg-rose-500/[0.04] transition-colors duration-500" />
           <div>
-            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-rose-400">Favorites</span>
-            <h3 className="text-3xl font-display font-semibold text-rose-400 mt-1.5">{stats.favorites}</h3>
+            <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-rose-400">Favorites</span>
+            <h3 className="text-5xl font-display font-light text-rose-400 mt-2 tracking-tight group-hover:scale-105 origin-left transition-transform duration-500">{stats.favorites}</h3>
           </div>
-          <p className="text-[9px] font-mono text-slate-500 mt-4">Oznaczone jako ulubione dewelopera</p>
+          <p className="text-[10px] font-mono text-slate-500 mt-6">Oznaczone jako ulubione dewelopera</p>
         </div>
       </div>
 
       {/* Main Bento Body */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
         
         {/* Left Column (md:col-span-7) */}
-        <div className="md:col-span-7 space-y-6">
+        <div className="md:col-span-7 space-y-8">
           
           {/* Recently Used */}
-          <div className="bg-[#0c0c0c] border border-white/5 rounded-lg p-5 space-y-4">
-            <div className="flex items-center gap-2 border-b border-white/5 pb-2.5">
+          <div className="bg-white/[0.02] backdrop-blur-md border border-white/5 rounded-3xl p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center gap-2 border-b border-white/5 pb-3">
               <Clock className="w-4 h-4 text-slate-500" />
-              <h4 className="text-[11px] font-bold uppercase tracking-wider text-slate-300">Recently Opened / Ostatnio używane</h4>
+              <h4 className="text-[11px] font-mono font-bold uppercase tracking-widest text-slate-300">Recently Opened / Ostatnio używane</h4>
             </div>
             {recentlyOpenedSecrets.length === 0 ? (
               <div className="py-8 text-center text-slate-500 font-mono text-xs">
@@ -209,7 +209,7 @@ export function DashboardView() {
                 <span>Brak ostatnio otwieranych wpisów w tej sesji</span>
               </div>
             ) : (
-              <div className="space-y-2">
+              <div className="space-y-3">
                 {recentlyOpenedSecrets.map(secret => (
                   <button
                     key={secret.id}
@@ -218,20 +218,20 @@ export function DashboardView() {
                       setSelectedCategory("All");
                       setSelectedEntryId(secret.id!);
                     }}
-                    className="w-full flex items-center justify-between p-3 bg-white/[0.01] border border-white/5 hover:border-white/10 rounded-lg hover:bg-white/[0.03] transition-all text-left group cursor-pointer"
+                    className="w-full flex items-center justify-between p-4 bg-white/[0.01] border border-white/5 hover:border-white/10 rounded-2xl hover:bg-white/[0.04] transition-all duration-300 text-left group hover:scale-[1.01]"
                   >
-                    <div className="flex items-center gap-3">
-                      <div className="p-2 bg-white/5 rounded text-slate-400 group-hover:text-white transition-colors">
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 bg-white/5 rounded-xl text-slate-400 group-hover:text-emerald-400 transition-colors shadow-inner">
                         {getCategoryIcon(mapLegacyCategory(secret.category))}
                       </div>
                       <div>
-                        <h5 className="text-xs font-semibold text-white group-hover:text-emerald-400 transition-colors">{secret.name}</h5>
-                        <p className="text-[10px] text-slate-500 font-mono mt-0.5">
+                        <h5 className="text-sm font-semibold text-white group-hover:text-emerald-400 transition-colors">{secret.name}</h5>
+                        <p className="text-[10px] text-slate-500 font-mono mt-1 uppercase tracking-wider">
                           {secret.category} {secret.project ? `• ${secret.project}` : ""}
                         </p>
                       </div>
                     </div>
-                    <span className="text-[9px] text-slate-500 font-mono">
+                    <span className="text-[10px] text-slate-500 font-mono bg-white/5 px-2.5 py-1 rounded-full">
                       {secret.updatedAt ? formatTimeAgo(secret.updatedAt) : "Niedawno"}
                     </span>
                   </button>
@@ -241,42 +241,32 @@ export function DashboardView() {
           </div>
 
           {/* Security Overview */}
-          <div className="bg-[#0c0c0c] border border-white/5 rounded-lg p-5 space-y-4">
-            <div className="flex items-center gap-2 border-b border-white/5 pb-2.5">
+          <div className="bg-white/[0.02] backdrop-blur-md border border-white/5 rounded-3xl p-6 space-y-6 shadow-2xl">
+            <div className="flex items-center gap-2 border-b border-white/5 pb-3">
               <Shield className="w-4 h-4 text-emerald-400" />
-              <h4 className="text-[11px] font-bold uppercase tracking-wider text-slate-300">Security Overview / Audyt bezpieczeństwa</h4>
+              <h4 className="text-[11px] font-mono font-bold uppercase tracking-widest text-slate-300">Security Overview / Audyt bezpieczeństwa</h4>
             </div>
             
-            <div className="space-y-4">
-              <div className="space-y-2">
+            <div className="space-y-6">
+              <div className="space-y-3">
                 <div className="flex justify-between items-baseline">
-                  <span className="text-xs font-mono font-bold text-slate-400">Security Status</span>
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-xl font-light text-white">{securityScore}%</span>
+                  <span className="text-xs font-mono font-bold text-slate-400 uppercase tracking-widest">Security Status</span>
+                  <div className="flex items-baseline gap-1.5">
+                    <span className={`text-4xl font-display font-light ${securityScore >= 80 ? 'text-emerald-400' : securityScore >= 50 ? 'text-amber-400' : 'text-rose-400'}`}>{securityScore}%</span>
                     <span className="text-[10px] text-slate-500 font-mono">ocena</span>
                   </div>
                 </div>
                 
-                {/* Visual Progress Bar */}
-                <div className="flex items-center gap-1 font-mono text-[10px] tracking-tight">
-                  <span className="text-slate-500 mr-1">Rating:</span>
-                  {Array.from({ length: 10 }).map((_, i) => {
-                    const isActive = i < Math.round(securityScore / 10);
-                    return (
-                      <span key={i} className={isActive ? (securityScore >= 80 ? "text-emerald-500" : securityScore >= 50 ? "text-amber-500" : "text-rose-500") : "text-slate-800"}>
-                        █
-                      </span>
-                    );
-                  })}
-                </div>
-
-                <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
+                {/* Refined Progress Bar */}
+                <div className="w-full h-2 bg-white/5 rounded-full overflow-hidden border border-white/10 relative">
                   <div 
-                    className={`h-full transition-all duration-700 ${
-                      securityScore >= 80 ? "bg-emerald-500" : securityScore >= 50 ? "bg-amber-500" : "bg-rose-500"
+                    className={`h-full relative rounded-full transition-all duration-1000 ease-out ${
+                      securityScore >= 80 ? "bg-gradient-to-r from-emerald-600 to-emerald-400" : securityScore >= 50 ? "bg-gradient-to-r from-amber-600 to-amber-400" : "bg-gradient-to-r from-rose-600 to-rose-400"
                     }`}
                     style={{ width: `${securityScore}%` }}
-                  />
+                  >
+                    <div className="absolute inset-0 bg-white/20 animate-pulse" style={{ animationDuration: '2s' }} />
+                  </div>
                 </div>
               </div>
 
@@ -360,48 +350,48 @@ export function DashboardView() {
         </div>
 
         {/* Right Column (md:col-span-5) */}
-        <div className="md:col-span-5 space-y-6">
+        <div className="md:col-span-5 space-y-8">
           
           {/* Quick Actions */}
-          <div className="bg-[#0c0c0c] border border-white/5 rounded-lg p-5 space-y-4">
-            <div className="flex items-center gap-2 border-b border-white/5 pb-2.5">
-              <Sparkles className="w-4 h-4 text-yellow-400" />
-              <h4 className="text-[11px] font-bold uppercase tracking-wider text-slate-300">Quick Actions / Szybkie akcje</h4>
+          <div className="bg-white/[0.02] backdrop-blur-md border border-white/5 rounded-3xl p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center gap-2 border-b border-white/5 pb-3">
+              <Sparkles className="w-4 h-4 text-amber-400" />
+              <h4 className="text-[11px] font-mono font-bold uppercase tracking-widest text-slate-300">Quick Actions / Szybkie akcje</h4>
             </div>
 
-            <div className="space-y-3">
+            <div className="space-y-4">
               <button
                 onClick={() => {
                   setEditingId(null);
                   setIsFormOpen(true);
                 }}
-                className="w-full flex items-center justify-center gap-2.5 py-4 px-4 bg-emerald-500 hover:bg-emerald-600 text-black font-bold text-sm rounded-lg transition-all shadow-lg hover:shadow-emerald-500/10 cursor-pointer text-center"
+                className="w-full flex items-center justify-center gap-2.5 py-4 px-4 bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-sm rounded-2xl transition-all shadow-xl shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:-translate-y-0.5 text-center"
               >
                 <Plus className="w-5 h-5 text-black" />
-                Dodaj Sekret
+                Dodaj Nowy Sekret
               </button>
 
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-2 gap-3">
                 <button
                   onClick={() => setViewMode("generator")}
-                  className="flex flex-col items-center justify-center p-3.5 bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white rounded-lg transition-all border border-white/5 gap-2 text-xs font-mono cursor-pointer"
+                  className="flex flex-col items-center justify-center p-4 bg-white/[0.03] hover:bg-white/[0.06] text-slate-300 hover:text-white rounded-2xl transition-all border border-white/5 hover:border-white/20 gap-3 text-xs font-mono shadow-inner"
                 >
-                  <Download className="w-4 h-4 text-blue-400 rotate-180" />
+                  <Download className="w-5 h-5 text-blue-400 rotate-180" />
                   <span>Import Vault</span>
                 </button>
 
                 <button
                   onClick={() => setViewMode("generator")}
-                  className="flex flex-col items-center justify-center p-3.5 bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white rounded-lg transition-all border border-white/5 gap-2 text-xs font-mono cursor-pointer"
+                  className="flex flex-col items-center justify-center p-4 bg-white/[0.03] hover:bg-white/[0.06] text-slate-300 hover:text-white rounded-2xl transition-all border border-white/5 hover:border-white/20 gap-3 text-xs font-mono shadow-inner"
                 >
-                  <Key className="w-4 h-4 text-emerald-400" />
+                  <Key className="w-5 h-5 text-amber-400" />
                   <span>Generate Key</span>
                 </button>
               </div>
 
               <button
                 onClick={lockVault}
-                className="w-full flex items-center justify-center gap-2 py-2 px-3 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 font-mono text-[10px] uppercase border border-rose-500/20 rounded-lg transition-all cursor-pointer mt-1"
+                className="w-full flex items-center justify-center gap-2 py-3 px-3 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 font-mono text-[10px] uppercase border border-rose-500/20 rounded-2xl transition-all hover:border-rose-500/40 mt-2"
               >
                 <Lock className="w-3.5 h-3.5" />
                 Lock Vault (Zablokuj RAM)
@@ -410,10 +400,10 @@ export function DashboardView() {
           </div>
 
           {/* Vault Activity */}
-          <div className="bg-[#0c0c0c] border border-white/5 rounded-lg p-5 space-y-4">
-            <div className="flex items-center gap-2 border-b border-white/5 pb-2.5">
+          <div className="bg-white/[0.02] backdrop-blur-md border border-white/5 rounded-3xl p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center gap-2 border-b border-white/5 pb-3">
               <Activity className="w-4 h-4 text-slate-500" />
-              <h4 className="text-[11px] font-bold uppercase tracking-wider text-slate-300">Vault Activity / Dziennik zdarzeń</h4>
+              <h4 className="text-[11px] font-mono font-bold uppercase tracking-widest text-slate-300">Vault Activity / Dziennik zdarzeń</h4>
             </div>
 
             {activityLogs.length === 0 ? (
