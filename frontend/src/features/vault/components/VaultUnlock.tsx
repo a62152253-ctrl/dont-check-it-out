@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Lock, Shield, AlertCircle } from "lucide-react";
-import { translations } from "../../../../lib/translations";
+import { translations } from "../../../lib/translations";
 
 interface VaultUnlockProps {
   onUnlock: (password: string) => Promise<void>;
