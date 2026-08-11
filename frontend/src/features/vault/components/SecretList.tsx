@@ -1,10 +1,10 @@
 import React, { useMemo } from "react";
 import { Search, Command, Lock, Star, Copy, Check } from "lucide-react";
-import { useVaultContext } from "../../context/useVaultContext";
-import { getCategoryIcon } from "../../utils/categoryIcon";
-import { formatTimeAgo } from "../../utils/timeAgo";
-import { mapLegacyCategory } from "../../hooks/useVault";
-import { DecryptedSecret } from "../../types";
+import { useVaultContext } from "../context/useVaultContext";
+import { getCategoryIcon } from "../utils/categoryIcon";
+import { formatTimeAgo } from "../utils/timeAgo";
+import { mapLegacyCategory } from "../hooks/useVault";
+import { DecryptedSecret } from "../types";
 
 export function SecretList() {
   const {
@@ -84,7 +84,7 @@ export function SecretList() {
               className={`px-3 py-1.5 rounded-lg text-[10px] font-mono font-medium transition-all flex items-center gap-1.5 shrink-0 cursor-pointer border ${
                 isActive
                   ? "bg-white text-black border-white font-bold"
-                  : "bg-white/5 text-slate-400 border-white/5 hover:text-white hover:bg-white/10"
+                  : "bg-black/30 text-slate-400 border-white/10 hover:text-white hover:bg-white/10 hover:border-white/20"
               }`}
             >
               <span>{item.icon}</span>
@@ -95,7 +95,7 @@ export function SecretList() {
       </div>
       
       {/* Real-time Filter inputs */}
-      <div className="bg-[#0c0c0c] p-3 rounded-lg border border-white/5 flex flex-col sm:flex-row gap-3 items-center justify-between">
+      <div className="bg-black/40 backdrop-blur-md p-3 rounded-xl border border-white/10 flex flex-col shadow-xl sm:flex-row gap-3 items-center justify-between">
         <div className="relative w-full">
           <Search className="w-4 h-4 text-slate-500 absolute left-3 top-3" />
           <input
@@ -103,7 +103,7 @@ export function SecretList() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Szukaj (np. aws prod, staging, payments)..."
-            className="w-full pl-9 pr-4 py-2 bg-[#121212] border border-white/10 hover:border-white/20 focus:border-white/30 rounded-lg outline-none text-xs transition-all text-white placeholder-slate-500 font-mono"
+            className="w-full pl-9 pr-4 py-2 bg-black/50 border border-white/10 hover:border-white/20 focus:border-emerald-500/50 focus:shadow-[0_0_15px_rgba(16,185,129,0.2)] rounded-lg outline-none text-xs transition-all text-white placeholder-slate-500 font-mono"
           />
         </div>
 
@@ -141,15 +141,15 @@ export function SecretList() {
                 }}
                 className={`group relative text-left w-full p-4 rounded-xl border transition-all duration-200 cursor-pointer flex items-center justify-between gap-3 ${
                   isSelected
-                    ? "bg-white text-black shadow-xl shadow-white/5 border-white"
-                    : "bg-[#0c0c0c]/80 border-white/5 hover:border-emerald-500/30 text-white hover:bg-[#0c0c0c] hover:shadow-[0_0_15px_rgba(16,185,129,0.03)]"
+                    ? "bg-emerald-500/10 text-white shadow-xl shadow-emerald-500/10 border-emerald-500/50"
+                    : "bg-black/40 backdrop-blur-sm border-white/[0.08] hover:border-emerald-500/40 text-white hover:bg-white/[0.02] hover:shadow-[0_0_15px_rgba(16,185,129,0.03)]"
                 }`}
               >
                 <div className="min-w-0 flex-1 flex items-center gap-3">
                   <div className={`w-8.5 h-8.5 rounded-lg flex items-center justify-center shrink-0 border transition-colors duration-200 ${
                     isSelected 
-                      ? "bg-black/5 border-black/10 text-black" 
-                      : "bg-white/[0.02] border-white/5 text-slate-400 group-hover:text-emerald-400 group-hover:border-emerald-500/20"
+                      ? "bg-emerald-500/20 border-emerald-500/30 text-emerald-400"
+                      : "bg-black/50 border-white/10 text-slate-400 group-hover:text-emerald-400 group-hover:bg-emerald-500/10 group-hover:border-emerald-500/30"
                   }`}>
                     {getCategoryIcon(mapLegacyCategory(secret.category))}
                   </div>
@@ -171,7 +171,7 @@ export function SecretList() {
                       )}
                     </div>
 
-                    <div className={`text-[9px] font-mono mt-1.5 space-y-0.5 ${isSelected ? "text-black/70" : "text-slate-500"}`}>
+                    <div className={`text-[10px] font-mono mt-1.5 space-y-0.5 ${isSelected ? "text-emerald-200" : "text-slate-500"}`}>
                       <p className="truncate">
                         {secret.project ? `project: ${secret.project}` : "project: unassigned"}
                       </p>

@@ -3,12 +3,12 @@ import {
   Clock, Shield, Plus, Download, Key, Lock, Activity, 
   Sparkles, CheckCircle2, AlertCircle, LayoutDashboard, Database
 } from "lucide-react";
-import { useVaultContext } from "../../context/useVaultContext";
-import { getCategoryIcon } from "../../utils/categoryIcon";
-import { formatTimeAgo } from "../../utils/timeAgo";
-import { getPasswordStrength } from "../../utils/passwordStrength";
-import { mapLegacyCategory } from "../../hooks/useVault";
-import { DecryptedSecret } from "../../types";
+import { useVaultContext } from "../context/useVaultContext";
+import { getCategoryIcon } from "../utils/categoryIcon";
+import { formatTimeAgo } from "../utils/timeAgo";
+import { getPasswordStrength } from "../utils/passwordStrength";
+import { mapLegacyCategory } from "../hooks/useVault";
+import { DecryptedSecret } from "../types";
 
 export function DashboardView() {
   const {
@@ -154,40 +154,40 @@ export function DashboardView() {
       
       {/* Bento Grid Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-[#0c0c0c]/85 p-5 rounded-2xl border border-white/10 shadow-xl flex flex-col justify-between hover:-translate-y-0.5 hover:border-white/15 transition-all duration-300 relative group overflow-hidden">
+        <div className="bg-black/60 backdrop-blur-xl p-5 rounded-2xl border border-white/[0.08] shadow-2xl flex flex-col justify-between hover:-translate-y-0.5 hover:border-white/15 transition-all duration-300 relative group overflow-hidden">
           <div className="absolute top-0 right-0 w-24 h-24 bg-white/[0.01] rounded-full blur-xl pointer-events-none group-hover:bg-white/[0.02] transition-colors" />
           <div>
-            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-500">Total Secrets</span>
+            <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-slate-500">Total Secrets</span>
             <h3 className="text-3xl font-display font-semibold text-white mt-1.5">{stats.total}</h3>
           </div>
-          <p className="text-[9px] font-mono text-slate-500 mt-4">Wszystkie aktywne klucze i hasła</p>
+          <p className="text-[10px] font-mono text-slate-400 mt-4">Wszystkie aktywne klucze i hasła</p>
         </div>
 
-        <div className="bg-[#0c0c0c]/85 p-5 rounded-2xl border border-white/10 shadow-xl flex flex-col justify-between hover:-translate-y-0.5 hover:border-blue-500/25 transition-all duration-300 relative group overflow-hidden">
+        <div className="bg-black/60 backdrop-blur-xl p-5 rounded-2xl border border-white/[0.08] shadow-2xl flex flex-col justify-between hover:-translate-y-0.5 hover:border-blue-500/25 transition-all duration-300 relative group overflow-hidden">
           <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/[0.01] rounded-full blur-xl pointer-events-none group-hover:bg-blue-500/[0.02] transition-colors" />
           <div>
-            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-400">Categories</span>
+            <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-blue-400">Categories</span>
             <h3 className="text-3xl font-display font-semibold text-blue-400 mt-1.5">{stats.categoriesCount}</h3>
           </div>
-          <p className="text-[9px] font-mono text-slate-500 mt-4">Aktywne grupy i typy sekretów</p>
+          <p className="text-[10px] font-mono text-slate-400 mt-4">Aktywne grupy i typy sekretów</p>
         </div>
 
-        <div className="bg-[#0c0c0c]/85 p-5 rounded-2xl border border-white/10 shadow-xl flex flex-col justify-between hover:-translate-y-0.5 hover:border-amber-500/25 transition-all duration-300 relative group overflow-hidden">
+        <div className="bg-black/60 backdrop-blur-xl p-5 rounded-2xl border border-white/[0.08] shadow-2xl flex flex-col justify-between hover:-translate-y-0.5 hover:border-amber-500/25 transition-all duration-300 relative group overflow-hidden">
           <div className="absolute top-0 right-0 w-24 h-24 bg-amber-500/[0.01] rounded-full blur-xl pointer-events-none group-hover:bg-amber-500/[0.02] transition-colors" />
           <div>
-            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-400">Recently Added</span>
+            <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-amber-400">Recently Added</span>
             <h3 className="text-3xl font-display font-semibold text-amber-400 mt-1.5">{stats.recentlyAdded}</h3>
           </div>
-          <p className="text-[9px] font-mono text-slate-500 mt-4">Wpisy dodane w ciągu 30 dni</p>
+          <p className="text-[10px] font-mono text-slate-400 mt-4">Wpisy dodane w ciągu 30 dni</p>
         </div>
 
-        <div className="bg-[#0c0c0c]/85 p-5 rounded-2xl border border-white/10 shadow-xl flex flex-col justify-between hover:-translate-y-0.5 hover:border-rose-500/25 transition-all duration-300 relative group overflow-hidden">
+        <div className="bg-black/60 backdrop-blur-xl p-5 rounded-2xl border border-white/[0.08] shadow-2xl flex flex-col justify-between hover:-translate-y-0.5 hover:border-rose-500/25 transition-all duration-300 relative group overflow-hidden">
           <div className="absolute top-0 right-0 w-24 h-24 bg-rose-500/[0.01] rounded-full blur-xl pointer-events-none group-hover:bg-rose-500/[0.02] transition-colors" />
           <div>
-            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-rose-400">Favorites</span>
+            <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-rose-400">Favorites</span>
             <h3 className="text-3xl font-display font-semibold text-rose-400 mt-1.5">{stats.favorites}</h3>
           </div>
-          <p className="text-[9px] font-mono text-slate-500 mt-4">Oznaczone jako ulubione dewelopera</p>
+          <p className="text-[10px] font-mono text-slate-400 mt-4">Oznaczone jako ulubione dewelopera</p>
         </div>
       </div>
 
@@ -198,7 +198,7 @@ export function DashboardView() {
         <div className="md:col-span-7 space-y-6">
           
           {/* Recently Used */}
-          <div className="bg-[#0c0c0c] border border-white/5 rounded-lg p-5 space-y-4">
+          <div className="bg-black/40 backdrop-blur-md border border-white/10 shadow-xl rounded-lg p-5 space-y-4">
             <div className="flex items-center gap-2 border-b border-white/5 pb-2.5">
               <Clock className="w-4 h-4 text-slate-500" />
               <h4 className="text-[11px] font-bold uppercase tracking-wider text-slate-300">Recently Opened / Ostatnio używane</h4>
@@ -221,7 +221,7 @@ export function DashboardView() {
                     className="w-full flex items-center justify-between p-3 bg-white/[0.01] border border-white/5 hover:border-white/10 rounded-lg hover:bg-white/[0.03] transition-all text-left group cursor-pointer"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="p-2 bg-white/5 rounded text-slate-400 group-hover:text-white transition-colors">
+                      <div className="p-2 bg-white/5 rounded text-slate-400 group-hover:text-emerald-400 group-hover:bg-emerald-500/10 transition-colors">
                         {getCategoryIcon(mapLegacyCategory(secret.category))}
                       </div>
                       <div>
@@ -241,7 +241,7 @@ export function DashboardView() {
           </div>
 
           {/* Security Overview */}
-          <div className="bg-[#0c0c0c] border border-white/5 rounded-lg p-5 space-y-4">
+          <div className="bg-black/40 backdrop-blur-md border border-white/10 shadow-xl rounded-lg p-5 space-y-4">
             <div className="flex items-center gap-2 border-b border-white/5 pb-2.5">
               <Shield className="w-4 h-4 text-emerald-400" />
               <h4 className="text-[11px] font-bold uppercase tracking-wider text-slate-300">Security Overview / Audyt bezpieczeństwa</h4>
@@ -270,7 +270,7 @@ export function DashboardView() {
                   })}
                 </div>
 
-                <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
+                <div className="w-full h-1.5 bg-black/50 rounded-full overflow-hidden border border-white/10 shadow-inner">
                   <div 
                     className={`h-full transition-all duration-700 ${
                       securityScore >= 80 ? "bg-emerald-500" : securityScore >= 50 ? "bg-amber-500" : "bg-rose-500"
@@ -363,7 +363,7 @@ export function DashboardView() {
         <div className="md:col-span-5 space-y-6">
           
           {/* Quick Actions */}
-          <div className="bg-[#0c0c0c] border border-white/5 rounded-lg p-5 space-y-4">
+          <div className="bg-black/40 backdrop-blur-md border border-white/10 shadow-xl rounded-lg p-5 space-y-4">
             <div className="flex items-center gap-2 border-b border-white/5 pb-2.5">
               <Sparkles className="w-4 h-4 text-yellow-400" />
               <h4 className="text-[11px] font-bold uppercase tracking-wider text-slate-300">Quick Actions / Szybkie akcje</h4>
@@ -375,7 +375,7 @@ export function DashboardView() {
                   setEditingId(null);
                   setIsFormOpen(true);
                 }}
-                className="w-full flex items-center justify-center gap-2.5 py-4 px-4 bg-emerald-500 hover:bg-emerald-600 text-black font-bold text-sm rounded-lg transition-all shadow-lg hover:shadow-emerald-500/10 cursor-pointer text-center"
+                className="w-full flex items-center justify-center gap-2.5 py-4 px-4 bg-emerald-500 hover:bg-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] text-black font-bold text-sm rounded-lg transition-all shadow-lg hover:shadow-emerald-500/10 cursor-pointer text-center"
               >
                 <Plus className="w-5 h-5 text-black" />
                 Dodaj Sekret
@@ -384,7 +384,7 @@ export function DashboardView() {
               <div className="grid grid-cols-2 gap-2">
                 <button
                   onClick={() => setViewMode("generator")}
-                  className="flex flex-col items-center justify-center p-3.5 bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white rounded-lg transition-all border border-white/5 gap-2 text-xs font-mono cursor-pointer"
+                  className="flex flex-col items-center justify-center p-3.5 bg-white/[0.03] hover:bg-white/10 text-slate-300 hover:text-white rounded-xl transition-all border border-white/[0.05] hover:border-white/20 gap-2 text-xs font-mono cursor-pointer"
                 >
                   <Download className="w-4 h-4 text-blue-400 rotate-180" />
                   <span>Import Vault</span>
@@ -392,7 +392,7 @@ export function DashboardView() {
 
                 <button
                   onClick={() => setViewMode("generator")}
-                  className="flex flex-col items-center justify-center p-3.5 bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white rounded-lg transition-all border border-white/5 gap-2 text-xs font-mono cursor-pointer"
+                  className="flex flex-col items-center justify-center p-3.5 bg-white/[0.03] hover:bg-white/10 text-slate-300 hover:text-white rounded-xl transition-all border border-white/[0.05] hover:border-white/20 gap-2 text-xs font-mono cursor-pointer"
                 >
                   <Key className="w-4 h-4 text-emerald-400" />
                   <span>Generate Key</span>
@@ -410,7 +410,7 @@ export function DashboardView() {
           </div>
 
           {/* Vault Activity */}
-          <div className="bg-[#0c0c0c] border border-white/5 rounded-lg p-5 space-y-4">
+          <div className="bg-black/40 backdrop-blur-md border border-white/10 shadow-xl rounded-lg p-5 space-y-4">
             <div className="flex items-center gap-2 border-b border-white/5 pb-2.5">
               <Activity className="w-4 h-4 text-slate-500" />
               <h4 className="text-[11px] font-bold uppercase tracking-wider text-slate-300">Vault Activity / Dziennik zdarzeń</h4>

@@ -30,24 +30,24 @@ export default function SaasDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-[#030303] flex flex-col text-[#e2e8f0] relative">
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-emerald-500/[0.02] rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-indigo-500/[0.02] rounded-full blur-3xl pointer-events-none" />
+    <div className="min-h-screen bg-[#000000] flex flex-col text-[#e2e8f0] relative">
+      <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-emerald-500/[0.04] rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-indigo-500/[0.03] rounded-full blur-3xl pointer-events-none" />
       
       {/* Sleek Top Header Bar */}
-      <header className="sticky top-0 bg-[#080808]/70 backdrop-blur-md border-b border-white/5 px-6 py-3.5 z-30 transition-all">
+      <header className="sticky top-0 bg-black/40 backdrop-blur-xl border-b border-white/[0.05] px-6 py-3.5 z-30 transition-all">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           
           {/* Logo / Title */}
           <div className="flex items-center gap-3 group cursor-pointer">
-            <div className="w-8 h-8 bg-gradient-to-tr from-emerald-400 to-teal-500 flex items-center justify-center rounded-lg shadow-lg shadow-emerald-500/10 group-hover:scale-105 transition-transform duration-200 shrink-0">
+            <div className="w-9 h-9 bg-gradient-to-br from-emerald-400 via-emerald-500 to-teal-600 flex items-center justify-center rounded-lg shadow-lg shadow-emerald-500/20 group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-emerald-500/30 transition-transform duration-200 shrink-0">
               <Lock className="w-4 h-4 text-black stroke-[2.5]" />
             </div>
             <div>
               <h1 className="font-display font-semibold text-white text-base leading-tight tracking-tight">
                 {t.appName}
               </h1>
-              <span className="text-[9px] font-mono text-emerald-400/80 font-bold tracking-widest uppercase block mt-0.5">
+              <span className="text-[10px] font-mono text-emerald-400/90 font-bold tracking-widest uppercase block mt-0.5">
                 {t.appSub}
               </span>
             </div>
@@ -57,7 +57,7 @@ export default function SaasDashboard() {
           <div className="flex items-center gap-3 sm:gap-4">
             
             {/* Header Language Switcher */}
-            <div className="flex gap-1 bg-white/5 border border-white/5 rounded-lg p-0.5 text-[10px]">
+            <div className="flex gap-1 bg-white/[0.03] border border-white/[0.05] shadow-inner rounded-lg p-0.5 text-[10px]">
               <button
                 type="button"
                 onClick={() => setLanguage("PL")}
@@ -83,12 +83,12 @@ export default function SaasDashboard() {
             </div>
 
             {/* User Badging */}
-            <div className="hidden sm:flex items-center gap-2.5 bg-white/[0.02] border border-white/5 px-3 py-1.5 rounded-lg hover:border-white/10 transition-colors">
+            <div className="hidden sm:flex items-center gap-2.5 bg-white/[0.02] border border-white/[0.08] shadow-lg px-3 py-1.5 rounded-lg hover:border-white/10 transition-colors">
               <img 
                 src={profile.photoURL || `https://api.dicebear.com/7.x/initials/svg?seed=${profile.email}`} 
                 alt="User avatar" 
                 referrerPolicy="no-referrer"
-                className="w-6 h-6 rounded bg-slate-800 border border-white/10 shrink-0"
+                className="w-7 h-7 rounded-md ring-2 ring-white/10 bg-slate-800 border border-white/10 shrink-0"
               />
               <span className="text-xs font-mono text-slate-300 max-w-[150px] truncate">
                 {profile.displayName || profile.email}
@@ -115,7 +115,7 @@ export default function SaasDashboard() {
               ) : (
                 <button
                   onClick={() => setShowLogoutConfirm(true)}
-                  className="flex items-center gap-2 py-1.5 px-3 rounded-lg border border-white/5 hover:border-white/10 hover:bg-white/5 text-xs text-rose-400 font-semibold cursor-pointer transition-all"
+                  className="flex items-center gap-2 py-1.5 px-3 rounded-lg border border-white/10 hover:border-rose-500/30 hover:bg-rose-500/10 hover:text-rose-300 text-xs text-rose-400 font-semibold cursor-pointer transition-all"
                   title={t.signOut}
                 >
                   <LogOut className="w-3.5 h-3.5" />
