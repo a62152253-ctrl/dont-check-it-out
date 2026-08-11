@@ -18,9 +18,14 @@
     "paths": {
       "@/*": [
         "./*"
+      ],
+      "shared": [
+        "../../shared/src"
       ]
     },
     "allowImportingTsExtensions": true,
-    "noEmit": true
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "baseUrl": "./src"
   }
 }

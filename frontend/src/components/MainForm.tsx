@@ -43,7 +43,7 @@ export default function MainForm() {
     return (
       <div className="flex flex-col items-center justify-center min-h-[450px] text-slate-300">
         <div className="animate-spin h-6 w-6 border-2 border-white border-t-transparent rounded-full mb-3" />
-        <span className="text-[10px] font-mono tracking-widest text-slate-500 uppercase">
+        <span className="text-[11px] font-mono tracking-widest text-slate-500 uppercase">
           {language === "PL" ? "ŁADOWANIE OBSZARU ROBOCZEGO..." : "LOADING SECURE WORKSPACE..."}
         </span>
       </div>
@@ -107,15 +107,15 @@ export default function MainForm() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <div className="flex items-center gap-2.5">
-                <Terminal className="w-5 h-5 text-emerald-400" />
-                <h2 className="text-xl font-light text-white tracking-tight">The Zero-Knowledge Vault for Developers</h2>
+                <Terminal className="w-5 h-5 text-emerald-400 drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
+                <h2 className="text-2xl font-light font-display text-white tracking-tight">The Zero-Knowledge Vault for Developers</h2>
               </div>
               <div className="flex items-center gap-2 mt-1.5 flex-wrap">
                 <span className="text-slate-400 text-xs">
                   Szyfrowany w locie AES-GCM-256 • Lokalne deszyfrowanie RAM
                 </span>
                 <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
-                <span className="text-[9px] font-mono uppercase bg-emerald-500/10 text-emerald-400 border border-emerald-500/10 px-2 py-0.5 rounded">
+                <span className="text-[9px] font-mono uppercase bg-emerald-500/10 text-emerald-400 drop-shadow-[0_0_8px_rgba(16,185,129,0.5)] border border-emerald-500/20 backdrop-blur-md px-2 py-0.5 rounded">
                   Zabezpieczony
                 </span>
               </div>
@@ -153,7 +153,7 @@ export default function MainForm() {
                 exit={{ opacity: 0 }}
                 className="p-3.5 bg-emerald-950/20 border border-emerald-900/40 rounded-lg text-emerald-300 text-xs font-mono flex items-center gap-2.5 shadow-xl"
               >
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 drop-shadow-[0_0_8px_rgba(16,185,129,0.5)] shrink-0" />
                 <span>{successMsg}</span>
               </motion.div>
             )}
@@ -172,10 +172,10 @@ export default function MainForm() {
           </AnimatePresence>
 
           {/* Quick Actions Bar */}
-          <div className="bg-[#0c0c0c] border border-white/5 p-3 rounded-lg flex flex-wrap gap-3 items-center justify-between text-xs font-mono shadow-xl">
+          <div className="bg-black/40 backdrop-blur-md border border-white/10 shadow-2xl p-3 rounded-lg flex flex-wrap gap-3 items-center justify-between text-xs font-mono shadow-xl">
             <div className="flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span className="font-bold text-slate-400 uppercase tracking-wider text-[10px]">Szybkie Akcje Sejfu / Quick Actions</span>
+              <Sparkles className="w-4 h-4 text-emerald-400 drop-shadow-[0_0_8px_rgba(16,185,129,0.5)] shrink-0" />
+              <span className="font-bold text-slate-400 uppercase tracking-wider text-[11px]">Szybkie Akcje Sejfu / Quick Actions</span>
             </div>
             <div className="flex flex-wrap gap-2">
               <button
@@ -183,7 +183,7 @@ export default function MainForm() {
                   setEditingId(null);
                   setIsFormOpen(true);
                 }}
-                className="px-3 py-1.5 bg-white/5 hover:bg-white/10 text-emerald-400 hover:text-emerald-300 rounded border border-white/5 transition-all flex items-center gap-1.5 cursor-pointer text-xs"
+                className="px-3 py-1.5 bg-white/5 hover:bg-white/10 text-emerald-400 drop-shadow-[0_0_8px_rgba(16,185,129,0.5)] hover:text-emerald-300 rounded border border-white/5 transition-all flex items-center gap-1.5 cursor-pointer text-xs"
               >
                 <Plus className="w-3.5 h-3.5" />
                 <span>Add Secret</span>
@@ -217,19 +217,19 @@ export default function MainForm() {
             
             {/* Sidebar Navigation */}
             <div className="lg:col-span-3 space-y-4">
-              <div className="bg-[#0c0c0c] border border-white/5 rounded-xl p-4 space-y-4">
+              <div className="bg-black/40 backdrop-blur-md border border-white/10 shadow-2xl rounded-xl p-4 space-y-4">
                 <div className="flex items-center gap-2 text-white border-b border-white/5 pb-2.5">
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                  <h4 className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">Nawigacja Sejfu</h4>
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
+                  <h4 className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-400">Nawigacja Sejfu</h4>
                 </div>
 
                 <div className="flex flex-col gap-1.5">
                   <button
                     onClick={() => { setViewMode("dashboard"); setSelectedCategory("All"); }}
-                    className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-xs font-semibold transition-all text-left cursor-pointer border-0 ${
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-r-lg text-xs tracking-wide font-semibold transition-all text-left cursor-pointer border-0 ${
                       viewMode === "dashboard"
-                        ? "bg-emerald-500 text-black font-semibold shadow-md shadow-emerald-500/10"
-                        : "bg-transparent text-slate-400 hover:bg-white/5 hover:text-white"
+                        ? "bg-gradient-to-r from-emerald-500/20 to-emerald-500/5 text-emerald-400 font-bold border-l-2 border-emerald-400 shadow-[inset_0_0_20px_rgba(16,185,129,0.05)]"
+                        : "bg-transparent text-slate-400 hover:bg-white/[0.03] hover:text-white border-l-2 border-transparent"
                     }`}
                   >
                     <LayoutDashboard className="w-4 h-4" />
@@ -238,10 +238,10 @@ export default function MainForm() {
 
                   <button
                     onClick={() => { setViewMode("all"); setSelectedCategory("All"); }}
-                    className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-xs font-semibold transition-all text-left cursor-pointer border-0 ${
+                    className={`w-full flex items-center justify-between px-4 py-3 rounded-r-lg text-xs tracking-wide font-semibold transition-all text-left cursor-pointer border-0 ${
                       (viewMode === "all" || viewMode === "favorites" || viewMode === "trash")
-                        ? "bg-white text-black font-semibold shadow-md"
-                        : "bg-transparent text-slate-400 hover:bg-white/5 hover:text-white"
+                        ? "bg-gradient-to-r from-white/10 to-transparent text-white font-bold border-l-2 border-white shadow-[inset_0_0_20px_rgba(255,255,255,0.02)]"
+                        : "bg-transparent text-slate-400 hover:bg-white/[0.03] hover:text-white border-l-2 border-transparent"
                     }`}
                   >
                     <div className="flex items-center gap-3">
@@ -257,10 +257,10 @@ export default function MainForm() {
 
                   <button
                     onClick={() => { setViewMode("generator"); }}
-                    className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-xs font-semibold transition-all text-left cursor-pointer border-0 ${
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-r-lg text-xs tracking-wide font-semibold transition-all text-left cursor-pointer border-0 ${
                       viewMode === "generator"
-                        ? "bg-[#161616] text-amber-400 border border-white/10 font-bold"
-                        : "bg-transparent text-slate-400 hover:bg-white/5 hover:text-white"
+                        ? "bg-gradient-to-r from-amber-500/20 to-transparent text-amber-400 font-bold border-l-2 border-amber-400"
+                        : "bg-transparent text-slate-400 hover:bg-white/[0.03] hover:text-white border-l-2 border-transparent"
                     }`}
                   >
                     <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
@@ -269,24 +269,24 @@ export default function MainForm() {
 
                   <button
                     onClick={() => { setViewMode("security"); setSelectedCategory("All"); }}
-                    className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-xs font-semibold transition-all text-left cursor-pointer border-0 ${
+                    className={`w-full flex items-center justify-between px-4 py-3 rounded-r-lg text-xs tracking-wide font-semibold transition-all text-left cursor-pointer border-0 ${
                       viewMode === "security"
-                        ? "bg-[#161616] text-emerald-400 border border-white/10 font-bold"
-                        : "bg-transparent text-slate-400 hover:bg-white/5 hover:text-white"
+                        ? "bg-[#161616] text-emerald-400 drop-shadow-[0_0_8px_rgba(16,185,129,0.5)] border border-white/10 font-bold"
+                        : "bg-transparent text-slate-400 hover:bg-white/[0.03] hover:text-white border-l-2 border-transparent"
                     }`}
                   >
                     <div className="flex items-center gap-3">
-                      <ShieldAlert className="w-4 h-4 text-emerald-400 shrink-0" />
+                      <ShieldAlert className="w-4 h-4 text-emerald-400 drop-shadow-[0_0_8px_rgba(16,185,129,0.5)] shrink-0" />
                       <span>Audyt Centrum</span>
                     </div>
                   </button>
 
                   <button
                     onClick={() => { setViewMode("settings"); setSelectedCategory("All"); }}
-                    className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-xs font-semibold transition-all text-left cursor-pointer border-0 ${
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-r-lg text-xs tracking-wide font-semibold transition-all text-left cursor-pointer border-0 ${
                       (viewMode === "settings" || viewMode === "activity")
-                        ? "bg-[#161616] text-white border border-white/10 font-bold"
-                        : "bg-transparent text-slate-400 hover:bg-white/5 hover:text-white"
+                        ? "bg-gradient-to-r from-white/10 to-transparent text-white font-bold border-l-2 border-white"
+                        : "bg-transparent text-slate-400 hover:bg-white/[0.03] hover:text-white border-l-2 border-transparent"
                     }`}
                   >
                     <Settings className="w-4 h-4" />
