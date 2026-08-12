@@ -43,7 +43,7 @@ export default function MainForm() {
     return (
       <div className="flex flex-col items-center justify-center min-h-[450px] text-slate-300">
         <div className="animate-spin h-6 w-6 border-2 border-white border-t-transparent rounded-full mb-3" />
-        <span className="text-[10px] font-mono tracking-widest text-slate-500 uppercase">
+        <span className="text-xs  tracking-widest text-slate-500 uppercase">
           {language === "PL" ? "ŁADOWANIE OBSZARU ROBOCZEGO..." : "LOADING SECURE WORKSPACE..."}
         </span>
       </div>
@@ -107,15 +107,15 @@ export default function MainForm() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <div className="flex items-center gap-2.5">
-                <Terminal className="w-5 h-5 text-emerald-400" />
+                <Terminal className="w-5 h-5 text-indigo-400" />
                 <h2 className="text-xl font-light text-white tracking-tight">The Zero-Knowledge Vault for Developers</h2>
               </div>
               <div className="flex items-center gap-2 mt-1.5 flex-wrap">
                 <span className="text-slate-400 text-xs">
                   Szyfrowany w locie AES-GCM-256 • Lokalne deszyfrowanie RAM
                 </span>
-                <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
-                <span className="text-[9px] font-mono uppercase bg-emerald-500/10 text-emerald-400 border border-emerald-500/10 px-2 py-0.5 rounded">
+                <span className="w-1.5 h-1.5 bg-indigo-600 rounded-full animate-pulse" />
+                <span className="text-[10px]  uppercase bg-indigo-600/10 text-indigo-400 border border-emerald-500/10 px-2 py-0.5 rounded">
                   Zabezpieczony
                 </span>
               </div>
@@ -127,7 +127,7 @@ export default function MainForm() {
                   setEditingId(null);
                   setIsFormOpen(true);
                 }}
-                className="flex items-center gap-2 py-2 px-3.5 text-xs font-semibold bg-emerald-500 hover:bg-emerald-600 text-black rounded-lg transition-all shadow-lg shadow-emerald-500/5 cursor-pointer border-0"
+                className="flex items-center gap-2 py-2 px-3.5 text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-all shadow-lg shadow-indigo-500/10 cursor-pointer border-0"
               >
                 <Plus className="w-4 h-4" />
                 Dodaj Sekret
@@ -135,7 +135,7 @@ export default function MainForm() {
 
               <button
                 onClick={lockVault}
-                className="flex items-center gap-2 py-2 px-3.5 text-xs font-semibold bg-white/5 hover:bg-white/10 text-rose-400 hover:text-rose-300 rounded-lg transition-all border border-white/5 cursor-pointer"
+                className="flex items-center gap-2 py-2 px-3.5 text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-rose-400 hover:text-rose-300 rounded-lg transition-all border border-slate-800 cursor-pointer"
                 title="Wyczyść RAM i zablokuj"
               >
                 <Lock className="w-3.5 h-3.5" />
@@ -151,9 +151,9 @@ export default function MainForm() {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
-                className="p-3.5 bg-emerald-950/20 border border-emerald-900/40 rounded-lg text-emerald-300 text-xs font-mono flex items-center gap-2.5 shadow-xl"
+                className="p-3.5 bg-indigo-950/30 border border-indigo-900/50 rounded-lg text-indigo-300 text-xs  flex items-center gap-2.5 shadow-xl"
               >
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-indigo-400 shrink-0" />
                 <span>{successMsg}</span>
               </motion.div>
             )}
@@ -163,7 +163,7 @@ export default function MainForm() {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
-                className="p-3.5 bg-red-950/20 border border-red-900/40 rounded-lg text-red-300 text-xs font-mono flex items-center gap-2.5 shadow-xl"
+                className="p-3.5 bg-red-950/20 border border-red-900/40 rounded-lg text-red-300 text-xs  flex items-center gap-2.5 shadow-xl"
               >
                 <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
                 <span>{error}</span>
@@ -172,10 +172,10 @@ export default function MainForm() {
           </AnimatePresence>
 
           {/* Quick Actions Bar */}
-          <div className="bg-[#0c0c0c] border border-white/5 p-3 rounded-lg flex flex-wrap gap-3 items-center justify-between text-xs font-mono shadow-xl">
+          <div className="bg-slate-900 border border-slate-800 p-3 rounded-lg flex flex-wrap gap-3 items-center justify-between text-xs  shadow-xl">
             <div className="flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span className="font-bold text-slate-400 uppercase tracking-wider text-[10px]">Szybkie Akcje Sejfu / Quick Actions</span>
+              <Sparkles className="w-4 h-4 text-indigo-400 shrink-0" />
+              <span className="font-bold text-slate-400 uppercase tracking-wide text-xs">Szybkie Akcje Sejfu / Quick Actions</span>
             </div>
             <div className="flex flex-wrap gap-2">
               <button
@@ -183,7 +183,7 @@ export default function MainForm() {
                   setEditingId(null);
                   setIsFormOpen(true);
                 }}
-                className="px-3 py-1.5 bg-white/5 hover:bg-white/10 text-emerald-400 hover:text-emerald-300 rounded border border-white/5 transition-all flex items-center gap-1.5 cursor-pointer text-xs"
+                className="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-400 hover:text-indigo-300 rounded border border-slate-800 transition-all flex items-center gap-1.5 cursor-pointer text-xs"
               >
                 <Plus className="w-3.5 h-3.5" />
                 <span>Add Secret</span>
@@ -193,18 +193,18 @@ export default function MainForm() {
                 onClick={() => {
                   setShowCommandPalette(true);
                 }}
-                className="px-3 py-1.5 bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white rounded border border-white/5 transition-all flex items-center gap-1.5 cursor-pointer text-xs"
+                className="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white rounded border border-slate-800 transition-all flex items-center gap-1.5 cursor-pointer text-xs"
               >
                 <Search className="w-3.5 h-3.5" />
                 <span>Search</span>
-                <kbd className="bg-black/40 px-1 py-0.5 rounded text-[8px] text-slate-400 font-semibold border border-white/5">Ctrl+K</kbd>
+                <kbd className="bg-slate-950 px-1 py-0.5 rounded text-[8px] text-slate-400 font-semibold border border-slate-800">Ctrl+K</kbd>
               </button>
 
               <button
                 onClick={() => {
                   setViewMode("generator");
                 }}
-                className="px-3 py-1.5 bg-white/5 hover:bg-white/10 text-amber-400 hover:text-amber-300 rounded border border-white/5 transition-all flex items-center gap-1.5 cursor-pointer text-xs"
+                className="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-blue-400 hover:text-blue-300 rounded border border-slate-800 transition-all flex items-center gap-1.5 cursor-pointer text-xs"
               >
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Generate Token</span>
@@ -217,10 +217,10 @@ export default function MainForm() {
             
             {/* Sidebar Navigation */}
             <div className="lg:col-span-3 space-y-4">
-              <div className="bg-[#0c0c0c] border border-white/5 rounded-xl p-4 space-y-4">
-                <div className="flex items-center gap-2 text-white border-b border-white/5 pb-2.5">
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                  <h4 className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">Nawigacja Sejfu</h4>
+              <div className="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-4">
+                <div className="flex items-center gap-2 text-white border-b border-slate-800 pb-2.5">
+                  <ShieldCheck className="w-3.5 h-3.5 text-indigo-400" />
+                  <h4 className="text-xs  font-bold uppercase tracking-wide text-slate-400">Nawigacja Sejfu</h4>
                 </div>
 
                 <div className="flex flex-col gap-1.5">
@@ -228,8 +228,8 @@ export default function MainForm() {
                     onClick={() => { setViewMode("dashboard"); setSelectedCategory("All"); }}
                     className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-xs font-semibold transition-all text-left cursor-pointer border-0 ${
                       viewMode === "dashboard"
-                        ? "bg-emerald-500 text-black font-semibold shadow-md shadow-emerald-500/10"
-                        : "bg-transparent text-slate-400 hover:bg-white/5 hover:text-white"
+                        ? "bg-indigo-600 text-white font-semibold shadow-md shadow-indigo-500/20"
+                        : "bg-transparent text-slate-400 hover:bg-slate-800 hover:text-white"
                     }`}
                   >
                     <LayoutDashboard className="w-4 h-4" />
@@ -240,16 +240,16 @@ export default function MainForm() {
                     onClick={() => { setViewMode("all"); setSelectedCategory("All"); }}
                     className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-xs font-semibold transition-all text-left cursor-pointer border-0 ${
                       (viewMode === "all" || viewMode === "favorites" || viewMode === "trash")
-                        ? "bg-white text-black font-semibold shadow-md"
-                        : "bg-transparent text-slate-400 hover:bg-white/5 hover:text-white"
+                        ? "bg-white text-slate-900 font-semibold shadow-md"
+                        : "bg-transparent text-slate-400 hover:bg-slate-800 hover:text-white"
                     }`}
                   >
                     <div className="flex items-center gap-3">
                       <Key className="w-4 h-4" />
                       <span>Klucze i Hasła</span>
                     </div>
-                    <span className={`text-[9px] font-mono font-bold px-1.5 py-0.5 rounded ${
-                      (viewMode === "all" || viewMode === "favorites" || viewMode === "trash") ? "bg-black/10 text-black" : "bg-white/5 text-slate-500"
+                    <span className={`text-[10px]  font-bold px-1.5 py-0.5 rounded ${
+                      (viewMode === "all" || viewMode === "favorites" || viewMode === "trash") ? "bg-indigo-500/20 text-white" : "bg-slate-800 text-slate-500"
                     }`}>
                       {decryptedEntries.filter(e => !e.isTrash).length}
                     </span>
@@ -259,11 +259,11 @@ export default function MainForm() {
                     onClick={() => { setViewMode("generator"); }}
                     className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-xs font-semibold transition-all text-left cursor-pointer border-0 ${
                       viewMode === "generator"
-                        ? "bg-[#161616] text-amber-400 border border-white/10 font-bold"
-                        : "bg-transparent text-slate-400 hover:bg-white/5 hover:text-white"
+                        ? "bg-slate-800 text-blue-400 border border-slate-700 font-bold"
+                        : "bg-transparent text-slate-400 hover:bg-slate-800 hover:text-white"
                     }`}
                   >
-                    <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
+                    <Sparkles className="w-4 h-4 text-blue-400 shrink-0" />
                     <span>Generator i Import</span>
                   </button>
 
@@ -271,12 +271,12 @@ export default function MainForm() {
                     onClick={() => { setViewMode("security"); setSelectedCategory("All"); }}
                     className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-xs font-semibold transition-all text-left cursor-pointer border-0 ${
                       viewMode === "security"
-                        ? "bg-[#161616] text-emerald-400 border border-white/10 font-bold"
-                        : "bg-transparent text-slate-400 hover:bg-white/5 hover:text-white"
+                        ? "bg-slate-800 text-indigo-400 border border-slate-700 font-bold"
+                        : "bg-transparent text-slate-400 hover:bg-slate-800 hover:text-white"
                     }`}
                   >
                     <div className="flex items-center gap-3">
-                      <ShieldAlert className="w-4 h-4 text-emerald-400 shrink-0" />
+                      <ShieldAlert className="w-4 h-4 text-indigo-400 shrink-0" />
                       <span>Audyt Centrum</span>
                     </div>
                   </button>
@@ -285,8 +285,8 @@ export default function MainForm() {
                     onClick={() => { setViewMode("settings"); setSelectedCategory("All"); }}
                     className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-xs font-semibold transition-all text-left cursor-pointer border-0 ${
                       (viewMode === "settings" || viewMode === "activity")
-                        ? "bg-[#161616] text-white border border-white/10 font-bold"
-                        : "bg-transparent text-slate-400 hover:bg-white/5 hover:text-white"
+                        ? "bg-slate-800 text-white border border-slate-700 font-bold"
+                        : "bg-transparent text-slate-400 hover:bg-slate-800 hover:text-white"
                     }`}
                   >
                     <Settings className="w-4 h-4" />
@@ -294,11 +294,11 @@ export default function MainForm() {
                   </button>
                 </div>
                 
-                <div className="border-t border-white/5 pt-3">
+                <div className="border-t border-slate-800 pt-3">
                   <button
                     type="button"
                     onClick={lockVault}
-                    className="w-full flex items-center justify-center gap-1.5 py-1.5 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/20 rounded-md transition-all cursor-pointer uppercase text-[9px] font-bold"
+                    className="w-full flex items-center justify-center gap-1.5 py-1.5 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/20 rounded-md transition-all cursor-pointer uppercase text-[10px] font-bold"
                   >
                     <Lock className="w-3.5 h-3.5" />
                     Zablokuj Sejf
