@@ -53,3 +53,4 @@ export interface ActivityLog {
   detail: string;
   timestamp: string;
 }
+export type { DeveloperFields };
