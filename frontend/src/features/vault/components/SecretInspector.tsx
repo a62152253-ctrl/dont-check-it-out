@@ -4,9 +4,11 @@ import {
   Trash2, Globe, ExternalLink, Calendar, RefreshCw, Folder, Cpu 
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import { useVaultContext } from "../../context/useVaultContext";
-import { mapLegacyCategory } from "../../hooks/useVault";
-import { DeveloperFields } from "../../types";
+import { useVaultContext } from "../context/useVaultContext";
+import { mapLegacyCategory } from "../hooks/useVault";
+import { DeveloperFields } from "../types";
+import { InspectorEmptyState } from "./InspectorEmptyState";
+import { InspectorLegacyWarning } from "./InspectorLegacyWarning";
 
 export function SecretInspector() {
   const {
@@ -30,12 +32,7 @@ export function SecretInspector() {
   const secret = decryptedEntries.find(e => e.id === selectedEntryId);
 
   if (!secret) {
-    return (
-      <div className="bg-[#0c0c0c] border border-white/5 rounded-lg p-12 text-center text-slate-500 font-mono text-xs">
-        <Cpu className="w-6 h-6 text-slate-800 mx-auto mb-2" />
-        <span>Wybierz sekret z listy, aby wyświetlić szczegóły (Zero-Knowledge Audit)</span>
-      </div>
-    );
+    return <InspectorEmptyState />;
   }
 
   const hasKey = secret.password || secret.developerFields?.awsSecretAccessKey || "";
@@ -107,7 +104,7 @@ export function SecretInspector() {
                   </span>
                 )}
               </div>
-            </div> </div>
+            </div>
 
             <div className="flex items-center gap-1 shrink-0">
               <button
@@ -130,17 +127,7 @@ export function SecretInspector() {
 
           {/* Details */}
           <div className="space-y-3.5">
-            {secret.isLegacy && (
-              <div className="bg-amber-950/10 border border-amber-900/30 p-3 rounded-lg text-amber-300 text-[10px] space-y-2">
-                <p className="font-semibold">⚠️ Ten wpis jest przechowywany w czystym tekście (legacy).</p>
-                <button
-                  onClick={() => migrateLegacyEntry(secret)}
-                  className="w-full py-1.5 bg-amber-400 hover:bg-amber-500 text-black font-bold font-mono text-[9px] uppercase rounded transition-all cursor-pointer"
-                >
-                  🔒 Zaszyfruj w locie kluczem AES
-                </button>
-              </div>
-            )}
+            <InspectorLegacyWarning secret={secret} migrateLegacyEntry={migrateLegacyEntry} />
 
             {/* CATEGORY: AWS */}
             {standardizedCategory === "AWS" && secret.developerFields && (
