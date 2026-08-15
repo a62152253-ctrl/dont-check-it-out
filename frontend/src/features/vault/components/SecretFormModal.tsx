@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { X, Lock, Sliders, Database, Server, Key, Folder, Globe, Cpu } from "lucide-react";
-import { useVaultContext } from "../../context/useVaultContext";
-import { DeveloperFields } from "../../types";
+import { useVaultContext } from "../context/useVaultContext";
+import { DeveloperFields, DecryptedSecret } from "../types";
+import AWSForm from "./SecretFormComponents/AWSForm";
+import DatabaseForm from "./SecretFormComponents/DatabaseForm";
+import SSHForm from "./SecretFormComponents/SSHForm";
+import DotenvForm from "./SecretFormComponents/DotenvForm";
+import StandardForm from "./SecretFormComponents/StandardForm";
 
 export function SecretFormModal() {
   const {
@@ -231,219 +236,65 @@ export function SecretFormModal() {
 
           {/* AWS CREDENTIALS */}
           {category === "AWS Credentials" && (
-            <div className="bg-[#0c0c0c] border border-white/5 p-4 rounded-lg space-y-4">
-              <span className="block text-[10px] font-mono font-bold uppercase tracking-wider text-orange-400">AWS Identity & Access Credentials</span>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">AWS Access Key ID</label>
-                  <input
-                    type="text"
-                    value={awsAccessKeyId}
-                    onChange={(e) => setAwsAccessKeyId(e.target.value)}
-                    placeholder="AKIA..."
-                    className="w-full bg-[#121212] border border-white/5 focus:border-white/20 rounded p-2 text-xs text-white outline-none font-mono"
-                  />
-                </div>
-                <div>
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">AWS Secret Access Key</label>
-                  <input
-                    type="password"
-                    value={awsSecretAccessKey}
-                    onChange={(e) => setAwsSecretAccessKey(e.target.value)}
-                    placeholder="Wpisz klucz tajny AWS..."
-                    className="w-full bg-[#121212] border border-white/5 focus:border-white/20 rounded p-2 text-xs text-white outline-none font-mono"
-                  />
-                </div>
-              </div>
-              <div>
-                <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">AWS Default Region</label>
-                <input
-                  type="text"
-                  value={region}
-                  onChange={(e) => setRegion(e.target.value)}
-                  placeholder="us-east-1"
-                  className="w-full bg-[#121212] border border-white/5 focus:border-white/20 rounded p-2 text-xs text-white outline-none font-mono"
-                />
-              </div>
-            </div>
+            <AWSForm
+              awsAccessKeyId={awsAccessKeyId}
+              setAwsAccessKeyId={setAwsAccessKeyId}
+              awsSecretAccessKey={awsSecretAccessKey}
+              setAwsSecretAccessKey={setAwsSecretAccessKey}
+              region={region}
+              setRegion={setRegion}
+            />
           )}
 
           {/* DATABASE CONNECTION */}
           {category === "Database Connection" && (
-            <div className="bg-[#0c0c0c] border border-white/5 p-4 rounded-lg space-y-4">
-              <span className="block text-[10px] font-mono font-bold uppercase tracking-wider text-sky-400">Baza danych SQL / NoSQL (Decrypted in RAM)</span>
-              
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div>
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">Silnik bazy</label>
-                  <select
-                    value={dbEngine}
-                    onChange={(e) => setDbEngine(e.target.value)}
-                    className="w-full bg-[#121212] border border-white/5 focus:border-white/20 rounded p-2 text-xs text-white outline-none font-mono"
-                  >
-                    <option value="PostgreSQL">PostgreSQL</option>
-                    <option value="MySQL">MySQL</option>
-                    <option value="MongoDB">MongoDB</option>
-                    <option value="Redis">Redis</option>
-                    <option value="MSSQL">SQL Server</option>
-                  </select>
-                </div>
-
-                <div className="col-span-2">
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">Host serwera</label>
-                  <input
-                    type="text"
-                    value={dbHost}
-                    onChange={(e) => setDbHost(e.target.value)}
-                    placeholder="localhost, db.domain.com"
-                    className="w-full bg-[#121212] border border-white/5 focus:border-white/20 rounded p-2 text-xs text-white outline-none font-mono"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div>
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">Port połączenia</label>
-                  <input
-                    type="text"
-                    value={dbPort}
-                    onChange={(e) => setDbPort(e.target.value)}
-                    placeholder="5432"
-                    className="w-full bg-[#121212] border border-white/5 focus:border-white/20 rounded p-2 text-xs text-white outline-none font-mono"
-                  />
-                </div>
-
-                <div className="col-span-2">
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">Nazwa bazy danych (DB Name)</label>
-                  <input
-                    type="text"
-                    value={dbName}
-                    onChange={(e) => setDbName(e.target.value)}
-                    placeholder="production_db"
-                    className="w-full bg-[#121212] border border-white/5 focus:border-white/20 rounded p-2 text-xs text-white outline-none font-mono"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">Użytkownik (User)</label>
-                  <input
-                    type="text"
-                    value={dbUser}
-                    onChange={(e) => setDbUser(e.target.value)}
-                    placeholder="postgres"
-                    className="w-full bg-[#121212] border border-white/5 focus:border-white/20 rounded p-2 text-xs text-white outline-none font-mono"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">Hasło do bazy</label>
-                  <input
-                    type="password"
-                    value={dbPassword}
-                    onChange={(e) => setDbPassword(e.target.value)}
-                    placeholder="Wpisz hasło do bazy danych..."
-                    className="w-full bg-[#121212] border border-white/5 focus:border-white/20 rounded p-2 text-xs text-white outline-none font-mono"
-                  />
-                </div>
-              </div>
-            </div>
+            <DatabaseForm
+              dbEngine={dbEngine}
+              setDbEngine={setDbEngine}
+              dbHost={dbHost}
+              setDbHost={setDbHost}
+              dbPort={dbPort}
+              setDbPort={setDbPort}
+              dbName={dbName}
+              setDbName={setDbName}
+              dbUser={dbUser}
+              setDbUser={setDbUser}
+              dbPassword={dbPassword}
+              setDbPassword={setDbPassword}
+            />
           )}
 
           {/* SSH KEY */}
           {category === "SSH Key" && (
-            <div className="bg-[#0c0c0c] border border-white/5 p-4 rounded-lg space-y-4">
-              <span className="block text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-400">SSH Security Credentials</span>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">Zdalny Host połączenia</label>
-                  <input
-                    type="text"
-                    value={sshHost}
-                    onChange={(e) => setSshHost(e.target.value)}
-                    placeholder="ubuntu@192.168.1.50"
-                    className="w-full bg-[#121212] border border-white/5 focus:border-white/20 rounded p-2 text-xs text-white outline-none font-mono"
-                  />
-                </div>
-                <div>
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">Hasło do klucza (Passphrase)</label>
-                  <input
-                    type="password"
-                    value={sshPassphrase}
-                    onChange={(e) => setSshPassphrase(e.target.value)}
-                    placeholder="Wpisz passphrase klucza (opcjonalnie)..."
-                    className="w-full bg-[#121212] border border-white/5 focus:border-white/20 rounded p-2 text-xs text-white outline-none font-mono"
-                  />
-                </div>
-              </div>
-              <div>
-                <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">Klucz Prywatny RSA / OpenSSH (Private Key)</label>
-                <textarea
-                  value={sshPrivateKey}
-                  onChange={(e) => setSshPrivateKey(e.target.value)}
-                  placeholder="-----BEGIN OPENSSH PRIVATE KEY-----&#10;..."
-                  className="w-full h-28 bg-[#121212] border border-white/5 focus:border-white/20 rounded p-2 text-xs text-white outline-none font-mono resize-none leading-relaxed"
-                />
-              </div>
-            </div>
+            <SSHForm
+              sshHost={sshHost}
+              setSshHost={setSshHost}
+              sshPassphrase={sshPassphrase}
+              setSshPassphrase={setSshPassphrase}
+              sshPrivateKey={sshPrivateKey}
+              setSshPrivateKey={setSshPrivateKey}
+            />
           )}
 
           {/* DOTENV CONFIG */}
           {category === "Dotenv / Config" && (
-            <div className="bg-[#0c0c0c] border border-white/5 p-4 rounded-lg space-y-4">
-              <span className="block text-[10px] font-mono font-bold uppercase tracking-wider text-amber-400">Dotenv / Config file values (.env format)</span>
-              <div>
-                <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">Wklej plik .env deweloperski</label>
-                <textarea
-                  value={dotenvContent}
-                  onChange={(e) => setDotenvContent(e.target.value)}
-                  placeholder="DB_HOST=localhost&#10;STRIPE_SECRET=sk_live_abc..."
-                  className="w-full h-32 bg-[#121212] border border-white/5 focus:border-white/20 rounded p-2 text-xs text-white outline-none font-mono resize-none leading-relaxed"
-                />
-              </div>
-            </div>
+            <DotenvForm
+              dotenvContent={dotenvContent}
+              setDotenvContent={setDotenvContent}
+            />
           )}
 
           {/* WEBSITES / NOTES / EMAILS (General inputs) */}
           {["Web Login", "Email Config", "Inne"].includes(category) && (
-            <div className="bg-[#0c0c0c] border border-white/5 p-4 rounded-lg space-y-4">
-              <span className="block text-[10px] font-mono font-bold uppercase tracking-wider text-purple-400">Dane Dostępowe Logowania</span>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">Login / Email / Nazwa użytkownika</label>
-                  <input
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    placeholder="Wpisz login..."
-                    className="w-full bg-[#121212] border border-white/5 focus:border-white/20 rounded p-2 text-xs text-white outline-none font-mono"
-                  />
-                </div>
-                <div>
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">Hasło deweloperskie</label>
-                  <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Wpisz hasło..."
-                    className="w-full bg-[#121212] border border-white/5 focus:border-white/20 rounded p-2 text-xs text-white outline-none font-mono"
-                  />
-                </div>
-              </div>
-              {category === "Web Login" && (
-                <div>
-                  <label className="block text-[10px] font-mono text-slate-500 uppercase mb-1.5">URL Adresu WWW</label>
-                  <input
-                    type="text"
-                    value={url}
-                    onChange={(e) => setUrl(e.target.value)}
-                    placeholder="https://dashboard.stripe.com"
-                    className="w-full bg-[#121212] border border-white/5 focus:border-white/20 rounded p-2 text-xs text-white outline-none font-mono"
-                  />
-                </div>
-              )}
-            </div>
+            <StandardForm
+              category={category}
+              username={username}
+              setUsername={setUsername}
+              password={password}
+              setPassword={setPassword}
+              url={url}
+              setUrl={setUrl}
+            />
           )}
 
           {/* PROJECT INFO AND SCOPES */}
