@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Key, Copy, Sparkles } from "lucide-react";
-import { useVaultContext } from "../../../context/useVaultContext";
-import { generateSecurePassword } from "../../../utils/generators";
+import { useVaultContext } from "@/features/vault/context/useVaultContext";
+import { generateSecurePassword } from "@/features/vault/utils/generators";
 
 export function SSHKeyGenerator() {
   const { theme, language, setSuccessMsg } = useVaultContext();
