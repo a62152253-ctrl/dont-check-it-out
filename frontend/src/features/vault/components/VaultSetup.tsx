@@ -1,7 +1,9 @@
 import React, { useState, useMemo } from "react";
-import { Shield, Key, AlertCircle, Info } from "lucide-react";
-import { translations } from "../../../../lib/translations";
-import { getPasswordStrength } from "../../utils/passwordStrength";
+import { Key, AlertCircle } from "lucide-react";
+import { translations } from "../../../lib/translations";
+import { getPasswordStrength } from "../utils/passwordStrength";
+import VaultSetupHeader from "./VaultSetupHeader";
+import VaultSetupHint from "./VaultSetupHint";
 
 interface VaultSetupProps {
   onInitialize: (password: string) => Promise<void>;
@@ -45,15 +47,7 @@ export function VaultSetup({ onInitialize, error, loading, language }: VaultSetu
       <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-emerald-500 to-transparent" />
       <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/[0.03] rounded-full blur-3xl pointer-events-none" />
       
-      <div className="flex flex-col items-center text-center space-y-3">
-        <div className="w-14 h-14 bg-gradient-to-tr from-emerald-500/10 to-teal-500/10 border border-emerald-500/20 rounded-2xl flex items-center justify-center text-emerald-400 shadow-inner">
-          <Shield className="w-7 h-7 stroke-[1.5]" />
-        </div>
-        <h2 className="text-xl font-display font-semibold text-white tracking-tight">{t.setupVaultTitle}</h2>
-        <p className="text-xs text-slate-400 max-w-md font-sans">
-          {t.setupVaultDesc}
-        </p>
-      </div>
+      <VaultSetupHeader language={language} />
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
@@ -127,25 +121,10 @@ export function VaultSetup({ onInitialize, error, loading, language }: VaultSetu
         </button>
       </form>
 
-      <div className="border-t border-white/5 pt-4">
-        <button 
-          type="button" 
-          onClick={() => setShowConfigHint(!showConfigHint)} 
-          className="text-[10px] font-mono text-slate-500 hover:text-slate-300 flex items-center gap-1.5 transition-all cursor-pointer"
-        >
-          <Info className="w-3.5 h-3.5" />
-          <span>{showConfigHint ? "Ukryj szczegóły architektury" : "Pokaż szczegóły architektury"}</span>
-        </button>
-
-        {showConfigHint && (
-          <p className="text-[10px] font-mono text-slate-500 mt-2.5 leading-relaxed bg-[#121212]/30 p-3 rounded-lg border border-white/5">
-            * Generujemy unikalną sól 128-bitową. <br/>
-            * Przeiterujemy hasło 100 000 razy za pomocą PBKDF2-HMAC-SHA256, aby uzyskać KEK (Key Encryption Key). <br/>
-            * Tworzymy losowy 256-bitowy Vault Key, który szyfrujemy KEK za pomocą AES-GCM. <br/>
-            * Ten zaszyfrowany blob synchronizujemy z Firebase, abyś miał dostęp na innych urządzeniach bez ryzyka wycieku hasła.
-          </p>
-        )}
-      </div>
+      <VaultSetupHint
+        showConfigHint={showConfigHint}
+        setShowConfigHint={setShowConfigHint}
+      />
     </div>
   );
 }
