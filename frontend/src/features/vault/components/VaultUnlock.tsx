@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Lock, Shield, AlertCircle } from "lucide-react";
-import { translations } from "../../../../lib/translations";
+import { Shield, AlertCircle } from "lucide-react";
+import { translations } from "../../../lib/translations";
+import VaultUnlockHeader from "./VaultUnlockHeader";
 
 interface VaultUnlockProps {
   onUnlock: (password: string) => Promise<void>;
@@ -25,15 +26,7 @@ export function VaultUnlock({ onUnlock, onReset, error, loading, language }: Vau
       <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-emerald-500 to-transparent" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-32 bg-emerald-500/[0.03] rounded-full blur-3xl pointer-events-none" />
 
-      <div className="flex flex-col items-center text-center gap-3">
-        <div className="w-14 h-14 bg-gradient-to-tr from-emerald-500/10 to-teal-500/10 border border-emerald-500/20 rounded-2xl flex items-center justify-center text-emerald-400 shadow-inner">
-          <Lock className="w-6 h-6 animate-pulse" />
-        </div>
-        <h2 className="text-xl font-display font-semibold text-white tracking-tight">{t.unlockVaultTitle}</h2>
-        <p className="text-xs text-slate-400 font-sans px-4">
-          {t.unlockVaultDesc}
-        </p>
-      </div>
+      <VaultUnlockHeader language={language} />
 
       <form onSubmit={handleSubmit} className="space-y-5">
         <div>
