@@ -4,8 +4,8 @@ import {
   Trash2, Globe, ExternalLink, Calendar, RefreshCw, Folder, Cpu 
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import { useVaultContext } from "../../context/useVaultContext";
-import { mapLegacyCategory } from "../../hooks/useVault";
+import { useVaultContext } from "../context/useVaultContext";
+import { mapLegacyCategory } from "../hooks/useVault";
 import { DeveloperFields } from "../../types";
 
 export function SecretInspector() {
@@ -107,7 +107,7 @@ export function SecretInspector() {
                   </span>
                 )}
               </div>
-            </div> </div>
+            </div>
 
             <div className="flex items-center gap-1 shrink-0">
               <button

@@ -1,6 +1,6 @@
 import { AuthProvider, useAuth } from "./hooks/useAuth";
-import AuthForms from "./components/AuthForms";
-import SaasDashboard from "./components/SaaSDashboard";
+import AuthForms from "./features/auth/components/AuthForms";
+import SaasDashboard from "./features/main/components/SaaSDashboard";
 
 function AppContent() {
   const { user, loading, language } = useAuth();
