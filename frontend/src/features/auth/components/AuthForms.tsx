@@ -1,7 +1,7 @@
 import { useState, FormEvent, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { useAuth } from "../hooks/useAuth";
-import { translations } from "../lib/translations";
+import { useAuth } from "../../../hooks/useAuth";
+import { translations } from "../../../lib/translations";
 import { 
   Mail, 
   Lock, 
