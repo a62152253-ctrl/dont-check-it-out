@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Terminal, RefreshCw, Lock } from "lucide-react";
-import { useVaultContext } from "../../../context/useVaultContext";
-import { parseDotenvContent, ParsedDotenvItem } from "../../../utils/dotenvParser";
+import { useVaultContext } from "../../context/useVaultContext";
+import { parseDotenvContent, ParsedDotenvItem } from "../../utils/dotenvParser";
 
 export function EnvImporter() {
   const { saveSecret, language, setSuccessMsg, addActivityLog } = useVaultContext();
@@ -101,8 +101,7 @@ export function EnvImporter() {
           className="w-full h-32 bg-[#121212] border border-white/5 rounded-lg p-3 text-xs font-mono text-white placeholder-slate-600 focus:outline-none focus:border-white/20 resize-none leading-relaxed"
         />
 
-        <button
-          type="button"
+        <button type="button"
           onClick={handleAnalyze}
           disabled={!dotenvPaste.trim()}
           className="w-full py-2 bg-white/5 hover:bg-white/10 text-white font-mono text-xs rounded-lg border border-white/5 hover:border-white/20 transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
@@ -158,8 +157,7 @@ export function EnvImporter() {
             ))}
           </div>
 
-          <button
-            type="button"
+          <button type="button"
             disabled={loading}
             onClick={handleBatchImport}
             className="w-full py-2.5 bg-emerald-500 hover:bg-emerald-600 text-black font-bold font-mono text-xs rounded-lg transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-emerald-500/10 active:scale-95 cursor-pointer disabled:bg-emerald-950/40"

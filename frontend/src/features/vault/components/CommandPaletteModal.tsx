@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { Search } from "lucide-react";
-import { useVaultContext } from "../../context/useVaultContext";
+import { useVaultContext } from "../context/useVaultContext";
 
 export function CommandPaletteModal() {
   const {
@@ -167,7 +167,7 @@ export function CommandPaletteModal() {
             paletteResults.map((item, idx) => {
               const isSelected = idx === selectedIndex;
               return (
-                <button
+                <button type="button"
                   key={item.id}
                   onClick={() => handleExecutePaletteAction(item)}
                   className={`w-full flex items-center justify-between p-2.5 rounded text-left font-mono text-xs transition-colors cursor-pointer ${

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Lock, Shield, AlertCircle } from "lucide-react";
-import { translations } from "../../../../lib/translations";
+import { translations } from "../../../lib/translations";
 
 interface VaultUnlockProps {
   onUnlock: (password: string) => Promise<void>;
@@ -58,8 +58,7 @@ export function VaultUnlock({ onUnlock, onReset, error, loading, language }: Vau
           </div>
         )}
 
-        <button
-          type="submit"
+        <button type="submit"
           disabled={loading}
           className="w-full py-3 px-4 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-black font-bold text-xs rounded-xl transition-all shadow-lg shadow-emerald-500/10 cursor-pointer flex items-center justify-center gap-2 hover:scale-[1.01] active:scale-[0.99] duration-150"
         >
@@ -84,8 +83,7 @@ export function VaultUnlock({ onUnlock, onReset, error, loading, language }: Vau
             : "Demo Hint: If this is your first load, use the master password you created during initialization."}
         </p>
         <div className="pt-1">
-          <button
-            type="button"
+          <button type="button"
             onClick={onReset}
             className="text-[10px] font-mono text-rose-400 hover:text-rose-300 underline cursor-pointer transition-colors"
           >

@@ -1,8 +1,8 @@
 import React from "react";
 import { Settings, RefreshCw } from "lucide-react";
-import { useVaultContext } from "../../context/useVaultContext";
-import { triggerBackupDownload } from "../../services/backup.service";
-import { AccentThemeName } from "../../hooks/useVaultTheme";
+import { useVaultContext } from "../context/useVaultContext";
+import { triggerBackupDownload } from "../services/backup.service";
+import { AccentThemeName } from "../hooks/useVaultTheme";
 
 export function SettingsView() {
   const {
@@ -73,9 +73,8 @@ export function SettingsView() {
               }[themeName];
               const isSelected = accentTheme === themeName;
               return (
-                <button
+                <button type="button"
                   key={themeName}
-                  type="button"
                   onClick={() => changeAccentTheme(themeName)}
                   className={`flex items-center gap-2 px-3 py-1.5 rounded-lg border text-xs font-mono transition-all cursor-pointer ${
                     isSelected 
@@ -100,9 +99,8 @@ export function SettingsView() {
             {(["PL", "EN"] as const).map((lang) => {
               const isSelected = language === lang;
               return (
-                <button
+                <button type="button"
                   key={lang}
-                  type="button"
                   onClick={() => setLanguage(lang)}
                   className={`px-3 py-1.5 rounded-lg border text-xs font-mono transition-all cursor-pointer ${
                     isSelected 
@@ -123,7 +121,7 @@ export function SettingsView() {
           <div className="p-4 bg-[#121212] border border-white/5 rounded-lg space-y-3 max-w-md">
             <h5 className="text-xs font-semibold text-white">Eksportuj Sejf (Zaszyfrowany JSON)</h5>
             <p className="text-[10px] font-mono text-slate-500">Pobierz kopię zapasową wszystkich wpisów w bezpiecznym formacie.</p>
-            <button
+            <button type="button"
               onClick={handleExportBackup}
               className="px-3 py-1.5 bg-white/5 hover:bg-white/10 text-white rounded border border-white/5 text-[10px] font-mono transition-all cursor-pointer"
             >
@@ -157,7 +155,7 @@ export function SettingsView() {
           <p className="text-[10px] font-mono text-slate-500 leading-normal">
             Chcesz całkowicie skasować swoje hasła, klucze oraz konfigurację PBKDF2 sejfu, aby zacząć od nowa? Tej akcji nie można cofnąć.
           </p>
-          <button
+          <button type="button"
             onClick={resetVault}
             className="px-3 py-1.5 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 rounded border border-rose-500/20 text-[10px] font-mono transition-all cursor-pointer"
           >

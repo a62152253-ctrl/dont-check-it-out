@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { ShieldCheck, Activity, Shield } from "lucide-react";
-import { useVaultContext } from "../../../context/useVaultContext";
+import { useVaultContext } from "../../context/useVaultContext";
 import SecurityScoreCard from "./SecurityScoreCard";
 import WeakPasswordList from "./WeakPasswordList";
 import DuplicateCredentials from "./DuplicateCredentials";
@@ -39,7 +39,7 @@ export function SecurityView() {
             <span className="font-mono text-[10px] text-slate-500">
               Legacy do konwersji: <b className="text-amber-400">{stats.legacy}</b>
             </span>
-            <button
+            <button type="button"
               disabled={stats.legacy === 0 || loading}
               onClick={migrateAllLegacyEntries}
               className="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 disabled:bg-white/5 disabled:text-slate-600 rounded text-[10px] font-mono text-black font-bold transition-all cursor-pointer"
@@ -58,7 +58,7 @@ export function SecurityView() {
           <p className="text-[11px] font-mono text-slate-500 leading-normal">
             Chcesz szybko wygenerować i skopiować nowy silny klucz dla wybranej usługi? Użyj szybkiego generatora, aby natychmiast zrotować słabe hasło.
           </p>
-          <button
+          <button type="button"
             onClick={() => {
               setViewMode("all");
               setSelectedCategory("All");

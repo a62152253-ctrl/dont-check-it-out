@@ -3,12 +3,12 @@ import {
   Clock, Shield, Plus, Download, Key, Lock, Activity, 
   Sparkles, CheckCircle2, AlertCircle, LayoutDashboard, Database
 } from "lucide-react";
-import { useVaultContext } from "../../context/useVaultContext";
-import { getCategoryIcon } from "../../utils/categoryIcon";
-import { formatTimeAgo } from "../../utils/timeAgo";
-import { getPasswordStrength } from "../../utils/passwordStrength";
-import { mapLegacyCategory } from "../../hooks/useVault";
-import { DecryptedSecret } from "../../types";
+import { useVaultContext } from "../context/useVaultContext";
+import { getCategoryIcon } from "../utils/categoryIcon";
+import { formatTimeAgo } from "../utils/timeAgo";
+import { getPasswordStrength } from "../utils/passwordStrength";
+import { mapLegacyCategory } from "../hooks/useVault";
+import { DecryptedSecret } from "../types";
 
 export function DashboardView() {
   const {
@@ -211,7 +211,7 @@ export function DashboardView() {
             ) : (
               <div className="space-y-2">
                 {recentlyOpenedSecrets.map(secret => (
-                  <button
+                  <button type="button"
                     key={secret.id}
                     onClick={() => {
                       setViewMode("all");
@@ -370,7 +370,7 @@ export function DashboardView() {
             </div>
 
             <div className="space-y-3">
-              <button
+              <button type="button"
                 onClick={() => {
                   setEditingId(null);
                   setIsFormOpen(true);
@@ -382,7 +382,7 @@ export function DashboardView() {
               </button>
 
               <div className="grid grid-cols-2 gap-2">
-                <button
+                <button type="button"
                   onClick={() => setViewMode("generator")}
                   className="flex flex-col items-center justify-center p-3.5 bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white rounded-lg transition-all border border-white/5 gap-2 text-xs font-mono cursor-pointer"
                 >
@@ -390,7 +390,7 @@ export function DashboardView() {
                   <span>Import Vault</span>
                 </button>
 
-                <button
+                <button type="button"
                   onClick={() => setViewMode("generator")}
                   className="flex flex-col items-center justify-center p-3.5 bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white rounded-lg transition-all border border-white/5 gap-2 text-xs font-mono cursor-pointer"
                 >
@@ -399,7 +399,7 @@ export function DashboardView() {
                 </button>
               </div>
 
-              <button
+              <button type="button"
                 onClick={lockVault}
                 className="w-full flex items-center justify-center gap-2 py-2 px-3 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 font-mono text-[10px] uppercase border border-rose-500/20 rounded-lg transition-all cursor-pointer mt-1"
               >
