@@ -75,7 +75,6 @@ export function SettingsView() {
               return (
                 <button type="button"
                   key={themeName}
-                  type="button"
                   onClick={() => changeAccentTheme(themeName)}
                   className={`flex items-center gap-2 px-3 py-1.5 rounded-lg border text-xs font-mono transition-all cursor-pointer ${
                     isSelected 
@@ -102,7 +101,6 @@ export function SettingsView() {
               return (
                 <button type="button"
                   key={lang}
-                  type="button"
                   onClick={() => setLanguage(lang)}
                   className={`px-3 py-1.5 rounded-lg border text-xs font-mono transition-all cursor-pointer ${
                     isSelected 

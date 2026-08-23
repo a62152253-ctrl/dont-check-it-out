@@ -108,8 +108,7 @@ export function VaultSetup({ onInitialize, error, loading, language }: VaultSetu
           </div>
         )}
 
-        <button type="button"
-          type="submit"
+        <button type="submit"
           disabled={loading}
           className="w-full py-3 px-4 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 disabled:from-emerald-950/40 disabled:to-emerald-950/40 text-black font-bold text-xs rounded-xl transition-all shadow-lg shadow-emerald-500/10 cursor-pointer flex items-center justify-center gap-2 hover:scale-[1.01] active:scale-[0.99] duration-150"
         >

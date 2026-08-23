@@ -176,7 +176,7 @@ export function SecretFormModal() {
               {editingId ? "Edycja sekretu" : "Nowy sekret deweloperski (Encrypt in Transit)"}
             </h3>
           </div>
-          <button type="submit"
+          <button type="button"
             onClick={handleClose} 
             className="text-slate-500 hover:text-white transition-all cursor-pointer p-1 hover:bg-white/5 rounded-lg"
           >

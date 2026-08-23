@@ -76,7 +76,6 @@ export function SecretList() {
           return (
             <button type="button"
               key={item.label}
-              type="button"
               onClick={() => {
                 setViewMode(item.view as any);
                 setSelectedCategory(item.cat);

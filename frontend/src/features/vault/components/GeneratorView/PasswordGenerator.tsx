@@ -103,7 +103,6 @@ export function PasswordGenerator() {
             {(["PASSWORD", "PASSPHRASE", "API_KEY", "TOKEN"] as const).map((pr) => (
               <button type="button"
                 key={pr}
-                type="button"
                 onClick={() => {
                   setGenPreset(pr);
                   if (pr === "API_KEY") setGenLength(24);
