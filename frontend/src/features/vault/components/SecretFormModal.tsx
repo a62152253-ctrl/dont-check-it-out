@@ -176,7 +176,7 @@ export function SecretFormModal() {
               {editingId ? "Edycja sekretu" : "Nowy sekret deweloperski (Encrypt in Transit)"}
             </h3>
           </div>
-          <button 
+          <button type="submit"
             onClick={handleClose} 
             className="text-slate-500 hover:text-white transition-all cursor-pointer p-1 hover:bg-white/5 rounded-lg"
           >
@@ -491,8 +491,8 @@ export function SecretFormModal() {
 
           {/* Submit button */}
           <div className="pt-2 shrink-0">
-            <button
-              type="submit"
+            <button type="submit"
+
               className="w-full py-2.5 bg-emerald-500 hover:bg-emerald-600 text-black font-semibold text-xs rounded-lg transition-all shadow-lg hover:shadow-emerald-500/10 cursor-pointer text-center"
             >
               Dodaj i zaszyfruj (Save)

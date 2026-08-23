@@ -108,7 +108,7 @@ export function VaultSetup({ onInitialize, error, loading, language }: VaultSetu
           </div>
         )}
 
-        <button
+        <button type="button"
           type="submit"
           disabled={loading}
           className="w-full py-3 px-4 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 disabled:from-emerald-950/40 disabled:to-emerald-950/40 text-black font-bold text-xs rounded-xl transition-all shadow-lg shadow-emerald-500/10 cursor-pointer flex items-center justify-center gap-2 hover:scale-[1.01] active:scale-[0.99] duration-150"
@@ -128,8 +128,7 @@ export function VaultSetup({ onInitialize, error, loading, language }: VaultSetu
       </form>
 
       <div className="border-t border-white/5 pt-4">
-        <button 
-          type="button" 
+        <button type="button"
           onClick={() => setShowConfigHint(!showConfigHint)} 
           className="text-[10px] font-mono text-slate-500 hover:text-slate-300 flex items-center gap-1.5 transition-all cursor-pointer"
         >

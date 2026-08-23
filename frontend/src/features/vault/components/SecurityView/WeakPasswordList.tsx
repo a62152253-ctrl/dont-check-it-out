@@ -76,7 +76,7 @@ export function WeakPasswordList() {
                   <span className="text-white font-bold block truncate">{e.name}</span>
                   <span className="text-[10px] text-slate-500 block truncate mt-0.5">{e.category} • Długość: {val.length}</span>
                 </div>
-                <button
+                <button type="button"
                   onClick={() => handleAutoRotate(e)}
                   className="px-2 py-1.5 bg-[#121212] hover:bg-rose-500/10 border border-rose-500/25 text-rose-400 hover:text-rose-300 rounded text-[10px] cursor-pointer transition-all shrink-0 font-bold"
                 >

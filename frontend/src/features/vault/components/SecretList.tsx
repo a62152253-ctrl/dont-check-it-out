@@ -74,7 +74,7 @@ export function SecretList() {
         ].map((item) => {
           const isActive = viewMode === item.view && selectedCategory === item.cat;
           return (
-            <button
+            <button type="button"
               key={item.label}
               type="button"
               onClick={() => {
@@ -190,7 +190,7 @@ export function SecretList() {
                 <div className="flex items-center gap-2 shrink-0">
                   <div className="opacity-0 group-hover:opacity-100 flex items-center gap-1 transition-all">
                     {hasStrongValue && (
-                      <button
+                      <button type="button"
                         onClick={(e) => {
                           e.stopPropagation();
                           copyText(hasStrongValue, secret.id || "", "pass");

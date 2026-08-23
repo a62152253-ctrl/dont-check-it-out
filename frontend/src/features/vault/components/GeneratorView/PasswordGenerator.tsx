@@ -85,8 +85,7 @@ export function PasswordGenerator() {
           <p className="text-xs md:text-sm font-mono text-emerald-400 break-all select-all font-bold px-8 leading-relaxed glow-emerald">
             {generatedPassword}
           </p>
-          <button
-            type="button"
+          <button type="button"
             onClick={handleCopy}
             className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white bg-white/5 p-2 rounded-lg border border-white/5 transition-all hover:bg-white/10 active:scale-95 cursor-pointer"
             title={language === "PL" ? "Kopiuj" : "Copy"}
@@ -102,7 +101,7 @@ export function PasswordGenerator() {
           </span>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-1.5">
             {(["PASSWORD", "PASSPHRASE", "API_KEY", "TOKEN"] as const).map((pr) => (
-              <button
+              <button type="button"
                 key={pr}
                 type="button"
                 onClick={() => {
@@ -256,8 +255,7 @@ export function PasswordGenerator() {
           </div>
         </div>
 
-        <button
-          type="button"
+        <button type="button"
           onClick={handleGenerate}
           className={`w-full py-2.5 ${theme.primary} rounded-lg text-xs font-mono font-bold transition-all cursor-pointer flex items-center justify-center gap-2 shadow-lg active:scale-95`}
         >

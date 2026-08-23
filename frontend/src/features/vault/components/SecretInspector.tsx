@@ -110,7 +110,7 @@ export function SecretInspector() {
             </div>
 
             <div className="flex items-center gap-1 shrink-0">
-              <button
+              <button type="button"
                 onClick={() => toggleFavorite(secret.id!, !!secret.isFavorite)}
                 className="p-1.5 hover:bg-white/5 text-slate-500 hover:text-amber-400 rounded transition-all cursor-pointer"
                 title="Do ulubionych"
@@ -118,7 +118,7 @@ export function SecretInspector() {
                 <Star className={`w-4 h-4 ${secret.isFavorite ? "fill-amber-400 text-amber-400" : ""}`} />
               </button>
 
-              <button
+              <button type="button"
                 onClick={handleEditClick}
                 className="p-1.5 hover:bg-white/5 text-slate-400 hover:text-white rounded transition-all cursor-pointer"
                 title="Edytuj sekret"
@@ -133,7 +133,7 @@ export function SecretInspector() {
             {secret.isLegacy && (
               <div className="bg-amber-950/10 border border-amber-900/30 p-3 rounded-lg text-amber-300 text-[10px] space-y-2">
                 <p className="font-semibold">⚠️ Ten wpis jest przechowywany w czystym tekście (legacy).</p>
-                <button
+                <button type="button"
                   onClick={() => migrateLegacyEntry(secret)}
                   className="w-full py-1.5 bg-amber-400 hover:bg-amber-500 text-black font-bold font-mono text-[9px] uppercase rounded transition-all cursor-pointer"
                 >
@@ -148,7 +148,7 @@ export function SecretInspector() {
                 <div className="bg-[#121212] border border-white/5 p-2.5 rounded relative">
                   <span className="block text-[9px] font-mono text-slate-500 uppercase mb-0.5">AWS Access Key ID</span>
                   <span className="text-xs font-mono text-slate-200 select-all pr-8 break-all">{secret.developerFields.awsAccessKeyId || "Brak"}</span>
-                  <button
+                  <button type="button"
                     onClick={() => copyText(secret.developerFields?.awsAccessKeyId || "", secret.id!, "aws_id")}
                     className="absolute right-2 top-3 text-slate-500 hover:text-white cursor-pointer"
                     title="Kopiuj ID"
@@ -163,13 +163,13 @@ export function SecretInspector() {
                     {isPassVisible ? secret.developerFields.awsSecretAccessKey : "••••••••••••••••••••••••••••••••"}
                   </span>
                   <div className="absolute right-2 top-3 flex items-center gap-1.5 text-slate-500">
-                    <button
+                    <button type="button"
                       onClick={() => setVisiblePasswords(p => ({ ...p, [secret.id!]: !p[secret.id!] }))}
                       className="hover:text-white cursor-pointer"
                     >
                       {isPassVisible ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
                     </button>
-                    <button
+                    <button type="button"
                       onClick={() => copyText(secret.developerFields?.awsSecretAccessKey || "", secret.id!, "aws_secret")}
                       className="hover:text-white cursor-pointer"
                     >
@@ -189,7 +189,7 @@ export function SecretInspector() {
                   </div>
                 </div>
 
-                <button
+                <button type="button"
                   onClick={() => handleCopyAWSExports(secret.developerFields)}
                   className="w-full py-2 bg-orange-500/10 hover:bg-orange-500/20 border border-orange-500/20 text-orange-300 font-semibold font-mono text-[10px] rounded transition-all cursor-pointer flex items-center justify-center gap-1.5"
                 >
@@ -234,7 +234,7 @@ export function SecretInspector() {
                     <span className="text-[11px] font-mono text-slate-300 truncate block">
                       {isPassVisible ? secret.developerFields.dbPassword : "••••••••••"}
                     </span>
-                    <button
+                    <button type="button"
                       onClick={() => setVisiblePasswords(p => ({ ...p, [secret.id!]: !p[secret.id!] }))}
                       className="absolute right-2 top-2.5 text-slate-500 hover:text-white cursor-pointer"
                     >
@@ -243,7 +243,7 @@ export function SecretInspector() {
                   </div>
                 </div>
 
-                <button
+                <button type="button"
                   onClick={() => handleCopyDbUri(secret.developerFields)}
                   className="w-full py-2 bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/20 text-sky-300 font-semibold font-mono text-[10px] rounded transition-all cursor-pointer flex items-center justify-center gap-1.5"
                 >
@@ -259,7 +259,7 @@ export function SecretInspector() {
                 <div className="bg-[#121212] border border-white/5 p-2 rounded relative">
                   <span className="block text-[9px] font-mono text-slate-500 uppercase mb-0.5">Host zdalny (SSH Connection)</span>
                   <span className="text-xs font-mono text-slate-300 select-all pr-8 break-all">{secret.developerFields.sshHost || "np. ubuntu@192.168.1.1"}</span>
-                  <button
+                  <button type="button"
                     onClick={() => copyText(secret.developerFields?.sshHost || "", secret.id!, "ssh_host")}
                     className="absolute right-2 top-2.5 text-slate-500 hover:text-white cursor-pointer"
                   >
@@ -274,13 +274,13 @@ export function SecretInspector() {
                       {isPassVisible ? secret.developerFields.sshPassphrase : "••••••••••"}
                     </span>
                     <div className="absolute right-2 top-2 flex items-center gap-1 text-slate-500">
-                      <button
+                      <button type="button"
                         onClick={() => setVisiblePasswords(p => ({ ...p, [secret.id!]: !p[secret.id!] }))}
                         className="hover:text-white cursor-pointer"
                       >
                         {isPassVisible ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
                       </button>
-                      <button
+                      <button type="button"
                         onClick={() => copyText(secret.developerFields?.sshPassphrase || "", secret.id!, "ssh_pass")}
                         className="hover:text-white cursor-pointer"
                       >
@@ -296,7 +296,7 @@ export function SecretInspector() {
                     {secret.developerFields.sshPrivateKey ? secret.developerFields.sshPrivateKey.substring(0, 70) + "..." : "Brak klucza"}
                   </pre>
                   {secret.developerFields.sshPrivateKey && (
-                    <button
+                    <button type="button"
                       onClick={() => copyText(secret.developerFields?.sshPrivateKey || "", secret.id!, "ssh_key")}
                       className="absolute right-2 top-2.5 text-slate-500 hover:text-white cursor-pointer"
                       title="Skopiuj cały klucz SSH"
@@ -316,7 +316,7 @@ export function SecretInspector() {
                   <pre className="text-[10px] font-mono text-emerald-400 select-all whitespace-pre-wrap leading-relaxed mt-1 break-all pr-6 select-all">
                     {secret.developerFields.dotenvContent || "Brak danych .env"}
                   </pre>
-                  <button
+                  <button type="button"
                     onClick={() => copyText(secret.developerFields?.dotenvContent || "", secret.id!, "dotenv")}
                     className="absolute right-2 top-2.5 text-slate-500 hover:text-white cursor-pointer"
                   >
@@ -324,7 +324,7 @@ export function SecretInspector() {
                   </button>
                 </div>
 
-                <button
+                <button type="button"
                   onClick={() => handleDownloadDotenv(secret.name, secret.developerFields?.dotenvContent)}
                   className="w-full py-2 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/20 text-emerald-300 font-semibold font-mono text-[10px] rounded transition-all cursor-pointer flex items-center justify-center gap-1.5"
                 >
@@ -344,7 +344,7 @@ export function SecretInspector() {
                       <span className="text-xs font-mono text-slate-300 truncate block select-all">{secret.url}</span>
                     </div>
                     <div className="flex gap-2">
-                      <button
+                      <button type="button"
                         onClick={() => copyText(secret.url || "", secret.id!, "url")}
                         className="text-slate-500 hover:text-white cursor-pointer"
                       >
@@ -366,7 +366,7 @@ export function SecretInspector() {
                   <div className="bg-[#121212] border border-white/5 p-2.5 rounded relative">
                     <span className="block text-[9px] font-mono text-slate-500 uppercase mb-0.5">Nazwa Użytkownika / Email</span>
                     <span className="text-xs font-mono text-slate-200 select-all pr-8 break-all">{secret.username}</span>
-                    <button
+                    <button type="button"
                       onClick={() => copyText(secret.username || "", secret.id!, "user")}
                       className="absolute right-2 top-3 text-slate-500 hover:text-white cursor-pointer"
                     >
@@ -382,13 +382,13 @@ export function SecretInspector() {
                       {isPassVisible ? secret.password : "••••••••••••••••"}
                     </span>
                     <div className="absolute right-2 top-3 flex items-center gap-1.5 text-slate-500">
-                      <button
+                      <button type="button"
                         onClick={() => setVisiblePasswords(p => ({ ...p, [secret.id!]: !p[secret.id!] }))}
                         className="hover:text-white cursor-pointer"
                       >
                         {isPassVisible ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
                       </button>
-                      <button
+                      <button type="button"
                         onClick={() => copyText(secret.password || "", secret.id!, "pass")}
                         className="hover:text-white cursor-pointer"
                       >
@@ -428,13 +428,13 @@ export function SecretInspector() {
             <div className="border-t border-white/5 pt-3.5 flex gap-2">
               {secret.isTrash ? (
                 <>
-                  <button
+                  <button type="button"
                     onClick={() => moveToTrash(secret.id!, false)}
                     className="flex-1 py-2 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/20 text-emerald-400 font-bold font-mono text-[10px] uppercase rounded transition-all cursor-pointer text-center"
                   >
                     Przywróć
                   </button>
-                  <button
+                  <button type="button"
                     onClick={() => deleteSecretPermanently(secret.id!)}
                     className="py-2 px-3 bg-rose-500/10 hover:bg-rose-500/25 border border-rose-500/20 text-rose-400 rounded transition-all cursor-pointer flex items-center justify-center"
                     title="Usuń trwale"
@@ -443,7 +443,7 @@ export function SecretInspector() {
                   </button>
                 </>
               ) : (
-                <button
+                <button type="button"
                   onClick={() => moveToTrash(secret.id!, true)}
                   className="w-full py-2 bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/20 text-rose-400 font-bold font-mono text-[10px] uppercase rounded transition-all cursor-pointer flex items-center justify-center gap-1"
                 >
