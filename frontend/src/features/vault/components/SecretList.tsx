@@ -1,10 +1,10 @@
 import React, { useMemo } from "react";
 import { Search, Command, Lock, Star, Copy, Check } from "lucide-react";
-import { useVaultContext } from "../../context/useVaultContext";
-import { getCategoryIcon } from "../../utils/categoryIcon";
-import { formatTimeAgo } from "../../utils/timeAgo";
-import { mapLegacyCategory } from "../../hooks/useVault";
-import { DecryptedSecret } from "../../types";
+import { useVaultContext } from "../context/useVaultContext";
+import { getCategoryIcon } from "../utils/categoryIcon";
+import { formatTimeAgo } from "../utils/timeAgo";
+import { mapLegacyCategory } from "../hooks/useVault";
+import { DecryptedSecret } from "../types";
 
 export function SecretList() {
   const {
@@ -81,7 +81,7 @@ export function SecretList() {
                 setViewMode(item.view as any);
                 setSelectedCategory(item.cat);
               }}
-              className={`px-3 py-1.5 rounded-lg text-[10px] font-mono font-medium transition-all flex items-center gap-1.5 shrink-0 cursor-pointer border ${
+              className={`px-3 py-1.5 rounded-lg text-[10px] font-mono font-medium transition-all flex items-center gap-1.5 shrink-0 border ${
                 isActive
                   ? "bg-white text-black border-white font-bold"
                   : "bg-white/5 text-slate-400 border-white/5 hover:text-white hover:bg-white/10"
@@ -139,7 +139,7 @@ export function SecretList() {
                   setSelectedEntryId(secret.id || null);
                   setIsInlineEditing(false);
                 }}
-                className={`group relative text-left w-full p-4 rounded-xl border transition-all duration-200 cursor-pointer flex items-center justify-between gap-3 ${
+                className={`group relative text-left w-full p-4 rounded-xl border transition-all duration-200 flex items-center justify-between gap-3 ${
                   isSelected
                     ? "bg-white text-black shadow-xl shadow-white/5 border-white"
                     : "bg-[#0c0c0c]/80 border-white/5 hover:border-emerald-500/30 text-white hover:bg-[#0c0c0c] hover:shadow-[0_0_15px_rgba(16,185,129,0.03)]"
