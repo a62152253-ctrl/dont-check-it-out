@@ -15,6 +15,8 @@ if (admin.apps.length === 0) {
   app = admin.app();
 }
 
-export const adminAuth = admin.auth(app);
-export const adminDb = admin.firestore(app);
+import { type Auth } from "firebase-admin/auth";
+export const adminAuth: Auth = admin.auth(app);
+import { type Firestore } from "firebase-admin/firestore";
+export const adminDb: Firestore = admin.firestore(app);
 export default app;
