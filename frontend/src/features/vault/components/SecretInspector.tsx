@@ -1,12 +1,14 @@
+import { DeveloperFields } from "shared";
+
 import React from "react";
 import { 
   Star, Edit2, Copy, Check, Eye, EyeOff, Terminal, Database, 
   Trash2, Globe, ExternalLink, Calendar, RefreshCw, Folder, Cpu 
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import { useVaultContext } from "../../context/useVaultContext";
-import { mapLegacyCategory } from "../../hooks/useVault";
-import { DeveloperFields } from "../../types";
+import { useVaultContext } from "../context/VaultContext";
+import { mapLegacyCategory } from "../hooks/useVault";
+
 
 export function SecretInspector() {
   const {
@@ -107,7 +109,7 @@ export function SecretInspector() {
                   </span>
                 )}
               </div>
-            </div> </div>
+            </div>
 
             <div className="flex items-center gap-1 shrink-0">
               <button
