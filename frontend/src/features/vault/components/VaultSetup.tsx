@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from "react";
 import { Shield, Key, AlertCircle, Info } from "lucide-react";
-import { translations } from "../../../../lib/translations";
-import { getPasswordStrength } from "../../utils/passwordStrength";
+import { translations } from "@/lib/translations";
+import { getPasswordStrength } from "@/features/vault/utils/passwordStrength";
 
 interface VaultSetupProps {
   onInitialize: (password: string) => Promise<void>;
