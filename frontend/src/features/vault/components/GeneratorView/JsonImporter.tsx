@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { Download } from "lucide-react";
-import { useVaultContext } from "../../../context/useVaultContext";
+import { useVaultContext } from "@/features/vault/context/useVaultContext";
 
 export function JsonImporter() {
   const { importVault, language } = useVaultContext();

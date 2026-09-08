@@ -1,8 +1,8 @@
 import React from "react";
 import { Settings, RefreshCw } from "lucide-react";
-import { useVaultContext } from "../../context/useVaultContext";
-import { triggerBackupDownload } from "../../services/backup.service";
-import { AccentThemeName } from "../../hooks/useVaultTheme";
+import { useVaultContext } from "@/features/vault/context/useVaultContext";
+import { triggerBackupDownload } from "@/features/vault/services/backup.service";
+import { AccentThemeName } from "@/features/vault/hooks/useVaultTheme";
 
 export function SettingsView() {
   const {
