@@ -1,8 +1,8 @@
 import React, { useMemo } from "react";
 import { Shield } from "lucide-react";
-import { useVaultContext } from "../../../context/useVaultContext";
-import { getPasswordStrength } from "../../../utils/passwordStrength";
-import { mapLegacyCategory } from "../../../hooks/useVault";
+import { useVaultContext } from "@/src/features/vault/context/useVaultContext";
+import { getPasswordStrength } from "@/src/features/vault/utils/passwordStrength";
+import { mapLegacyCategory } from "@/src/features/vault/hooks/useVault";
 
 export function SecurityScoreCard() {
   const { decryptedEntries } = useVaultContext();
