@@ -1,3 +1,4 @@
+export type { DeveloperFields };
 import { DeveloperFields } from "shared";
 
 export type SecretType = 
