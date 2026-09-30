@@ -12,7 +12,7 @@ interface Props {
   handleDownloadDotenv: (name: string, content?: string) => void;
 }
 
-export function APIKeyCategory({
+export const APIKeyCategory: React.FC<Props> = ({
   fields,
   id,
   name,
@@ -20,7 +20,7 @@ export function APIKeyCategory({
   copiedField,
   copyText,
   handleDownloadDotenv
-}: Props) {
+}) => {
   return (
     <div className="space-y-3">
       <div className="bg-[#121212] border border-white/5 p-2.5 rounded relative max-h-[160px] overflow-y-auto">

@@ -12,7 +12,7 @@ interface Props {
   copyText: (text: string, id: string, field: string) => void;
 }
 
-export function SSHCategory({
+export const SSHCategory: React.FC<Props> = ({
   fields,
   id,
   isPassVisible,
@@ -20,7 +20,7 @@ export function SSHCategory({
   copiedField,
   setVisiblePasswords,
   copyText
-}: Props) {
+}) => {
   return (
     <div className="space-y-3">
       <div className="bg-[#121212] border border-white/5 p-2 rounded relative">

@@ -13,7 +13,7 @@ interface Props {
   copyText: (text: string, id: string, field: string) => void;
 }
 
-export function StandardCategory({
+export const StandardCategory: React.FC<Props> = ({
   id,
   url,
   username,
@@ -23,7 +23,7 @@ export function StandardCategory({
   copiedField,
   setVisiblePasswords,
   copyText
-}: Props) {
+}) => {
   return (
     <div className="space-y-3">
       {url && (

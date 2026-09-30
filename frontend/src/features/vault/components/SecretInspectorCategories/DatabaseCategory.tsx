@@ -12,7 +12,7 @@ interface Props {
   handleCopyDbUri: (fields?: DeveloperFields) => void;
 }
 
-export function DatabaseCategory({
+export const DatabaseCategory: React.FC<Props> = ({
   fields,
   id,
   isPassVisible,
@@ -20,7 +20,7 @@ export function DatabaseCategory({
   copiedField,
   setVisiblePasswords,
   handleCopyDbUri
-}: Props) {
+}) => {
   return (
     <div className="space-y-2.5">
       <div className="grid grid-cols-3 gap-1.5">

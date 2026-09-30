@@ -14,7 +14,7 @@ interface Props {
   handleCopyAWSExports: (fields?: DeveloperFields) => void;
 }
 
-export function AWSCategory({
+export const AWSCategory: React.FC<Props> = ({
   fields,
   id,
   environment,
@@ -24,7 +24,7 @@ export function AWSCategory({
   setVisiblePasswords,
   copyText,
   handleCopyAWSExports
-}: Props) {
+}) => {
   return (
     <div className="space-y-3">
       <div className="bg-[#121212] border border-white/5 p-2.5 rounded relative">
