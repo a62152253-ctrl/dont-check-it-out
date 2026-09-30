@@ -1,6 +1,6 @@
 import React from "react";
 import { Sparkles } from "lucide-react";
-import { useVaultContext } from "../../../context/useVaultContext";
+import { useVaultContext } from "../../context/useVaultContext";
 import PasswordGenerator from "./PasswordGenerator";
 import SSHKeyGenerator from "./SSHKeyGenerator";
 import EnvImporter from "./EnvImporter";
