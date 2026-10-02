@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { Key, Copy, Sparkles } from "lucide-react";
-import { useVaultContext } from "../../../context/useVaultContext";
-import { generateSecurePassword } from "../../../utils/generators";
-import { getEntropyDetails } from "../../../utils/passwordStrength";
+import { useVaultContext } from "../../context/useVaultContext";
+import { generateSecurePassword } from "../../utils/generators";
+import { getEntropyDetails } from "../../utils/passwordStrength";
 
 export function PasswordGenerator() {
   const { theme, language, setSuccessMsg } = useVaultContext();
@@ -54,7 +54,7 @@ export function PasswordGenerator() {
   }, [genPreset, genLength, genUppercase, genLowercase, genNumbers, genSymbols, genExcludeAmbiguous, genPassphraseWords]);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(generatedPassword);
+    navigator.clipboard.writeText(generatedPassword).catch(console.error);
     setSuccessMsg(language === "PL" ? "Skopiowano do schowka!" : "Copied to clipboard!");
     setTimeout(() => setSuccessMsg(null), 3000);
   };

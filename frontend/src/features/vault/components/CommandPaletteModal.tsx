@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { Search } from "lucide-react";
-import { useVaultContext } from "../../context/useVaultContext";
+import { useVaultContext } from "../context/useVaultContext";
 
 export function CommandPaletteModal() {
   const {
@@ -147,7 +147,7 @@ export function CommandPaletteModal() {
           <Search className="w-5 h-5 text-slate-500 shrink-0" />
           <input
             type="text"
-            autoFocus
+            autoFocus={true}
             value={paletteQuery}
             onChange={(e) => {
               setPaletteQuery(e.target.value);

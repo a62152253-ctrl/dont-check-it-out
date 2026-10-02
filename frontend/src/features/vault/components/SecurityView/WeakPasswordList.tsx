@@ -1,8 +1,8 @@
 import React, { useMemo } from "react";
 import { AlertCircle } from "lucide-react";
-import { useVaultContext } from "../../../context/useVaultContext";
-import { getPasswordStrength } from "../../../utils/passwordStrength";
-import { generateSecurePassword } from "../../../utils/generators";
+import { useVaultContext } from "../../context/useVaultContext";
+import { getPasswordStrength } from "../../utils/passwordStrength";
+import { generateSecurePassword } from "../../utils/generators";
 
 export function WeakPasswordList() {
   const { decryptedEntries, saveSecret, setSuccessMsg, addActivityLog } = useVaultContext();
@@ -45,7 +45,7 @@ export function WeakPasswordList() {
 
       await saveSecret(secret.id, secret.name, secret.category, payload);
       
-      navigator.clipboard.writeText(newPass);
+      navigator.clipboard.writeText(newPass).catch(console.error);
       addActivityLog("Auto-Rotated Password", `Zrotowano słabe hasło dla: ${secret.name}`);
       setSuccessMsg(`Pomyślnie zrotowano hasło dla ${secret.name}! Nowy klucz skopiowano do schowka.`);
       setTimeout(() => setSuccessMsg(null), 4000);

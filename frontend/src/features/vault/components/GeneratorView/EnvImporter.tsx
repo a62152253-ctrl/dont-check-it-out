@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Terminal, RefreshCw, Lock } from "lucide-react";
-import { useVaultContext } from "../../../context/useVaultContext";
-import { parseDotenvContent, ParsedDotenvItem } from "../../../utils/dotenvParser";
+import { useVaultContext } from "../../context/useVaultContext";
+import { parseDotenvContent, ParsedDotenvItem } from "../../utils/dotenvParser";
 
 export function EnvImporter() {
   const { saveSecret, language, setSuccessMsg, addActivityLog } = useVaultContext();
@@ -64,7 +64,7 @@ export function EnvImporter() {
           developerFields: Object.keys(developerFields).length > 0 ? developerFields : undefined
         };
 
-        await saveSecret(null, `Import: ${item.key}`, mappedCat, unencryptedPayload);
+        saveSecret(null, `Import: ${item.key}`, mappedCat, unencryptedPayload).catch(console.error);
         importedCount++;
       }
 
