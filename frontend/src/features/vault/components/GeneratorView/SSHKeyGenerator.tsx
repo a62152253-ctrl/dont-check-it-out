@@ -27,7 +27,7 @@ export function SSHKeyGenerator() {
   }, []);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(generatedKey);
+    navigator.clipboard.writeText(generatedKey).catch(console.error);
     setSuccessMsg(language === "PL" ? "Skopiowano do schowka!" : "Copied to clipboard!");
     setTimeout(() => setSuccessMsg(null), 3000);
   };

@@ -64,7 +64,7 @@ export function EnvImporter() {
           developerFields: Object.keys(developerFields).length > 0 ? developerFields : undefined
         };
 
-        await saveSecret(null, `Import: ${item.key}`, mappedCat, unencryptedPayload);
+        saveSecret(null, `Import: ${item.key}`, mappedCat, unencryptedPayload).catch(console.error);
         importedCount++;
       }
 
