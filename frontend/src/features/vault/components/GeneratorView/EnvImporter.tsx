@@ -68,7 +68,7 @@ export function EnvImporter() {
         importedCount++;
       }
 
-      addActivityLog("Batch Imported Dotenv", `Pomyślnie zaimportowano ${importedCount} kluczy .env`);
+      if (addActivityLog) { addActivityLog("Batch Imported Dotenv", `Pomyślnie zaimportowano ${importedCount} kluczy .env`); }
       setSuccessMsg(`Pomyślnie zaimportowano ${importedCount} kluczy deweloperskich!`);
       setParsedDotenvList([]);
       setDotenvPaste("");

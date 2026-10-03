@@ -11,7 +11,7 @@ interface State {
 }
 
 export class VaultErrorBoundary extends Component<Props, State> {
-  public state: State = {
+  public readonly state: State = {
     hasError: false,
     error: null
   };
