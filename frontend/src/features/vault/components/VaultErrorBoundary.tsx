@@ -28,6 +28,8 @@ export class VaultErrorBoundary extends Component<Props, State> {
     window.location.reload();
   };
 
+  declare props: Props;
+
   public render() {
     if (this.state.hasError) {
       return (
@@ -61,7 +63,7 @@ export class VaultErrorBoundary extends Component<Props, State> {
       );
     }
 
-    return this.children;
+    return this.props.children;
   }
 }
 export default VaultErrorBoundary;
