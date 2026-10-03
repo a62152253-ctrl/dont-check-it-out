@@ -1,6 +1,6 @@
 import React from "react";
 import { 
-  Star, Edit2, Copy, Check, Eye, EyeOff, Terminal, Database, 
+  Star, Edit2, Copy, Check, Eye, EyeOff, Terminal, Database, Globe, Folder,
   Trash2,  ExternalLink, Calendar, RefreshCw,  Cpu
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
