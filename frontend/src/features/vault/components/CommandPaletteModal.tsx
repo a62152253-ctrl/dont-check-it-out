@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { Search } from "lucide-react";
-import { useVaultContext } from "../../context/useVaultContext";
+import { useVaultContext } from "../context/useVaultContext";
 
 export function CommandPaletteModal() {
   const {
@@ -134,11 +134,11 @@ export function CommandPaletteModal() {
 
   return (
     <div 
-      className="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-start justify-center pt-24 px-4 cursor-pointer"
+      className="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-start justify-center pt-24 px-4 "
       onClick={() => setShowCommandPalette(false)}
     >
       <div 
-        className="bg-[#0a0a0a]/95 border border-white/10 w-full max-w-xl rounded-2xl shadow-2xl overflow-hidden cursor-default relative"
+        className="bg-[#0a0a0a]/95 border border-white/10 w-full max-w-xl rounded-2xl shadow-2xl overflow-hidden  relative"
         onClick={e => e.stopPropagation()}
       >
         <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-emerald-500 to-transparent" />
@@ -170,7 +170,7 @@ export function CommandPaletteModal() {
                 <button
                   key={item.id}
                   onClick={() => handleExecutePaletteAction(item)}
-                  className={`w-full flex items-center justify-between p-2.5 rounded text-left font-mono text-xs transition-colors cursor-pointer ${
+                  className={`w-full flex items-center justify-between p-2.5 rounded text-left font-mono text-xs transition-colors  ${
                     isSelected ? "bg-white text-black font-semibold" : "text-slate-400 hover:bg-white/5 hover:text-white"
                   }`}
                 >
