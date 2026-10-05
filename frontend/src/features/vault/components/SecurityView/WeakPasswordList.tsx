@@ -45,7 +45,7 @@ export function WeakPasswordList() {
 
       await saveSecret(secret.id, secret.name, secret.category, payload);
       
-      navigator.clipboard.writeText(newPass);
+      void navigator.clipboard.writeText(newPass);
       addActivityLog("Auto-Rotated Password", `Zrotowano słabe hasło dla: ${secret.name}`);
       setSuccessMsg(`Pomyślnie zrotowano hasło dla ${secret.name}! Nowy klucz skopiowano do schowka.`);
       setTimeout(() => setSuccessMsg(null), 4000);
@@ -78,7 +78,7 @@ export function WeakPasswordList() {
                 </div>
                 <button
                   onClick={() => handleAutoRotate(e)}
-                  className="px-2 py-1.5 bg-[#121212] hover:bg-rose-500/10 border border-rose-500/25 text-rose-400 hover:text-rose-300 rounded text-[10px] cursor-pointer transition-all shrink-0 font-bold"
+                  className="px-2 py-1.5 bg-[#121212] hover:bg-rose-500/10 border border-rose-500/25 text-rose-400 hover:text-rose-300 rounded text-[10px]  transition-all shrink-0 font-bold"
                 >
                   Auto-Rotuj i Kopiuj
                 </button>
