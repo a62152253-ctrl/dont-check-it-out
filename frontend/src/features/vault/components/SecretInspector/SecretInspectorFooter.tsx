@@ -1,8 +1,8 @@
 import React from "react";
 import { Calendar, RefreshCw, Trash2 } from "lucide-react";
-import { DecryptedSecret } from "../../types";
+import type { DecryptedSecret } from "../../types";
 
-interface SecretInspectorFooterProps {
+export interface SecretInspectorFooterProps {
   secret: DecryptedSecret;
   moveToTrash: (id: string, isTrash: boolean) => void;
   deleteSecretPermanently: (id: string) => void;

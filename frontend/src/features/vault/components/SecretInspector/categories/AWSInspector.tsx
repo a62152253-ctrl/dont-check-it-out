@@ -1,8 +1,8 @@
 import React from "react";
 import { Copy, Check, Eye, EyeOff, Terminal } from "lucide-react";
-import { DecryptedSecret, DeveloperFields } from "../../../types";
+import type { DecryptedSecret, DeveloperFields } from "../../../types";
 
-interface AWSInspectorProps {
+export interface AWSInspectorProps {
   secret: DecryptedSecret;
   copiedId: string | null;
   copiedField: string | null;
@@ -12,15 +12,7 @@ interface AWSInspectorProps {
   handleCopyAWSExports: (fields?: DeveloperFields) => void;
 }
 
-export function AWSInspector({
-  secret,
-  copiedId,
-  copiedField,
-  copyText,
-  isPassVisible,
-  setVisiblePasswords,
-  handleCopyAWSExports
-}: AWSInspectorProps) {
+export function AWSInspector({ secret, copiedId, copiedField, copyText, isPassVisible, setVisiblePasswords, handleCopyAWSExports }: AWSInspectorProps) {
   if (!secret.developerFields) return null;
 
   return (

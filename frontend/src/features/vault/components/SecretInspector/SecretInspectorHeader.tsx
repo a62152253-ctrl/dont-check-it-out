@@ -1,8 +1,8 @@
 import React from "react";
 import { Star, Edit2 } from "lucide-react";
-import { DecryptedSecret } from "../../types";
+import type { DecryptedSecret } from "../../types";
 
-interface SecretInspectorHeaderProps {
+export interface SecretInspectorHeaderProps {
   secret: DecryptedSecret;
   toggleFavorite: (id: string, isFav: boolean) => void;
   handleEditClick: () => void;

@@ -1,8 +1,8 @@
 import React from "react";
 import { Copy, Check, ExternalLink, Eye, EyeOff } from "lucide-react";
-import { DecryptedSecret } from "../../../types";
+import type { DecryptedSecret } from "../../../types";
 
-interface StandardInspectorProps {
+export interface StandardInspectorProps {
   secret: DecryptedSecret;
   copiedId: string | null;
   copiedField: string | null;
@@ -11,14 +11,7 @@ interface StandardInspectorProps {
   setVisiblePasswords: React.Dispatch<React.SetStateAction<Record<string, boolean>>>;
 }
 
-export function StandardInspector({
-  secret,
-  copiedId,
-  copiedField,
-  copyText,
-  isPassVisible,
-  setVisiblePasswords
-}: StandardInspectorProps) {
+export function StandardInspector({ secret, copiedId, copiedField, copyText, isPassVisible, setVisiblePasswords }: StandardInspectorProps) {
   return (
     <div className="space-y-3">
       {secret.url && (

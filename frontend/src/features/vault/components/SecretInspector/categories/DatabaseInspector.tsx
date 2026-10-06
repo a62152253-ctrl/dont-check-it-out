@@ -1,8 +1,8 @@
 import React from "react";
 import { Copy, Check, Database } from "lucide-react";
-import { DecryptedSecret, DeveloperFields } from "../../../types";
+import type { DecryptedSecret, DeveloperFields } from "../../../types";
 
-interface DatabaseInspectorProps {
+export interface DatabaseInspectorProps {
   secret: DecryptedSecret;
   copiedId: string | null;
   copiedField: string | null;
@@ -10,13 +10,7 @@ interface DatabaseInspectorProps {
   handleCopyDbUri: (fields?: DeveloperFields) => void;
 }
 
-export function DatabaseInspector({
-  secret,
-  copiedId,
-  copiedField,
-  copyText,
-  handleCopyDbUri
-}: DatabaseInspectorProps) {
+export function DatabaseInspector({ secret, copiedId, copiedField, copyText, handleCopyDbUri }: DatabaseInspectorProps) {
   if (!secret.developerFields) return null;
 
   return (

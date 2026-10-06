@@ -1,12 +1,12 @@
 import React from "react";
-import { DecryptedSecret, DeveloperFields } from "../../types";
+import type { DecryptedSecret, DeveloperFields } from "../../types";
 import { AWSInspector } from "./categories/AWSInspector";
 import { DatabaseInspector } from "./categories/DatabaseInspector";
 import { SSHKeyInspector } from "./categories/SSHKeyInspector";
 import { APIKeyInspector } from "./categories/APIKeyInspector";
 import { StandardInspector } from "./categories/StandardInspector";
 
-interface SecretInspectorBodyProps {
+export interface SecretInspectorBodyProps {
   secret: DecryptedSecret;
   standardizedCategory: string;
   copiedId: string | null;
@@ -19,18 +19,7 @@ interface SecretInspectorBodyProps {
   handleDownloadDotenv: (name: string, content?: string) => void;
 }
 
-export function SecretInspectorBody({
-  secret,
-  standardizedCategory,
-  copiedId,
-  copiedField,
-  copyText,
-  isPassVisible,
-  setVisiblePasswords,
-  handleCopyAWSExports,
-  handleCopyDbUri,
-  handleDownloadDotenv
-}: SecretInspectorBodyProps) {
+export function SecretInspectorBody({ secret, standardizedCategory, copiedId, copiedField, copyText, isPassVisible, setVisiblePasswords, handleCopyAWSExports, handleCopyDbUri, handleDownloadDotenv }: SecretInspectorBodyProps) {
   return (
     <>
       {standardizedCategory === "AWS" && (

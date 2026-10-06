@@ -1,8 +1,8 @@
 import React from "react";
 import { Copy, Check } from "lucide-react";
-import { DecryptedSecret } from "../../../types";
+import type { DecryptedSecret } from "../../../types";
 
-interface SSHKeyInspectorProps {
+export interface SSHKeyInspectorProps {
   secret: DecryptedSecret;
   copiedId: string | null;
   copiedField: string | null;

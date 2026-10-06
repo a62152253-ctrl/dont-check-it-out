@@ -1,8 +1,8 @@
 import React from "react";
 import { RefreshCw } from "lucide-react";
-import { DecryptedSecret } from "../../../types";
+import type { DecryptedSecret } from "../../../types";
 
-interface APIKeyInspectorProps {
+export interface APIKeyInspectorProps {
   secret: DecryptedSecret;
   handleDownloadDotenv: (name: string, content?: string) => void;
 }

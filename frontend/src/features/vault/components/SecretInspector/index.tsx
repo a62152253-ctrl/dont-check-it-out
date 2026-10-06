@@ -1,12 +1,9 @@
 import React from "react";
-import {
-  Star, Edit2, Copy, Check, Eye, EyeOff, Terminal, Database,
-  Trash2, Globe, ExternalLink, Calendar, RefreshCw, Folder, Cpu
-} from "lucide-react";
+import { Cpu } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { useVaultContext } from "../../context/useVaultContext";
 import { mapLegacyCategory } from "../../hooks/useVault";
-import { DeveloperFields } from "../../types";
+import type { DeveloperFields } from "../../types";
 import { SecretInspectorHeader } from "./SecretInspectorHeader";
 import { SecretInspectorBody } from "./SecretInspectorBody";
 import { SecretInspectorFooter } from "./SecretInspectorFooter";
@@ -28,6 +25,7 @@ export function SecretInspector() {
     migrateLegacyEntry,
     successMsg,
     setSuccessMsg
+
   } = useVaultContext();
 
   const secret = decryptedEntries.find(e => e.id === selectedEntryId);
