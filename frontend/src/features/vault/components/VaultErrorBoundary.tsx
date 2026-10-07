@@ -1,4 +1,5 @@
-import React, { Component, ErrorInfo, ReactNode } from "react";
+import React, { Component } from "react";
+import type { ErrorInfo, ReactNode } from "react";
 import { AlertTriangle, RefreshCw } from "lucide-react";
 
 interface Props {
@@ -19,6 +20,8 @@ export class VaultErrorBoundary extends Component<Props, State> {
   public static getDerivedStateFromError(error: Error): State {
     return { hasError: true, error };
   }
+
+  declare props: Props;
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error("VaultErrorBoundary caught an error:", error, errorInfo);
@@ -61,7 +64,7 @@ export class VaultErrorBoundary extends Component<Props, State> {
       );
     }
 
-    return this.children;
+    return this.props.children;
   }
 }
 export default VaultErrorBoundary;
