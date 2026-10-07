@@ -4,3 +4,6 @@ dist/
 .env.local
 .DS_Store
 *.log
+frontend/ui.spec.ts
+frontend/playwright-report/
+frontend/test-results/

@@ -20,6 +20,8 @@ export class VaultErrorBoundary extends Component<Props, State> {
     return { hasError: true, error };
   }
 
+  declare props: Props;
+
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error("VaultErrorBoundary caught an error:", error, errorInfo);
   }
@@ -61,7 +63,7 @@ export class VaultErrorBoundary extends Component<Props, State> {
       );
     }
 
-    return this.children;
+    return this.props.children;
   }
 }
 export default VaultErrorBoundary;
