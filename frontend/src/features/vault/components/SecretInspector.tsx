@@ -9,7 +9,7 @@ import { mapLegacyCategory } from "../hooks/useVault";
 import type { DeveloperFields } from "../types";
 import { EmptyState } from "./Inspector/EmptyState";
 
-export default function SecretInspector() {
+export const SecretInspector = React.memo(() => {
   const {
     decryptedEntries,
     selectedEntryId,
@@ -453,4 +453,8 @@ export default function SecretInspector() {
       </AnimatePresence>
     </div>
   );
-}
+});
+
+
+
+export default SecretInspector;
