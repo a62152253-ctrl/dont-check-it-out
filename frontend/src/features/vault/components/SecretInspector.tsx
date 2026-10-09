@@ -4,11 +4,12 @@ import {
   Trash2, Globe, ExternalLink, Calendar, RefreshCw, Folder, Cpu 
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import { useVaultContext } from "../../context/useVaultContext";
-import { mapLegacyCategory } from "../../hooks/useVault";
-import { DeveloperFields } from "../../types";
+import { useVaultContext } from "../context/useVaultContext";
+import { mapLegacyCategory } from "../hooks/useVault";
+import type { DeveloperFields } from "../types";
+import { EmptyState } from "./Inspector/EmptyState";
 
-export function SecretInspector() {
+export const SecretInspector = React.memo(() => {
   const {
     decryptedEntries,
     selectedEntryId,
@@ -30,12 +31,7 @@ export function SecretInspector() {
   const secret = decryptedEntries.find(e => e.id === selectedEntryId);
 
   if (!secret) {
-    return (
-      <div className="bg-[#0c0c0c] border border-white/5 rounded-lg p-12 text-center text-slate-500 font-mono text-xs">
-        <Cpu className="w-6 h-6 text-slate-800 mx-auto mb-2" />
-        <span>Wybierz sekret z listy, aby wyświetlić szczegóły (Zero-Knowledge Audit)</span>
-      </div>
-    );
+    return <EmptyState />;
   }
 
   const hasKey = secret.password || secret.developerFields?.awsSecretAccessKey || "";
@@ -49,19 +45,19 @@ export function SecretInspector() {
   };
 
   // Helper formats
-  const handleCopyAWSExports = (fields?: DeveloperFields) => {
+  const handleCopyAWSExports = async (fields?: DeveloperFields) => {
     if (!fields) return;
     const format = `export AWS_ACCESS_KEY_ID=${fields.awsAccessKeyId || ""}\nexport AWS_SECRET_ACCESS_KEY=${fields.awsSecretAccessKey || ""}\nexport AWS_DEFAULT_REGION=${fields.region || "us-east-1"}`;
-    navigator.clipboard.writeText(format);
+    await navigator.clipboard.writeText(format);
     setSuccessMsg("Skopiowano eksport AWS (Shell Environment variables)!");
     setTimeout(() => setSuccessMsg(null), 3000);
   };
 
-  const handleCopyDbUri = (fields?: DeveloperFields) => {
+  const handleCopyDbUri = async (fields?: DeveloperFields) => {
     if (!fields) return;
     const engine = (fields.dbEngine || "postgresql").toLowerCase();
     const uri = `${engine}://${fields.dbUser || ""}:${fields.dbPassword || ""}@${fields.dbHost || "localhost"}:${fields.dbPort || "5432"}/${fields.dbName || ""}`;
-    navigator.clipboard.writeText(uri);
+    await navigator.clipboard.writeText(uri);
     setSuccessMsg("Skopiowano URI połączenia bazy danych!");
     setTimeout(() => setSuccessMsg(null), 3000);
   };
@@ -107,7 +103,7 @@ export function SecretInspector() {
                   </span>
                 )}
               </div>
-            </div> </div>
+            </div>
 
             <div className="flex items-center gap-1 shrink-0">
               <button
@@ -457,5 +453,8 @@ export function SecretInspector() {
       </AnimatePresence>
     </div>
   );
-}
+});
+
+
+
 export default SecretInspector;
