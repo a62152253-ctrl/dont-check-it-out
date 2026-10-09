@@ -9,7 +9,7 @@ import { mapLegacyCategory } from "../hooks/useVault";
 import type { DeveloperFields } from "../types";
 import { EmptyState } from "./Inspector/EmptyState";
 
-export function SecretInspector() {
+export default function SecretInspector() {
   const {
     decryptedEntries,
     selectedEntryId,
@@ -454,4 +454,3 @@ export function SecretInspector() {
     </div>
   );
 }
-export default SecretInspector;
