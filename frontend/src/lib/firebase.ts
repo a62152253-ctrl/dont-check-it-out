@@ -12,7 +12,7 @@ import {
 import { getFirestore } from "firebase/firestore";
 
 // Import config directly
-import config from "../../firebase-applet-config.json";
+import config from "../../../backend/firebase/firebase-applet-config.json";
 
 const firebaseConfig = {
   apiKey: config.apiKey,
