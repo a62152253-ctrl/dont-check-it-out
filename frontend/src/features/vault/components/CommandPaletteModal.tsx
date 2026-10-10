@@ -138,7 +138,7 @@ export function CommandPaletteModal() {
       onClick={() => setShowCommandPalette(false)}
     >
       <div 
-        className="bg-[#0a0a0a]/95 border border-white/10 w-full max-w-xl rounded-2xl shadow-2xl overflow-hidden cursor-default relative"
+        className="bg-[#0a0a0a]/95 border border-white/10 w-full max-w-xl rounded-2xl shadow-2xl overflow-hidden relative"
         onClick={e => e.stopPropagation()}
       >
         <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-emerald-500 to-transparent" />
