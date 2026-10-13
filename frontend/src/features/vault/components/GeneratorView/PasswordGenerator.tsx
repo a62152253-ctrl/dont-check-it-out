@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { Key, Copy, Sparkles } from "lucide-react";
-import { useVaultContext } from "../../../context/useVaultContext";
-import { generateSecurePassword } from "../../../utils/generators";
-import { getEntropyDetails } from "../../../utils/passwordStrength";
+import { useVaultContext } from "../../context/useVaultContext";
+import { generateSecurePassword } from "../../utils/generators";
+import { getEntropyDetails } from "../../utils/passwordStrength";
 
 export function PasswordGenerator() {
   const { theme, language, setSuccessMsg } = useVaultContext();
@@ -88,7 +88,7 @@ export function PasswordGenerator() {
           <button
             type="button"
             onClick={handleCopy}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white bg-white/5 p-2 rounded-lg border border-white/5 transition-all hover:bg-white/10 active:scale-95 cursor-pointer"
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white bg-white/5 p-2 rounded-lg border border-white/5 transition-all hover:bg-white/10 active:scale-95 "
             title={language === "PL" ? "Kopiuj" : "Copy"}
           >
             <Copy className="w-3.5 h-3.5" />
@@ -111,7 +111,7 @@ export function PasswordGenerator() {
                   else if (pr === "TOKEN") setGenLength(16);
                   else if (pr === "PASSWORD") setGenLength(32);
                 }}
-                className={`text-[10px] font-mono py-2 rounded-lg border transition-all cursor-pointer text-center tracking-tight ${
+                className={`text-[10px] font-mono py-2 rounded-lg border transition-all  text-center tracking-tight ${
                   genPreset === pr
                     ? `bg-emerald-500/20 text-white border-emerald-500/50 font-bold`
                     : "bg-white/5 text-slate-400 border-transparent hover:text-white"
@@ -137,7 +137,7 @@ export function PasswordGenerator() {
                 max="8"
                 value={genPassphraseWords}
                 onChange={(e) => setGenPassphraseWords(parseInt(e.target.value))}
-                className="w-full accent-emerald-400 cursor-pointer"
+                className="w-full accent-emerald-400 "
               />
             </div>
 
@@ -168,14 +168,14 @@ export function PasswordGenerator() {
                 max="64"
                 value={genLength}
                 onChange={(e) => setGenLength(parseInt(e.target.value))}
-                className="w-full accent-emerald-400 cursor-pointer"
+                className="w-full accent-emerald-400 "
               />
             </div>
 
             {/* Checkboxes */}
             {genPreset === "PASSWORD" && (
               <div className="grid grid-cols-2 gap-2 text-xs font-mono text-slate-400">
-                <label className="flex items-center gap-2 cursor-pointer select-none">
+                <label className="flex items-center gap-2  select-none">
                   <input
                     type="checkbox"
                     checked={genUppercase}
@@ -184,7 +184,7 @@ export function PasswordGenerator() {
                   />
                   <span>A-Z (Uppercase)</span>
                 </label>
-                <label className="flex items-center gap-2 cursor-pointer select-none">
+                <label className="flex items-center gap-2  select-none">
                   <input
                     type="checkbox"
                     checked={genLowercase}
@@ -193,7 +193,7 @@ export function PasswordGenerator() {
                   />
                   <span>a-z (Lowercase)</span>
                 </label>
-                <label className="flex items-center gap-2 cursor-pointer select-none">
+                <label className="flex items-center gap-2  select-none">
                   <input
                     type="checkbox"
                     checked={genNumbers}
@@ -202,7 +202,7 @@ export function PasswordGenerator() {
                   />
                   <span>0-9 (Numbers)</span>
                 </label>
-                <label className="flex items-center gap-2 cursor-pointer select-none">
+                <label className="flex items-center gap-2  select-none">
                   <input
                     type="checkbox"
                     checked={genSymbols}
@@ -215,7 +215,7 @@ export function PasswordGenerator() {
             )}
 
             {/* Exclude ambiguous option */}
-            <label className="flex items-center gap-2 text-[10px] font-mono text-slate-400 cursor-pointer select-none pt-1 border-t border-white/5">
+            <label className="flex items-center gap-2 text-[10px] font-mono text-slate-400  select-none pt-1 border-t border-white/5">
               <input
                 type="checkbox"
                 checked={genExcludeAmbiguous}
@@ -259,7 +259,7 @@ export function PasswordGenerator() {
         <button
           type="button"
           onClick={handleGenerate}
-          className={`w-full py-2.5 ${theme.primary} rounded-lg text-xs font-mono font-bold transition-all cursor-pointer flex items-center justify-center gap-2 shadow-lg active:scale-95`}
+          className={`w-full py-2.5 ${theme.primary} rounded-lg text-xs font-mono font-bold transition-all  flex items-center justify-center gap-2 shadow-lg active:scale-95`}
         >
           <Sparkles className="w-3.5 h-3.5" />
           <span>{language === "PL" ? "Regeneruj Nowy Klucz" : "Regenerate New Dev Key"}</span>

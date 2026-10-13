@@ -1,5 +1,7 @@
 import { DeveloperFields } from "shared";
 
+export type { DeveloperFields };
+
 export type SecretType = 
   | "AWS"
   | "Database"
