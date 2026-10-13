@@ -17,7 +17,7 @@ export const VaultUnlockFooter = ({ language, onReset, resetText }: Props) => (
       <button
         type="button"
         onClick={onReset}
-        className="text-[10px] font-mono text-rose-400 hover:text-rose-300 underline cursor-pointer transition-colors"
+        className="text-[10px] font-mono text-rose-400 hover:text-rose-300 underline  transition-colors"
       >
         {resetText}
       </button>
