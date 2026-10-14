@@ -4,9 +4,10 @@ import {
   Trash2, Globe, ExternalLink, Calendar, RefreshCw, Folder, Cpu 
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import { useVaultContext } from "../../context/useVaultContext";
-import { mapLegacyCategory } from "../../hooks/useVault";
-import { DeveloperFields } from "../../types";
+import { useVaultContext } from "../context/VaultContext";
+import { mapLegacyCategory } from "../hooks/useVault";
+import { DeveloperFields } from "../types";
+import { handleCopyAWSExports, handleCopyDbUri, handleDownloadDotenv } from "../utils/inspectorUtils";
 
 export function SecretInspector() {
   const {
@@ -48,37 +49,6 @@ export function SecretInspector() {
     }
   };
 
-  // Helper formats
-  const handleCopyAWSExports = (fields?: DeveloperFields) => {
-    if (!fields) return;
-    const format = `export AWS_ACCESS_KEY_ID=${fields.awsAccessKeyId || ""}\nexport AWS_SECRET_ACCESS_KEY=${fields.awsSecretAccessKey || ""}\nexport AWS_DEFAULT_REGION=${fields.region || "us-east-1"}`;
-    navigator.clipboard.writeText(format);
-    setSuccessMsg("Skopiowano eksport AWS (Shell Environment variables)!");
-    setTimeout(() => setSuccessMsg(null), 3000);
-  };
-
-  const handleCopyDbUri = (fields?: DeveloperFields) => {
-    if (!fields) return;
-    const engine = (fields.dbEngine || "postgresql").toLowerCase();
-    const uri = `${engine}://${fields.dbUser || ""}:${fields.dbPassword || ""}@${fields.dbHost || "localhost"}:${fields.dbPort || "5432"}/${fields.dbName || ""}`;
-    navigator.clipboard.writeText(uri);
-    setSuccessMsg("Skopiowano URI połączenia bazy danych!");
-    setTimeout(() => setSuccessMsg(null), 3000);
-  };
-
-  const handleDownloadDotenv = (name: string, content?: string) => {
-    if (!content) return;
-    const element = document.createElement("a");
-    const file = new Blob([content], { type: 'text/plain' });
-    element.href = URL.createObjectURL(file);
-    element.download = `${name.toLowerCase().replace(/[^a-z0-9]/g, "_")}.env`;
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
-    setSuccessMsg("Plik .env wygenerowany i pobrany pomyślnie!");
-    setTimeout(() => setSuccessMsg(null), 3000);
-  };
-
   const standardizedCategory = mapLegacyCategory(secret.category);
 
   return (
@@ -107,7 +77,7 @@ export function SecretInspector() {
                   </span>
                 )}
               </div>
-            </div> </div>
+            </div>
 
             <div className="flex items-center gap-1 shrink-0">
               <button
@@ -190,7 +160,7 @@ export function SecretInspector() {
                 </div>
 
                 <button
-                  onClick={() => handleCopyAWSExports(secret.developerFields)}
+                  onClick={() => handleCopyAWSExports(secret.developerFields, setSuccessMsg)}
                   className="w-full py-2 bg-orange-500/10 hover:bg-orange-500/20 border border-orange-500/20 text-orange-300 font-semibold font-mono text-[10px] rounded transition-all cursor-pointer flex items-center justify-center gap-1.5"
                 >
                   <Terminal className="w-3.5 h-3.5" />
@@ -244,7 +214,7 @@ export function SecretInspector() {
                 </div>
 
                 <button
-                  onClick={() => handleCopyDbUri(secret.developerFields)}
+                  onClick={() => handleCopyDbUri(secret.developerFields, setSuccessMsg)}
                   className="w-full py-2 bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/20 text-sky-300 font-semibold font-mono text-[10px] rounded transition-all cursor-pointer flex items-center justify-center gap-1.5"
                 >
                   <Database className="w-3.5 h-3.5" />
@@ -325,7 +295,7 @@ export function SecretInspector() {
                 </div>
 
                 <button
-                  onClick={() => handleDownloadDotenv(secret.name, secret.developerFields?.dotenvContent)}
+                  onClick={() => handleDownloadDotenv(secret.name, secret.developerFields?.dotenvContent, setSuccessMsg)}
                   className="w-full py-2 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/20 text-emerald-300 font-semibold font-mono text-[10px] rounded transition-all cursor-pointer flex items-center justify-center gap-1.5"
                 >
                   <RefreshCw className="w-3.5 h-3.5 rotate-180" />
@@ -458,4 +428,3 @@ export function SecretInspector() {
     </div>
   );
 }
-export default SecretInspector;
