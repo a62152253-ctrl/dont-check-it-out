@@ -1,7 +1,7 @@
 import React from "react";
 import { 
   Star, Edit2, Copy, Check, Eye, EyeOff, Terminal, Database, 
-  Trash2, Globe, ExternalLink, Calendar, RefreshCw, Folder, Cpu 
+  Trash2, ExternalLink, Calendar, RefreshCw, Cpu
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { useVaultContext } from "../context/useVaultContext";
@@ -23,7 +23,6 @@ export function SecretInspector() {
     moveToTrash,
     deleteSecretPermanently,
     migrateLegacyEntry,
-    successMsg,
     setSuccessMsg
   } = useVaultContext();
 
@@ -38,7 +37,6 @@ export function SecretInspector() {
     );
   }
 
-  const hasKey = secret.password || secret.developerFields?.awsSecretAccessKey || "";
   const isPassVisible = !!visiblePasswords[secret.id || ""];
 
   const handleEditClick = () => {
