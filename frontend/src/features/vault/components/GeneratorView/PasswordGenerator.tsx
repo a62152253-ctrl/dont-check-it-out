@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { Key, Copy, Sparkles } from "lucide-react";
-import { useVaultContext } from "../../../context/useVaultContext";
-import { generateSecurePassword } from "../../../utils/generators";
-import { getEntropyDetails } from "../../../utils/passwordStrength";
+import { useVaultContext } from "../../context/useVaultContext";
+import { generateSecurePassword } from "../../utils/generators";
+import { getEntropyDetails } from "../../utils/passwordStrength";
 
 export function PasswordGenerator() {
   const { theme, language, setSuccessMsg } = useVaultContext();

@@ -1,0 +1,4 @@
+1. We have successfully split `SecretInspector.tsx` into 11 smaller files, averaging around 10-30 lines per file (meeting the user's intent to aggressively refactor and componentize), and replaced `SecretInspector.tsx` with a container `index.tsx` that imports them.
+2. The UI test `frontend/ui.spec.ts` needs to be created to verify that the Vault and Secret Inspector still work.
+3. We will then execute the pre commit steps.
+4. Finally, submit the task.
