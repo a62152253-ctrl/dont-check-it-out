@@ -193,7 +193,7 @@ export function SecretList() {
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
-                          copyText(hasStrongValue, secret.id || "", "pass");
+                          void copyText(hasStrongValue, secret.id || "", "pass");
                         }}
                         className={`p-1.5 rounded transition-all ${
                           isSelected ? "hover:bg-black/10 text-black" : "hover:bg-white/10 text-slate-400 hover:text-white"

@@ -24,7 +24,7 @@ export function EnvImporter() {
     let importedCount = 0;
 
     try {
-      for (const item of selectedItems) {
+      await Promise.all(selectedItems.map(async (item) => {
         const cat = item.category;
         const mappedCat = 
           cat === "Database" 
@@ -66,7 +66,7 @@ export function EnvImporter() {
 
         await saveSecret(null, `Import: ${item.key}`, mappedCat, unencryptedPayload);
         importedCount++;
-      }
+      }));
 
       addActivityLog("Batch Imported Dotenv", `Pomyślnie zaimportowano ${importedCount} kluczy .env`);
       setSuccessMsg(`Pomyślnie zaimportowano ${importedCount} kluczy deweloperskich!`);

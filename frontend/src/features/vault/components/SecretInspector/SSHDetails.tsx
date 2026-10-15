@@ -18,7 +18,7 @@ export function SSHDetails({ secret, isPassVisible, copiedId, copiedField, setVi
       <div className="bg-[#121212] border border-white/5 p-2 rounded relative">
         <span className="block text-[9px] font-mono text-slate-500 uppercase mb-0.5">Host zdalny (SSH Connection)</span>
         <span className="text-xs font-mono text-slate-300 select-all pr-8 break-all">{secret.developerFields.sshHost || "np. ubuntu@192.168.1.1"}</span>
-        <button onClick={() => copyText(secret.developerFields?.sshHost || "", secret.id!, "ssh_host")} className="absolute right-2 top-2.5 text-slate-500 hover:text-white">
+        <button onClick={() => void copyText(secret.developerFields?.sshHost || "", secret.id!, "ssh_host")} className="absolute right-2 top-2.5 text-slate-500 hover:text-white">
           {copiedId === secret.id && copiedField === "ssh_host" ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
         </button>
       </div>
@@ -32,7 +32,7 @@ export function SSHDetails({ secret, isPassVisible, copiedId, copiedField, setVi
             <button onClick={() => setVisiblePasswords(p => ({ ...p, [secret.id!]: !p[secret.id!] }))} className="hover:text-white">
               {isPassVisible ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
             </button>
-            <button onClick={() => copyText(secret.developerFields?.sshPassphrase || "", secret.id!, "ssh_pass")} className="hover:text-white">
+            <button onClick={() => void copyText(secret.developerFields?.sshPassphrase || "", secret.id!, "ssh_pass")} className="hover:text-white">
               {copiedId === secret.id && copiedField === "ssh_pass" ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
             </button>
           </div>
@@ -44,7 +44,7 @@ export function SSHDetails({ secret, isPassVisible, copiedId, copiedField, setVi
           {secret.developerFields.sshPrivateKey ? secret.developerFields.sshPrivateKey.substring(0, 70) + "..." : "Brak klucza"}
         </pre>
         {secret.developerFields.sshPrivateKey && (
-          <button onClick={() => copyText(secret.developerFields?.sshPrivateKey || "", secret.id!, "ssh_key")} className="absolute right-2 top-2.5 text-slate-500 hover:text-white" title="Skopiuj cały klucz SSH">
+          <button onClick={() => void copyText(secret.developerFields?.sshPrivateKey || "", secret.id!, "ssh_key")} className="absolute right-2 top-2.5 text-slate-500 hover:text-white" title="Skopiuj cały klucz SSH">
             {copiedId === secret.id && copiedField === "ssh_key" ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
           </button>
         )}

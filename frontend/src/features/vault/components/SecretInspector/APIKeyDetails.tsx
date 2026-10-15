@@ -19,7 +19,7 @@ export function APIKeyDetails({ secret, copiedId, copiedField, copyText, handleD
         <pre className="text-[10px] font-mono text-emerald-400 select-all whitespace-pre-wrap leading-relaxed mt-1 break-all pr-6">
           {secret.developerFields.dotenvContent || "Brak danych .env"}
         </pre>
-        <button onClick={() => copyText(secret.developerFields?.dotenvContent || "", secret.id!, "dotenv")} className="absolute right-2 top-2.5 text-slate-500 hover:text-white">
+        <button onClick={() => void copyText(secret.developerFields?.dotenvContent || "", secret.id!, "dotenv")} className="absolute right-2 top-2.5 text-slate-500 hover:text-white">
           {copiedId === secret.id && copiedField === "dotenv" ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
         </button>
       </div>

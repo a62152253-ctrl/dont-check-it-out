@@ -19,7 +19,7 @@ export function AWSDetails({ secret, isPassVisible, copiedId, copiedField, setVi
       <div className="bg-[#121212] border border-white/5 p-2.5 rounded relative">
         <span className="block text-[9px] font-mono text-slate-500 uppercase mb-0.5">AWS Access Key ID</span>
         <span className="text-xs font-mono text-slate-200 select-all pr-8 break-all">{secret.developerFields.awsAccessKeyId || "Brak"}</span>
-        <button onClick={() => copyText(secret.developerFields?.awsAccessKeyId || "", secret.id!, "aws_id")} className="absolute right-2 top-3 text-slate-500 hover:text-white" title="Kopiuj ID">
+        <button onClick={() => void copyText(secret.developerFields?.awsAccessKeyId || "", secret.id!, "aws_id")} className="absolute right-2 top-3 text-slate-500 hover:text-white" title="Kopiuj ID">
           {copiedId === secret.id && copiedField === "aws_id" ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
         </button>
       </div>
@@ -32,7 +32,7 @@ export function AWSDetails({ secret, isPassVisible, copiedId, copiedField, setVi
           <button onClick={() => setVisiblePasswords(p => ({ ...p, [secret.id!]: !p[secret.id!] }))} className="hover:text-white">
             {isPassVisible ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
           </button>
-          <button onClick={() => copyText(secret.developerFields?.awsSecretAccessKey || "", secret.id!, "aws_secret")} className="hover:text-white">
+          <button onClick={() => void copyText(secret.developerFields?.awsSecretAccessKey || "", secret.id!, "aws_secret")} className="hover:text-white">
             {copiedId === secret.id && copiedField === "aws_secret" ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
           </button>
         </div>

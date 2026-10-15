@@ -98,7 +98,7 @@ export function CommandPaletteModal() {
       
       const copyVal = entry.password || (entry.developerFields?.awsSecretAccessKey) || (entry.developerFields?.dotenvContent) || "";
       if (copyVal) {
-        copyText(copyVal, entry.id!, "pass");
+        void copyText(copyVal, entry.id!, "pass");
         setSuccessMsg(`Wybrano i skopiowano sekret dla: ${entry.name}`);
         setTimeout(() => setSuccessMsg(null), 3000);
       }
