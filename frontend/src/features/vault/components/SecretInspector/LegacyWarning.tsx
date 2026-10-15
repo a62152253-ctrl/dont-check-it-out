@@ -1,5 +1,5 @@
 import React from "react";
-import { DecryptedSecret } from "../../types";
+import type { DecryptedSecret } from "../../types";
 
 interface Props {
   secret: DecryptedSecret;
@@ -13,7 +13,7 @@ export function LegacyWarning({ secret, migrateLegacyEntry }: Props) {
       <p className="font-semibold">⚠️ Ten wpis jest przechowywany w czystym tekście (legacy).</p>
       <button
         onClick={() => migrateLegacyEntry(secret)}
-        className="w-full py-1.5 bg-amber-400 hover:bg-amber-500 text-black font-bold font-mono text-[9px] uppercase rounded transition-all cursor-pointer"
+        className="w-full py-1.5 bg-amber-400 hover:bg-amber-500 text-black font-bold font-mono text-[9px] uppercase rounded transition-all"
       >
         🔒 Zaszyfruj w locie kluczem AES
       </button>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Check, Copy, RefreshCw } from "lucide-react";
-import { DecryptedSecret } from "../../types";
+import type { DecryptedSecret } from "../../types";
 
 interface Props {
   secret: DecryptedSecret;
@@ -19,11 +19,11 @@ export function APIKeyDetails({ secret, copiedId, copiedField, copyText, handleD
         <pre className="text-[10px] font-mono text-emerald-400 select-all whitespace-pre-wrap leading-relaxed mt-1 break-all pr-6">
           {secret.developerFields.dotenvContent || "Brak danych .env"}
         </pre>
-        <button onClick={() => copyText(secret.developerFields?.dotenvContent || "", secret.id!, "dotenv")} className="absolute right-2 top-2.5 text-slate-500 hover:text-white cursor-pointer">
+        <button onClick={() => copyText(secret.developerFields?.dotenvContent || "", secret.id!, "dotenv")} className="absolute right-2 top-2.5 text-slate-500 hover:text-white">
           {copiedId === secret.id && copiedField === "dotenv" ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
         </button>
       </div>
-      <button onClick={() => handleDownloadDotenv(secret.name, secret.developerFields?.dotenvContent)} className="w-full py-2 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/20 text-emerald-300 font-semibold font-mono text-[10px] rounded transition-all cursor-pointer flex items-center justify-center gap-1.5">
+      <button onClick={() => handleDownloadDotenv(secret.name, secret.developerFields?.dotenvContent)} className="w-full py-2 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/20 text-emerald-300 font-semibold font-mono text-[10px] rounded transition-all flex items-center justify-center gap-1.5">
         <RefreshCw className="w-3.5 h-3.5 rotate-180" />
         <span>Pobierz jako plik .env</span>
       </button>

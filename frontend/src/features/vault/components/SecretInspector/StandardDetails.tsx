@@ -1,6 +1,6 @@
 import React from "react";
 import { Check, Copy, ExternalLink, Eye, EyeOff } from "lucide-react";
-import { DecryptedSecret } from "../../types";
+import type { DecryptedSecret } from "../../types";
 
 interface Props {
   secret: DecryptedSecret;
@@ -21,7 +21,7 @@ export function StandardDetails({ secret, isPassVisible, copiedId, copiedField, 
             <span className="text-xs font-mono text-slate-300 truncate block select-all">{secret.url}</span>
           </div>
           <div className="flex gap-2">
-            <button onClick={() => copyText(secret.url || "", secret.id!, "url")} className="text-slate-500 hover:text-white cursor-pointer">
+            <button onClick={() => copyText(secret.url || "", secret.id!, "url")} className="text-slate-500 hover:text-white">
               {copiedId === secret.id && copiedField === "url" ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
             </button>
             <a href={secret.url.startsWith("http") ? secret.url : `https://${secret.url}`} target="_blank" rel="noreferrer" className="text-slate-500 hover:text-white">
@@ -34,7 +34,7 @@ export function StandardDetails({ secret, isPassVisible, copiedId, copiedField, 
         <div className="bg-[#121212] border border-white/5 p-2.5 rounded relative">
           <span className="block text-[9px] font-mono text-slate-500 uppercase mb-0.5">Nazwa Użytkownika / Email</span>
           <span className="text-xs font-mono text-slate-200 select-all pr-8 break-all">{secret.username}</span>
-          <button onClick={() => copyText(secret.username || "", secret.id!, "user")} className="absolute right-2 top-3 text-slate-500 hover:text-white cursor-pointer">
+          <button onClick={() => copyText(secret.username || "", secret.id!, "user")} className="absolute right-2 top-3 text-slate-500 hover:text-white">
             {copiedId === secret.id && copiedField === "user" ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
           </button>
         </div>
@@ -46,10 +46,10 @@ export function StandardDetails({ secret, isPassVisible, copiedId, copiedField, 
             {isPassVisible ? secret.password : "••••••••••••••••"}
           </span>
           <div className="absolute right-2 top-3 flex items-center gap-1.5 text-slate-500">
-            <button onClick={() => setVisiblePasswords(p => ({ ...p, [secret.id!]: !p[secret.id!] }))} className="hover:text-white cursor-pointer">
+            <button onClick={() => setVisiblePasswords(p => ({ ...p, [secret.id!]: !p[secret.id!] }))} className="hover:text-white">
               {isPassVisible ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
             </button>
-            <button onClick={() => copyText(secret.password || "", secret.id!, "pass")} className="hover:text-white cursor-pointer">
+            <button onClick={() => copyText(secret.password || "", secret.id!, "pass")} className="hover:text-white">
               {copiedId === secret.id && copiedField === "pass" ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
             </button>
           </div>

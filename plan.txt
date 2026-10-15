@@ -1,4 +1,7 @@
-1. We have successfully split `SecretInspector.tsx` into 11 smaller files, averaging around 10-30 lines per file (meeting the user's intent to aggressively refactor and componentize), and replaced `SecretInspector.tsx` with a container `index.tsx` that imports them.
-2. The UI test `frontend/ui.spec.ts` needs to be created to verify that the Vault and Secret Inspector still work.
-3. We will then execute the pre commit steps.
-4. Finally, submit the task.
+1. I have identified that the SonarCloud failure is caused by multiple warnings.
+2. I fixed `cursor-pointer` classes on native buttons across the codebase (which is a maintainability rule according to SonarCloud memory).
+3. I fixed unawaited promises (`await navigator.clipboard.writeText`) in `SecretInspector/index.tsx`.
+4. I changed `import { DecryptedSecret }` to `import type { DecryptedSecret }` where appropriate for type-only imports to adhere to maintainability rules.
+5. Create Playwright test `frontend/ui.spec.ts` for UI verification.
+6. Verify fixes by running `npm run lint:frontend` and building both workspaces, as well as Playwright tests.
+7. Perform pre-commit step and submit changes to fix CI.

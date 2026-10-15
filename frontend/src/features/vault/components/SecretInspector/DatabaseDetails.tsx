@@ -1,6 +1,6 @@
 import React from "react";
 import { Check, Copy, Eye, EyeOff, Database } from "lucide-react";
-import { DecryptedSecret } from "../../types";
+import type { DecryptedSecret } from "../../types";
 
 interface Props {
   secret: DecryptedSecret;
@@ -46,12 +46,12 @@ export function DatabaseDetails({ secret, isPassVisible, copiedId, copiedField, 
           <span className="text-[11px] font-mono text-slate-300 truncate block">
             {isPassVisible ? secret.developerFields.dbPassword : "••••••••••"}
           </span>
-          <button onClick={() => setVisiblePasswords(p => ({ ...p, [secret.id!]: !p[secret.id!] }))} className="absolute right-2 top-2.5 text-slate-500 hover:text-white cursor-pointer">
+          <button onClick={() => setVisiblePasswords(p => ({ ...p, [secret.id!]: !p[secret.id!] }))} className="absolute right-2 top-2.5 text-slate-500 hover:text-white">
             {isPassVisible ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
           </button>
         </div>
       </div>
-      <button onClick={() => handleCopyDbUri(secret.developerFields)} className="w-full py-2 bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/20 text-sky-300 font-semibold font-mono text-[10px] rounded transition-all cursor-pointer flex items-center justify-center gap-1.5">
+      <button onClick={() => handleCopyDbUri(secret.developerFields)} className="w-full py-2 bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/20 text-sky-300 font-semibold font-mono text-[10px] rounded transition-all flex items-center justify-center gap-1.5">
         <Database className="w-3.5 h-3.5" />
         <span>Kopiuj Connection String / URI</span>
       </button>

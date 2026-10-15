@@ -1,6 +1,6 @@
 import React from "react";
 import { Calendar, RefreshCw } from "lucide-react";
-import { DecryptedSecret } from "../../types";
+import type { DecryptedSecret } from "../../types";
 
 interface Props {
   secret: DecryptedSecret;

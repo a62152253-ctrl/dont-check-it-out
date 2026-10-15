@@ -1,6 +1,6 @@
 import React from "react";
 import { Star, Edit2 } from "lucide-react";
-import { DecryptedSecret } from "../../types";
+import type { DecryptedSecret } from "../../types";
 
 interface Props {
   secret: DecryptedSecret;
@@ -27,14 +27,14 @@ export function InspectorHeader({ secret, toggleFavorite, onEditClick }: Props) 
       <div className="flex items-center gap-1 shrink-0">
         <button
           onClick={() => toggleFavorite(secret.id!, !!secret.isFavorite)}
-          className="p-1.5 hover:bg-white/5 text-slate-500 hover:text-amber-400 rounded transition-all cursor-pointer"
+          className="p-1.5 hover:bg-white/5 text-slate-500 hover:text-amber-400 rounded transition-all"
           title="Do ulubionych"
         >
           <Star className={`w-4 h-4 ${secret.isFavorite ? "fill-amber-400 text-amber-400" : ""}`} />
         </button>
         <button
           onClick={onEditClick}
-          className="p-1.5 hover:bg-white/5 text-slate-400 hover:text-white rounded transition-all cursor-pointer"
+          className="p-1.5 hover:bg-white/5 text-slate-400 hover:text-white rounded transition-all"
           title="Edytuj sekret"
         >
           <Edit2 className="w-3.5 h-3.5" />

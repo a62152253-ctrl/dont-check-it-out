@@ -42,7 +42,7 @@ export function SecurityView() {
             <button
               disabled={stats.legacy === 0 || loading}
               onClick={migrateAllLegacyEntries}
-              className="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 disabled:bg-white/5 disabled:text-slate-600 rounded text-[10px] font-mono text-black font-bold transition-all cursor-pointer"
+              className="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 disabled:bg-white/5 disabled:text-slate-600 rounded text-[10px] font-mono text-black font-bold transition-all"
             >
               {loading ? "Szyfrowanie..." : "Rozpocznij konwersję"}
             </button>
@@ -63,7 +63,7 @@ export function SecurityView() {
               setViewMode("all");
               setSelectedCategory("All");
             }}
-            className="w-full text-center py-2 bg-white/5 hover:bg-white/10 text-white rounded text-[10px] font-mono border border-white/5 transition-all cursor-pointer"
+            className="w-full text-center py-2 bg-white/5 hover:bg-white/10 text-white rounded text-[10px] font-mono border border-white/5 transition-all"
           >
             Przejdź do Generatora kluczy
           </button>

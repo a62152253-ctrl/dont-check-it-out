@@ -1,6 +1,6 @@
 import React from "react";
 import { Check, Copy, Eye, EyeOff, Terminal } from "lucide-react";
-import { DecryptedSecret } from "../../types";
+import type { DecryptedSecret } from "../../types";
 
 interface Props {
   secret: DecryptedSecret;
@@ -19,7 +19,7 @@ export function AWSDetails({ secret, isPassVisible, copiedId, copiedField, setVi
       <div className="bg-[#121212] border border-white/5 p-2.5 rounded relative">
         <span className="block text-[9px] font-mono text-slate-500 uppercase mb-0.5">AWS Access Key ID</span>
         <span className="text-xs font-mono text-slate-200 select-all pr-8 break-all">{secret.developerFields.awsAccessKeyId || "Brak"}</span>
-        <button onClick={() => copyText(secret.developerFields?.awsAccessKeyId || "", secret.id!, "aws_id")} className="absolute right-2 top-3 text-slate-500 hover:text-white cursor-pointer" title="Kopiuj ID">
+        <button onClick={() => copyText(secret.developerFields?.awsAccessKeyId || "", secret.id!, "aws_id")} className="absolute right-2 top-3 text-slate-500 hover:text-white" title="Kopiuj ID">
           {copiedId === secret.id && copiedField === "aws_id" ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
         </button>
       </div>
@@ -29,10 +29,10 @@ export function AWSDetails({ secret, isPassVisible, copiedId, copiedField, setVi
           {isPassVisible ? secret.developerFields.awsSecretAccessKey : "••••••••••••••••••••••••••••••••"}
         </span>
         <div className="absolute right-2 top-3 flex items-center gap-1.5 text-slate-500">
-          <button onClick={() => setVisiblePasswords(p => ({ ...p, [secret.id!]: !p[secret.id!] }))} className="hover:text-white cursor-pointer">
+          <button onClick={() => setVisiblePasswords(p => ({ ...p, [secret.id!]: !p[secret.id!] }))} className="hover:text-white">
             {isPassVisible ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
           </button>
-          <button onClick={() => copyText(secret.developerFields?.awsSecretAccessKey || "", secret.id!, "aws_secret")} className="hover:text-white cursor-pointer">
+          <button onClick={() => copyText(secret.developerFields?.awsSecretAccessKey || "", secret.id!, "aws_secret")} className="hover:text-white">
             {copiedId === secret.id && copiedField === "aws_secret" ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
           </button>
         </div>
@@ -47,7 +47,7 @@ export function AWSDetails({ secret, isPassVisible, copiedId, copiedField, setVi
           <span className="text-xs font-mono text-slate-300 uppercase font-semibold">{secret.environment || "dev"}</span>
         </div>
       </div>
-      <button onClick={() => handleCopyAWSExports(secret.developerFields)} className="w-full py-2 bg-orange-500/10 hover:bg-orange-500/20 border border-orange-500/20 text-orange-300 font-semibold font-mono text-[10px] rounded transition-all cursor-pointer flex items-center justify-center gap-1.5">
+      <button onClick={() => handleCopyAWSExports(secret.developerFields)} className="w-full py-2 bg-orange-500/10 hover:bg-orange-500/20 border border-orange-500/20 text-orange-300 font-semibold font-mono text-[10px] rounded transition-all flex items-center justify-center gap-1.5">
         <Terminal className="w-3.5 h-3.5" />
         <span>Kopiuj eksport AWS (Shell env)</span>
       </button>
