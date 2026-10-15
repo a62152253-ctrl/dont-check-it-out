@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DecryptedSecret, EncryptedSecretEntry, VaultConfig, ActivityLog } from "../types";
+import { DecryptedSecret, EncryptedSecretEntry, VaultConfig, ActivityLog } from "@/features/vault/types";
 
 export type ViewMode = "dashboard" | "all" | "favorites" | "trash" | "security" | "settings" | "activity" | "generator";
 

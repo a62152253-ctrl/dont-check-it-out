@@ -1,4 +1,4 @@
-import { DecryptedSecret, EncryptedSecretEntry } from "../types";
+import { DecryptedSecret, EncryptedSecretEntry } from "@/features/vault/types";
 import { encryptData } from "./crypto.service";
 
 /**
