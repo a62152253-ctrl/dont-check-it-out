@@ -1,7 +1,8 @@
 1. I have identified that the SonarCloud failure is caused by multiple warnings.
 2. I fixed `cursor-pointer` classes on native buttons across the codebase (which is a maintainability rule according to SonarCloud memory).
-3. I fixed unawaited promises (`await navigator.clipboard.writeText`) in `SecretInspector/index.tsx`.
-4. I changed `import { DecryptedSecret }` to `import type { DecryptedSecret }` where appropriate for type-only imports to adhere to maintainability rules.
-5. Create Playwright test `frontend/ui.spec.ts` for UI verification.
-6. Verify fixes by running `npm run lint:frontend` and building both workspaces, as well as Playwright tests.
-7. Perform pre-commit step and submit changes to fix CI.
+3. I fixed unawaited promises (`await navigator.clipboard.writeText`) in `SecretInspector/index.tsx`, `GeneratorView`, `SecurityView`, and `useVault.ts`.
+4. I removed the `autoFocus` prop from `CommandPaletteModal.tsx` as it triggers accessibility issues.
+5. I changed `import { DecryptedSecret }` to `import type { DecryptedSecret }` where appropriate for type-only imports to adhere to maintainability rules.
+6. Create Playwright test `frontend/ui.spec.ts` for UI verification.
+7. Verify fixes by running `npm run lint:frontend` and building both workspaces, as well as Playwright tests.
+8. Perform pre-commit step and submit changes to fix CI.

@@ -53,8 +53,8 @@ export function PasswordGenerator() {
     );
   }, [genPreset, genLength, genUppercase, genLowercase, genNumbers, genSymbols, genExcludeAmbiguous, genPassphraseWords]);
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(generatedPassword);
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(generatedPassword);
     setSuccessMsg(language === "PL" ? "Skopiowano do schowka!" : "Copied to clipboard!");
     setTimeout(() => setSuccessMsg(null), 3000);
   };
