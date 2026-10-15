@@ -10,9 +10,9 @@ import {
   onSnapshot,
   getDoc
 } from "firebase/firestore";
-import { db, auth } from "@/lib/firebase";
+import { db, auth } from "../../../lib/firebase";
 import { VaultRepository } from "./VaultRepository";
-import { EncryptedSecretEntry, VaultConfig } from "@/features/vault/types";
+import { EncryptedSecretEntry, VaultConfig } from "../types";
 
 enum OperationType {
   CREATE = 'create',

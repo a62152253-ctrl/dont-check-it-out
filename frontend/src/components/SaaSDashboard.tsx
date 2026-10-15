@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 import MainForm from "./MainForm";
-import { translations } from "@/lib/translations";
+import { translations } from "../lib/translations";
 import { 
   LogOut, 
   Lock
