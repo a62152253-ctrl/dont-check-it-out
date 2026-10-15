@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { Download } from "lucide-react";
-import { useVaultContext } from "../../../context/useVaultContext";
+import { useVaultContext } from "../../context/useVaultContext";
 
 export function JsonImporter() {
   const { importVault, language } = useVaultContext();
@@ -46,7 +46,7 @@ export function JsonImporter() {
 
         <div 
           onClick={() => fileInputRef.current?.click()}
-          className="border-2 border-dashed border-white/10 hover:border-emerald-500/30 rounded-xl p-6 text-center cursor-pointer hover:bg-white/[0.01] transition-all group"
+          className="border-2 border-dashed border-white/10 hover:border-emerald-500/30 rounded-xl p-6 text-center hover:bg-white/[0.01] transition-all group"
         >
           <Download className="w-6 h-6 text-slate-500 mx-auto mb-2 group-hover:text-emerald-400 transition-colors rotate-180" />
           <p className="text-white text-xs font-semibold">

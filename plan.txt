@@ -1,0 +1,4 @@
+1. I fixed the 'await in non-async function' error by removing the incorrect `await void copyText` which I accidentally introduced.
+2. I fixed `Promise.all` issues inside loops.
+3. Now I will run the UI test and pre-commit checks.
+4. Finally, submit.
