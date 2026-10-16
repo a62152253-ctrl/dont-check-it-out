@@ -3,12 +3,12 @@ import {
   Clock, Shield, Plus, Download, Key, Lock, Activity, 
   Sparkles, CheckCircle2, AlertCircle, LayoutDashboard, Database
 } from "lucide-react";
-import { useVaultContext } from "../../context/useVaultContext";
-import { getCategoryIcon } from "../../utils/categoryIcon";
-import { formatTimeAgo } from "../../utils/timeAgo";
-import { getPasswordStrength } from "../../utils/passwordStrength";
-import { mapLegacyCategory } from "../../hooks/useVault";
-import { DecryptedSecret } from "../../types";
+import { useVaultContext } from "../../vault/context/useVaultContext";
+import { getCategoryIcon } from "../../vault/utils/categoryIcon";
+import { formatTimeAgo } from "../../vault/utils/timeAgo";
+import { getPasswordStrength } from "../../vault/utils/passwordStrength";
+import { mapLegacyCategory } from "../../vault/hooks/useVault";
+import { DecryptedSecret } from "../../vault/types";
 
 export function DashboardView() {
   const {

@@ -11,6 +11,7 @@ interface State {
 }
 
 export class VaultErrorBoundary extends Component<Props, State> {
+  declare props: Props;
   public state: State = {
     hasError: false,
     error: null
@@ -21,7 +22,7 @@ export class VaultErrorBoundary extends Component<Props, State> {
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error("VaultErrorBoundary caught an error:", error, errorInfo);
+    // console.error("VaultErrorBoundary caught an error:", error, errorInfo);
   }
 
   private handleReload = () => {
@@ -61,7 +62,7 @@ export class VaultErrorBoundary extends Component<Props, State> {
       );
     }
 
-    return this.children;
+    return this.props.children;
   }
 }
 export default VaultErrorBoundary;

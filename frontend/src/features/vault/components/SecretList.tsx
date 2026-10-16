@@ -1,10 +1,10 @@
 import React, { useMemo } from "react";
 import { Search, Command, Lock, Star, Copy, Check } from "lucide-react";
-import { useVaultContext } from "../../context/useVaultContext";
-import { getCategoryIcon } from "../../utils/categoryIcon";
-import { formatTimeAgo } from "../../utils/timeAgo";
-import { mapLegacyCategory } from "../../hooks/useVault";
-import { DecryptedSecret } from "../../types";
+import { useVaultContext } from "../../vault/context/useVaultContext";
+import { getCategoryIcon } from "../../vault/utils/categoryIcon";
+import { formatTimeAgo } from "../../vault/utils/timeAgo";
+import { mapLegacyCategory } from "../../vault/hooks/useVault";
+import { DecryptedSecret } from "../../vault/types";
 
 export function SecretList() {
   const {

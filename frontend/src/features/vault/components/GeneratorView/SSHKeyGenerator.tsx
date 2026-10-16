@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Key, Copy, Sparkles } from "lucide-react";
-import { useVaultContext } from "../../../context/useVaultContext";
-import { generateSecurePassword } from "../../../utils/generators";
+import { useVaultContext } from "../../vault/../context/useVaultContext";
+import { generateSecurePassword } from "../../vault/../utils/generators";
 
 export function SSHKeyGenerator() {
   const { theme, language, setSuccessMsg } = useVaultContext();
@@ -27,7 +27,7 @@ export function SSHKeyGenerator() {
   }, []);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(generatedKey);
+    void navigator.clipboard.writeText(generatedKey);
     setSuccessMsg(language === "PL" ? "Skopiowano do schowka!" : "Copied to clipboard!");
     setTimeout(() => setSuccessMsg(null), 3000);
   };
