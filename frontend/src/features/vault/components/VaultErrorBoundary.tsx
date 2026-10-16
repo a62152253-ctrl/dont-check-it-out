@@ -22,7 +22,7 @@ export class VaultErrorBoundary extends Component<Props, State> {
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error("VaultErrorBoundary caught an error:", error, errorInfo);
+    // console.error("VaultErrorBoundary caught an error:", error, errorInfo);
   }
 
   private handleReload = () => {

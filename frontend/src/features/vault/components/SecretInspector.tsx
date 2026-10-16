@@ -1,7 +1,7 @@
 import React from "react";
 import { 
   Star, Edit2, Copy, Check, Eye, EyeOff, Terminal, Database, 
-  Trash2, Globe, ExternalLink, Calendar, RefreshCw, Folder, Cpu 
+  Trash2, ExternalLink, Calendar, RefreshCw, Cpu
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { useVaultContext } from "../../vault/context/useVaultContext";
@@ -23,7 +23,7 @@ export function SecretInspector() {
     moveToTrash,
     deleteSecretPermanently,
     migrateLegacyEntry,
-    successMsg,
+
     setSuccessMsg
   } = useVaultContext();
 
@@ -38,7 +38,7 @@ export function SecretInspector() {
     );
   }
 
-  const hasKey = secret.password || secret.developerFields?.awsSecretAccessKey || "";
+
   const isPassVisible = !!visiblePasswords[secret.id || ""];
 
   const handleEditClick = () => {
@@ -52,7 +52,7 @@ export function SecretInspector() {
   const handleCopyAWSExports = (fields?: DeveloperFields) => {
     if (!fields) return;
     const format = `export AWS_ACCESS_KEY_ID=${fields.awsAccessKeyId || ""}\nexport AWS_SECRET_ACCESS_KEY=${fields.awsSecretAccessKey || ""}\nexport AWS_DEFAULT_REGION=${fields.region || "us-east-1"}`;
-    navigator.clipboard.writeText(format);
+    void navigator.clipboard.writeText(format);
     setSuccessMsg("Skopiowano eksport AWS (Shell Environment variables)!");
     setTimeout(() => setSuccessMsg(null), 3000);
   };
@@ -61,7 +61,7 @@ export function SecretInspector() {
     if (!fields) return;
     const engine = (fields.dbEngine || "postgresql").toLowerCase();
     const uri = `${engine}://${fields.dbUser || ""}:${fields.dbPassword || ""}@${fields.dbHost || "localhost"}:${fields.dbPort || "5432"}/${fields.dbName || ""}`;
-    navigator.clipboard.writeText(uri);
+    void navigator.clipboard.writeText(uri);
     setSuccessMsg("Skopiowano URI połączenia bazy danych!");
     setTimeout(() => setSuccessMsg(null), 3000);
   };
@@ -92,6 +92,7 @@ export function SecretInspector() {
           className="bg-[#0c0c0c]/90 border border-white/10 rounded-2xl p-5 space-y-4 shadow-2xl relative overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(16,185,129,0.02)]"
         >
           <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/[0.02] rounded-full blur-2xl pointer-events-none" />
+
 
           {/* Inspector Header */}
           <div className="flex items-start justify-between gap-3 border-b border-white/5 pb-3">
