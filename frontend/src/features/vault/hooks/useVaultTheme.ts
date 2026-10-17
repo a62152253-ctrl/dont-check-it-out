@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import * as vaultStorage from "../services/vaultStorage.service";
+import * as vaultStorage from "@/features/vault/services/vaultStorage.service";
 
 export type AccentThemeName = "emerald" | "amber" | "indigo" | "mint" | "rose" | "cyan" | "violet";
 

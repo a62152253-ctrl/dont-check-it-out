@@ -1,17 +1,17 @@
 import { useEffect, useMemo } from "react";
-import { useAuth } from "../../../hooks/useAuth";
+import { useAuth } from "@/hooks/useAuth";
 import { useVaultState, ViewMode } from "./useVaultState";
 import { useVaultTheme, AccentThemeName } from "./useVaultTheme";
 import { useAutoLock } from "./useAutoLock";
-import { LocalVaultRepository } from "../repositories/LocalVaultRepository";
-import { FirebaseVaultRepository } from "../repositories/FirebaseVaultRepository";
-import { VaultRepository } from "../repositories/VaultRepository";
-import { DecryptedSecret, EncryptedSecretEntry, VaultConfig, ActivityLog } from "../types";
-import * as cryptoService from "../services/crypto.service";
-import * as cryptoRandom from "../services/cryptoRandom.service";
-import * as vaultStorage from "../services/vaultStorage.service";
-import * as migrationService from "../services/migration.service";
-import * as backupService from "../services/backup.service";
+import { LocalVaultRepository } from "@/features/vault/repositories/LocalVaultRepository";
+import { FirebaseVaultRepository } from "@/features/vault/repositories/FirebaseVaultRepository";
+import { VaultRepository } from "@/features/vault/repositories/VaultRepository";
+import { DecryptedSecret, EncryptedSecretEntry, VaultConfig, ActivityLog } from "@/features/vault/types";
+import * as cryptoService from "@/features/vault/services/crypto.service";
+import * as cryptoRandom from "@/features/vault/services/cryptoRandom.service";
+import * as vaultStorage from "@/features/vault/services/vaultStorage.service";
+import * as migrationService from "@/features/vault/services/migration.service";
+import * as backupService from "@/features/vault/services/backup.service";
 
 export function mapLegacyCategory(cat: string | undefined | null): string {
   if (!cat) return "Notes";
@@ -103,7 +103,7 @@ export function useVault() {
         setLoading(false);
       }
     };
-    loadVaultConfig();
+    void loadVaultConfig();
   }, [user, repository]);
 
   // Real-time subscription to encrypted entries
@@ -188,7 +188,7 @@ export function useVault() {
       setIsDecryptingEntries(false);
     };
 
-    decryptAllSecrets();
+    void decryptAllSecrets();
   }, [entries, sessionKey]);
 
   // Log activity helper
@@ -362,9 +362,9 @@ export function useVault() {
     try {
       const updates = await migrationService.encryptMultipleLegacyEntries(legacyEntries, sessionKey);
       
-      for (const update of updates) {
+      await Promise.all(updates.map(async (update) => {
         const rawEntry = entries.find(e => e.id === update.id);
-        if (!rawEntry) continue;
+        if (!rawEntry) return;
         
         await repository.saveEntry(user.uid, update.id, {
           category: rawEntry.category,
@@ -377,7 +377,7 @@ export function useVault() {
           updatedAt: new Date().toISOString()
         });
         successCount++;
-      }
+      }));
 
       addActivityLog("Mass Migrated Legacy", `Zaszyfrowano ${successCount} wpisów legacy`);
       setSuccessMsg(`Pomyślnie zaszyfrowano i zmigrowano ${successCount} wpisów legacy!`);
@@ -540,7 +540,7 @@ export function useVault() {
 
   // Copy helper
   const handleCopy = (text: string, id: string, field: string) => {
-    navigator.clipboard.writeText(text);
+    void navigator.clipboard.writeText(text);
     setCopiedId(id);
     setCopiedField(field);
 

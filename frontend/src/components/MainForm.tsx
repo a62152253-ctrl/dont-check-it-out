@@ -4,19 +4,19 @@ import {
   LayoutDashboard, Key, ShieldAlert, Settings, Activity, ShieldCheck, CheckCircle2, AlertCircle
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import { useVault } from "../features/vault/hooks/useVault";
-import { VaultProvider } from "../features/vault/context/VaultContext";
-import VaultErrorBoundary from "../features/vault/components/VaultErrorBoundary";
-import VaultSetup from "../features/vault/components/VaultSetup";
-import VaultUnlock from "../features/vault/components/VaultUnlock";
-import DashboardView from "../features/vault/components/DashboardView";
-import GeneratorView from "../features/vault/components/GeneratorView";
-import SecurityView from "../features/vault/components/SecurityView";
-import SettingsView from "../features/vault/components/SettingsView";
-import SecretList from "../features/vault/components/SecretList";
-import SecretInspector from "../features/vault/components/SecretInspector";
-import SecretFormModal from "../features/vault/components/SecretFormModal";
-import CommandPaletteModal from "../features/vault/components/CommandPaletteModal";
+import { useVault } from "@/features/vault/hooks/useVault";
+import { VaultProvider } from "@/features/vault/context/VaultContext";
+import VaultErrorBoundary from "@/features/vault/components/VaultErrorBoundary";
+import VaultSetup from "@/features/vault/components/VaultSetup";
+import VaultUnlock from "@/features/vault/components/VaultUnlock";
+import DashboardView from "@/features/vault/components/DashboardView";
+import GeneratorView from "@/features/vault/components/GeneratorView";
+import SecurityView from "@/features/vault/components/SecurityView";
+import SettingsView from "@/features/vault/components/SettingsView";
+import SecretList from "@/features/vault/components/SecretList";
+import SecretInspector from "@/features/vault/components/SecretInspector";
+import SecretFormModal from "@/features/vault/components/SecretFormModal";
+import CommandPaletteModal from "@/features/vault/components/CommandPaletteModal";
 
 export default function MainForm() {
   const vault = useVault();

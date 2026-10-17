@@ -1,4 +1,4 @@
-import { VaultConfig, ActivityLog } from "../types";
+import { VaultConfig, ActivityLog } from "@/features/vault/types";
 
 export function getVaultConfig(uid: string): VaultConfig | null {
   const localCfg = localStorage.getItem(`vault_config_${uid}`);

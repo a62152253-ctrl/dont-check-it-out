@@ -4,9 +4,9 @@ import {
   Trash2, Globe, ExternalLink, Calendar, RefreshCw, Folder, Cpu 
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import { useVaultContext } from "../../context/useVaultContext";
-import { mapLegacyCategory } from "../../hooks/useVault";
-import { DeveloperFields } from "../../types";
+import { useVaultContext } from "@/features/vault/context/useVaultContext";
+import { mapLegacyCategory } from "@/features/vault/hooks/useVault";
+import { DeveloperFields } from "@/features/vault/types";
 
 export function SecretInspector() {
   const {
@@ -52,7 +52,7 @@ export function SecretInspector() {
   const handleCopyAWSExports = (fields?: DeveloperFields) => {
     if (!fields) return;
     const format = `export AWS_ACCESS_KEY_ID=${fields.awsAccessKeyId || ""}\nexport AWS_SECRET_ACCESS_KEY=${fields.awsSecretAccessKey || ""}\nexport AWS_DEFAULT_REGION=${fields.region || "us-east-1"}`;
-    navigator.clipboard.writeText(format);
+    void navigator.clipboard.writeText(format);
     setSuccessMsg("Skopiowano eksport AWS (Shell Environment variables)!");
     setTimeout(() => setSuccessMsg(null), 3000);
   };
@@ -61,7 +61,7 @@ export function SecretInspector() {
     if (!fields) return;
     const engine = (fields.dbEngine || "postgresql").toLowerCase();
     const uri = `${engine}://${fields.dbUser || ""}:${fields.dbPassword || ""}@${fields.dbHost || "localhost"}:${fields.dbPort || "5432"}/${fields.dbName || ""}`;
-    navigator.clipboard.writeText(uri);
+    void navigator.clipboard.writeText(uri);
     setSuccessMsg("Skopiowano URI połączenia bazy danych!");
     setTimeout(() => setSuccessMsg(null), 3000);
   };
@@ -107,7 +107,7 @@ export function SecretInspector() {
                   </span>
                 )}
               </div>
-            </div> </div>
+            </div>
 
             <div className="flex items-center gap-1 shrink-0">
               <button
