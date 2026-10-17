@@ -103,7 +103,7 @@ export function useVault() {
         setLoading(false);
       }
     };
-    loadVaultConfig();
+    void loadVaultConfig();
   }, [user, repository]);
 
   // Real-time subscription to encrypted entries
@@ -188,7 +188,7 @@ export function useVault() {
       setIsDecryptingEntries(false);
     };
 
-    decryptAllSecrets();
+    void decryptAllSecrets();
   }, [entries, sessionKey]);
 
   // Log activity helper

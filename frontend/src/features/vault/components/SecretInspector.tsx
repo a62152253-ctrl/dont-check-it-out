@@ -41,7 +41,7 @@ export function SecretInspector() {
   const hasKey = secret.password || secret.developerFields?.awsSecretAccessKey || "";
   const isPassVisible = !!visiblePasswords[secret.id || ""];
 
-  const handleEditClick = async () => {
+  const handleEditClick = () => {
     if (secret.id) {
       setEditingId(secret.id);
       setIsFormOpen(true);
@@ -52,7 +52,7 @@ export function SecretInspector() {
   const handleCopyAWSExports = (fields?: DeveloperFields) => {
     if (!fields) return;
     const format = `export AWS_ACCESS_KEY_ID=${fields.awsAccessKeyId || ""}\nexport AWS_SECRET_ACCESS_KEY=${fields.awsSecretAccessKey || ""}\nexport AWS_DEFAULT_REGION=${fields.region || "us-east-1"}`;
-    navigator.clipboard.writeText(format);
+    void navigator.clipboard.writeText(format);
     setSuccessMsg("Skopiowano eksport AWS (Shell Environment variables)!");
     setTimeout(() => setSuccessMsg(null), 3000);
   };
@@ -61,12 +61,12 @@ export function SecretInspector() {
     if (!fields) return;
     const engine = (fields.dbEngine || "postgresql").toLowerCase();
     const uri = `${engine}://${fields.dbUser || ""}:${fields.dbPassword || ""}@${fields.dbHost || "localhost"}:${fields.dbPort || "5432"}/${fields.dbName || ""}`;
-    navigator.clipboard.writeText(uri);
+    void navigator.clipboard.writeText(uri);
     setSuccessMsg("Skopiowano URI połączenia bazy danych!");
     setTimeout(() => setSuccessMsg(null), 3000);
   };
 
-  const handleDownloadDotenv = async (name: string, content?: string) => {
+  const handleDownloadDotenv = (name: string, content?: string) => {
     if (!content) return;
     const element = document.createElement("a");
     const file = new Blob([content], { type: 'text/plain' });
