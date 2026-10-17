@@ -33,15 +33,15 @@ export async function encryptMultipleLegacyEntries(
 ): Promise<{ id: string; ciphertext: string; iv: string }[]> {
   const updates: { id: string; ciphertext: string; iv: string }[] = [];
   
-  for (const entry of legacyEntries) {
-    if (!entry.id) continue;
+  await Promise.all(legacyEntries.map(async (entry) => {
+    if (!entry.id) return;
     const encrypted = await encryptLegacyEntryPayload(entry, sessionKey);
     updates.push({
       id: entry.id,
       ciphertext: encrypted.ciphertext,
       iv: encrypted.iv
     });
-  }
+  }));
 
   return updates;
 }

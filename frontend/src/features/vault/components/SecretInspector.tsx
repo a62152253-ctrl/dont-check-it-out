@@ -41,7 +41,7 @@ export function SecretInspector() {
   const hasKey = secret.password || secret.developerFields?.awsSecretAccessKey || "";
   const isPassVisible = !!visiblePasswords[secret.id || ""];
 
-  const handleEditClick = () => {
+  const handleEditClick = async () => {
     if (secret.id) {
       setEditingId(secret.id);
       setIsFormOpen(true);
@@ -66,7 +66,7 @@ export function SecretInspector() {
     setTimeout(() => setSuccessMsg(null), 3000);
   };
 
-  const handleDownloadDotenv = (name: string, content?: string) => {
+  const handleDownloadDotenv = async (name: string, content?: string) => {
     if (!content) return;
     const element = document.createElement("a");
     const file = new Blob([content], { type: 'text/plain' });

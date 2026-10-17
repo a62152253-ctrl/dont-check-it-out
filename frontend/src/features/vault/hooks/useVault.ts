@@ -362,9 +362,9 @@ export function useVault() {
     try {
       const updates = await migrationService.encryptMultipleLegacyEntries(legacyEntries, sessionKey);
       
-      for (const update of updates) {
+      await Promise.all(updates.map(async (update) => {
         const rawEntry = entries.find(e => e.id === update.id);
-        if (!rawEntry) continue;
+        if (!rawEntry) return;
         
         await repository.saveEntry(user.uid, update.id, {
           category: rawEntry.category,
@@ -377,7 +377,7 @@ export function useVault() {
           updatedAt: new Date().toISOString()
         });
         successCount++;
-      }
+      }));
 
       addActivityLog("Mass Migrated Legacy", `Zaszyfrowano ${successCount} wpisów legacy`);
       setSuccessMsg(`Pomyślnie zaszyfrowano i zmigrowano ${successCount} wpisów legacy!`);
@@ -540,7 +540,7 @@ export function useVault() {
 
   // Copy helper
   const handleCopy = (text: string, id: string, field: string) => {
-    navigator.clipboard.writeText(text);
+    void navigator.clipboard.writeText(text);
     setCopiedId(id);
     setCopiedField(field);
 
