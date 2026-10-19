@@ -134,7 +134,7 @@ export function CommandPaletteModal() {
 
   return (
     <div 
-      className="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-start justify-center pt-24 px-4 cursor-pointer"
+      className="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-start justify-center pt-24 px-4 "
       onClick={() => setShowCommandPalette(false)}
     >
       <div 
@@ -147,7 +147,7 @@ export function CommandPaletteModal() {
           <Search className="w-5 h-5 text-slate-500 shrink-0" />
           <input
             type="text"
-            autoFocus
+
             value={paletteQuery}
             onChange={(e) => {
               setPaletteQuery(e.target.value);
@@ -170,7 +170,7 @@ export function CommandPaletteModal() {
                 <button
                   key={item.id}
                   onClick={() => handleExecutePaletteAction(item)}
-                  className={`w-full flex items-center justify-between p-2.5 rounded text-left font-mono text-xs transition-colors cursor-pointer ${
+                  className={`w-full flex items-center justify-between p-2.5 rounded text-left font-mono text-xs transition-colors  ${
                     isSelected ? "bg-white text-black font-semibold" : "text-slate-400 hover:bg-white/5 hover:text-white"
                   }`}
                 >
