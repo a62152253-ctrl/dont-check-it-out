@@ -12,12 +12,16 @@
     "skipLibCheck": true,
     "moduleResolution": "bundler",
     "isolatedModules": true,
+    "resolveJsonModule": true,
     "moduleDetection": "force",
     "allowJs": true,
     "jsx": "react-jsx",
+    "baseUrl": "./src",
     "paths": {
+      "backend/*": ["../../backend/*"],
       "@/*": [
         "./*"
+
       ]
     },
     "allowImportingTsExtensions": true,
