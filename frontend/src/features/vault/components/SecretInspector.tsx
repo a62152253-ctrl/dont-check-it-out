@@ -4,7 +4,7 @@ import {
   Trash2, Globe, ExternalLink, Calendar, RefreshCw, Folder, Cpu 
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import { type ReactNode } from "react";
+
 import { useVaultContext } from "../context/VaultContext";
 import { mapLegacyCategory } from "../hooks/useVault";
 import type { DeveloperFields } from "../types";
