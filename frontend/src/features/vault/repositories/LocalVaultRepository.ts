@@ -59,6 +59,7 @@ export class LocalVaultRepository implements VaultRepository {
     }
 
     vaultStorage.saveSandboxEntries(entries);
+    await Promise.resolve();
     return finalId;
   }
 
@@ -66,6 +67,7 @@ export class LocalVaultRepository implements VaultRepository {
     const entries = vaultStorage.getSandboxEntries();
     const filtered = entries.filter(e => e.id !== id);
     vaultStorage.saveSandboxEntries(filtered);
+    await Promise.resolve();
   }
 
   async updateFavoriteStatus(id: string, isFavorite: boolean): Promise<void> {
@@ -76,6 +78,7 @@ export class LocalVaultRepository implements VaultRepository {
       entries[idx].updatedAt = new Date().toISOString();
       vaultStorage.saveSandboxEntries(entries);
     }
+    await Promise.resolve();
   }
 
   async updateTrashStatus(id: string, isTrash: boolean): Promise<void> {
@@ -86,10 +89,13 @@ export class LocalVaultRepository implements VaultRepository {
       entries[idx].updatedAt = new Date().toISOString();
       vaultStorage.saveSandboxEntries(entries);
     }
+    await Promise.resolve();
   }
 
   async getVaultConfig(uid: string): Promise<VaultConfig | null> {
-    return vaultStorage.getVaultConfig(uid);
+    const res = vaultStorage.getVaultConfig(uid);
+    await Promise.resolve();
+    return res;
   }
 
   async saveVaultConfig(uid: string, config: VaultConfig | null): Promise<void> {
@@ -98,6 +104,7 @@ export class LocalVaultRepository implements VaultRepository {
     } else {
       vaultStorage.clearVaultConfig(uid);
     }
+    await Promise.resolve();
   }
 
   async resetVault(uid: string, entries: EncryptedSecretEntry[]): Promise<void> {

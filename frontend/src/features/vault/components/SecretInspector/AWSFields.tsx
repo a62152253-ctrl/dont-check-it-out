@@ -66,7 +66,7 @@ export function AWSFields({  secret, copiedId, copiedField, copyText, isPassVisi
 
       <button
         onClick={() => handleCopyAWSExports?.(secret.developerFields)}
-        className="w-full py-2 bg-orange-500/10 hover:bg-orange-500/20 border border-orange-500/20 text-orange-300 font-semibold font-mono text-[10px] rounded transition-all cursor-pointer flex items-center justify-center gap-1.5"
+        className="w-full py-2 bg-orange-500/10 hover:bg-orange-500/20 border border-orange-500/20 text-orange-300 font-semibold font-mono text-[10px] rounded transition-all flex items-center justify-center gap-1.5"
       >
         <Terminal className="w-3.5 h-3.5" />
         <span>Kopiuj eksport AWS (Shell env)</span>

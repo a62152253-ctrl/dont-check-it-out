@@ -63,7 +63,7 @@ export function DatabaseFields({  secret, isPassVisible, setVisiblePasswords, ha
 
       <button
         onClick={() => handleCopyDbUri?.(secret.developerFields)}
-        className="w-full py-2 bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/20 text-sky-300 font-semibold font-mono text-[10px] rounded transition-all cursor-pointer flex items-center justify-center gap-1.5"
+        className="w-full py-2 bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/20 text-sky-300 font-semibold font-mono text-[10px] rounded transition-all flex items-center justify-center gap-1.5"
       >
         <Database className="w-3.5 h-3.5" />
         <span>Kopiuj Connection String / URI</span>

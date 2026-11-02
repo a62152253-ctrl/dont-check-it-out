@@ -35,7 +35,7 @@ export function APIKeyFields({  secret, copiedId, copiedField, copyText, handleD
 
       <button
         onClick={() => handleDownloadDotenv?.(secret.name, secret.developerFields?.dotenvContent)}
-        className="w-full py-2 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/20 text-emerald-300 font-semibold font-mono text-[10px] rounded transition-all cursor-pointer flex items-center justify-center gap-1.5"
+        className="w-full py-2 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/20 text-emerald-300 font-semibold font-mono text-[10px] rounded transition-all flex items-center justify-center gap-1.5"
       >
         <RefreshCw className="w-3.5 h-3.5 rotate-180" />
         <span>Pobierz jako plik .env</span>
