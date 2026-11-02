@@ -6,12 +6,12 @@ import { useAutoLock } from "./useAutoLock";
 import { LocalVaultRepository } from "../repositories/LocalVaultRepository";
 import { FirebaseVaultRepository } from "../repositories/FirebaseVaultRepository";
 import { VaultRepository } from "../repositories/VaultRepository";
-import { DecryptedSecret, EncryptedSecretEntry, VaultConfig, ActivityLog } from "../types";
+import { DecryptedSecret, EncryptedSecretEntry, VaultConfig, ActivityLog } from "@/features/vault/types";
 import * as cryptoService from "../services/crypto.service";
 import * as cryptoRandom from "../services/cryptoRandom.service";
 import * as vaultStorage from "../services/vaultStorage.service";
 import * as migrationService from "../services/migration.service";
-import * as backupService from "../services/backup.service";
+import * as backupService from "@/features/vault/services/backup.service";
 
 export function mapLegacyCategory(cat: string | undefined | null): string {
   if (!cat) return "Notes";
@@ -362,10 +362,9 @@ export function useVault() {
     try {
       const updates = await migrationService.encryptMultipleLegacyEntries(legacyEntries, sessionKey);
       
-      for (const update of updates) {
+      await Promise.all(updates.map(async update => {
         const rawEntry = entries.find(e => e.id === update.id);
-        if (!rawEntry) continue;
-        
+        if (!rawEntry) return;
         await repository.saveEntry(user.uid, update.id, {
           category: rawEntry.category,
           name: rawEntry.name,
@@ -377,7 +376,7 @@ export function useVault() {
           updatedAt: new Date().toISOString()
         });
         successCount++;
-      }
+      }));
 
       addActivityLog("Mass Migrated Legacy", `Zaszyfrowano ${successCount} wpisów legacy`);
       setSuccessMsg(`Pomyślnie zaszyfrowano i zmigrowano ${successCount} wpisów legacy!`);
@@ -454,10 +453,10 @@ export function useVault() {
       const encryptedList = await backupService.prepareImportedJsonEntries(jsonData, sessionKey);
       let successCount = 0;
 
-      for (const entry of encryptedList) {
+      await Promise.all(encryptedList.map(async entry => {
         await repository.saveEntry(user.uid, null, entry);
         successCount++;
-      }
+      }));
 
       addActivityLog("Imported Vault", `Zaimportowano ${successCount} sekretów`);
       setSuccessMsg(`Pomyślnie zaimportowano ${successCount} rekordów!`);
@@ -540,7 +539,7 @@ export function useVault() {
 
   // Copy helper
   const handleCopy = (text: string, id: string, field: string) => {
-    navigator.clipboard.writeText(text);
+    void navigator.clipboard.writeText(text);
     setCopiedId(id);
     setCopiedField(field);
 
