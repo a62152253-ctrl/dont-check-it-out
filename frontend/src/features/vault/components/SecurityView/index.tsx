@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { ShieldCheck, Activity, Shield } from "lucide-react";
-import { useVaultContext } from "../../../context/useVaultContext";
+import { useVaultContext } from "@/features/vault/context/VaultContext";
 import SecurityScoreCard from "./SecurityScoreCard";
 import WeakPasswordList from "./WeakPasswordList";
 import DuplicateCredentials from "./DuplicateCredentials";

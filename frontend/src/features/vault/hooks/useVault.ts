@@ -6,12 +6,12 @@ import { useAutoLock } from "./useAutoLock";
 import { LocalVaultRepository } from "../repositories/LocalVaultRepository";
 import { FirebaseVaultRepository } from "../repositories/FirebaseVaultRepository";
 import { VaultRepository } from "../repositories/VaultRepository";
-import { DecryptedSecret, EncryptedSecretEntry, VaultConfig, ActivityLog } from "../types";
+import { DecryptedSecret, EncryptedSecretEntry, VaultConfig, ActivityLog } from "@/features/vault/types";
 import * as cryptoService from "../services/crypto.service";
 import * as cryptoRandom from "../services/cryptoRandom.service";
 import * as vaultStorage from "../services/vaultStorage.service";
 import * as migrationService from "../services/migration.service";
-import * as backupService from "../services/backup.service";
+import * as backupService from "@/features/vault/services/backup.service";
 
 export function mapLegacyCategory(cat: string | undefined | null): string {
   if (!cat) return "Notes";
