@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useAuth } from "../hooks/useAuth";
+import { useAuth } from "@/hooks/useAuth";
 import MainForm from "./MainForm";
 import { translations } from "../lib/translations";
 import { 
