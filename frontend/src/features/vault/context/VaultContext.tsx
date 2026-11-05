@@ -1,5 +1,5 @@
 import React, { createContext, useContext, ReactNode } from "react";
-import { UseVaultReturn } from "../hooks/useVault";
+import { UseVaultReturn } from "@/features/vault/hooks/useVault";
 
 const VaultContext = createContext<UseVaultReturn | undefined>(undefined);
 

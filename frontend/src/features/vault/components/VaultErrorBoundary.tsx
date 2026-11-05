@@ -11,6 +11,7 @@ interface State {
 }
 
 export class VaultErrorBoundary extends Component<Props, State> {
+  declare props: Props;
   public state: State = {
     hasError: false,
     error: null
@@ -21,7 +22,7 @@ export class VaultErrorBoundary extends Component<Props, State> {
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error("VaultErrorBoundary caught an error:", error, errorInfo);
+    console.error("Uncaught error in Vault:", error, errorInfo);
   }
 
   private handleReload = () => {
@@ -31,22 +32,21 @@ export class VaultErrorBoundary extends Component<Props, State> {
   public render() {
     if (this.state.hasError) {
       return (
-        <div className="max-w-xl mx-auto bg-[#0a0a0a]/90 backdrop-blur-md border border-red-500/20 rounded-2xl p-8 space-y-6 shadow-2xl relative my-12 text-center overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-rose-500 to-transparent" />
-          <div className="flex flex-col items-center gap-3">
-            <div className="w-14 h-14 bg-rose-500/10 border border-rose-500/20 rounded-2xl flex items-center justify-center text-rose-400">
-              <AlertTriangle className="w-7 h-7" />
-            </div>
-            <h2 className="text-xl font-display font-semibold text-white tracking-tight">Krytyczny błąd szyfrowania / Sejfu</h2>
-            <p className="text-xs text-slate-400 max-w-md leading-relaxed font-sans">
-              Wystąpił nieoczekiwany błąd podczas odszyfrowywania pamięci RAM lub renderowania interfejsu.
-              Może to oznaczać niepoprawny stan KEK lub uszkodzony pakiet AES-GCM.
-            </p>
+        <div className="flex flex-col items-center justify-center min-h-[400px] text-center p-8 bg-[#0c0c0c]/90 border border-white/5 rounded-2xl">
+          <div className="w-12 h-12 bg-rose-500/10 rounded-2xl flex items-center justify-center mb-4">
+            <AlertTriangle className="w-6 h-6 text-rose-500" />
           </div>
+          <h2 className="text-xl font-display font-bold text-white mb-2 tracking-tight">Krytyczny błąd interfejsu</h2>
+          <p className="text-slate-400 max-w-md mx-auto mb-6 text-xs leading-relaxed">
+            Wystąpił nieoczekiwany problem z renderowaniem komponentu. Odśwież aplikację, aby spróbować ponownie.
+          </p>
 
           {this.state.error && (
-            <div className="p-4 bg-black/40 border border-white/5 rounded-xl text-left font-mono text-[10px] text-rose-300 max-h-[150px] overflow-y-auto break-all">
-              {this.state.error.stack || this.state.error.message}
+            <div className="bg-[#121212] border border-white/5 rounded-lg p-3 text-left w-full max-w-lg mb-6 overflow-auto">
+              <span className="block text-[9px] font-mono text-rose-500/70 uppercase mb-1">Szczegóły błędu</span>
+              <pre className="text-[10px] font-mono text-slate-300 break-words whitespace-pre-wrap">
+                {this.state.error.message}
+              </pre>
             </div>
           )}
 
@@ -61,7 +61,7 @@ export class VaultErrorBoundary extends Component<Props, State> {
       );
     }
 
-    return this.children;
+    return this.props.children;
   }
 }
 export default VaultErrorBoundary;
