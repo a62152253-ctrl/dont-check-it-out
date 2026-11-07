@@ -437,7 +437,7 @@ export default function AuthForms() {
               <div className="relative">
                 <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
                 <input
-                  id="pass"
+                  id="pass" autoComplete="current-password"
                   type={showPassword ? "text" : "password"}
                   required
                   placeholder={tab === "register" ? "Create a secure password" : "••••••••••••"}

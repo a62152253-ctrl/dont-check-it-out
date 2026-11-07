@@ -11,7 +11,7 @@ interface State {
 }
 
 
-export class VaultErrorBoundary extends Component<Props, State> {
+export default class VaultErrorBoundary extends Component<Props, State> {
   declare props: Props;
   public state: State = {
     hasError: false,
@@ -66,4 +66,3 @@ export class VaultErrorBoundary extends Component<Props, State> {
     return this.props.children;
   }
 }
-export default VaultErrorBoundary;
