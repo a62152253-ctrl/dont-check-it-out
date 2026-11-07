@@ -1,6 +1,6 @@
 import { Response } from "express";
 import { AuthenticatedRequest } from "../middleware/auth.js";
-import { adminDb } from "../config/firebase.ts";
+import { adminDb } from "../config/firebase.js";
 import { z } from "zod";
 
 const secretPayloadSchema = z.object({
@@ -27,7 +27,7 @@ export async function getSecrets(req: AuthenticatedRequest, res: Response) {
       .get();
 
     const secrets: any[] = [];
-    querySnapshot.forEach(doc => {
+    querySnapshot.forEach((doc: any) => {
       secrets.push({ id: doc.id, ...doc.data() });
     });
 
