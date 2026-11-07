@@ -540,7 +540,7 @@ export function useVault() {
 
   // Copy helper
   const handleCopy = (text: string, id: string, field: string) => {
-    navigator.clipboard.writeText(text);
+    void navigator.clipboard.writeText(text);
     setCopiedId(id);
     setCopiedField(field);
 

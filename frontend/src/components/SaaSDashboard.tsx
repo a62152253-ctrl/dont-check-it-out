@@ -39,7 +39,7 @@ export default function SaasDashboard() {
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           
           {/* Logo / Title */}
-          <div className="flex items-center gap-3 group cursor-pointer">
+          <div className="flex items-center gap-3 group">
             <div className="w-8 h-8 bg-gradient-to-tr from-emerald-400 to-teal-500 flex items-center justify-center rounded-lg shadow-lg shadow-emerald-500/10 group-hover:scale-105 transition-transform duration-200 shrink-0">
               <Lock className="w-4 h-4 text-black stroke-[2.5]" />
             </div>
@@ -61,7 +61,7 @@ export default function SaasDashboard() {
               <button
                 type="button"
                 onClick={() => setLanguage("PL")}
-                className={`px-2.5 py-1 rounded-md font-mono transition-all duration-200 cursor-pointer ${
+                className={`px-2.5 py-1 rounded-md font-mono transition-all duration-200 ${
                   language === "PL" 
                     ? "bg-white/10 text-white font-bold shadow-sm" 
                     : "text-slate-500 hover:text-white"
@@ -72,7 +72,7 @@ export default function SaasDashboard() {
               <button
                 type="button"
                 onClick={() => setLanguage("EN")}
-                className={`px-2.5 py-1 rounded-md font-mono transition-all duration-200 cursor-pointer ${
+                className={`px-2.5 py-1 rounded-md font-mono transition-all duration-200 ${
                   language === "EN" 
                     ? "bg-white/10 text-white font-bold shadow-sm" 
                     : "text-slate-500 hover:text-white"
@@ -101,13 +101,13 @@ export default function SaasDashboard() {
                 <div className="flex items-center gap-1.5 bg-[#0a0a0a] px-2 py-1 rounded-lg border border-white/10 shadow-xl">
                   <button
                     onClick={() => logout()}
-                    className="px-2.5 py-1 text-[10px] bg-rose-600 hover:bg-rose-700 text-white font-bold rounded transition-all cursor-pointer"
+                    className="px-2.5 py-1 text-[10px] bg-rose-600 hover:bg-rose-700 text-white font-bold rounded transition-all"
                   >
                     {t.confirm}
                   </button>
                   <button
                     onClick={() => setShowLogoutConfirm(false)}
-                    className="px-2.5 py-1 text-[10px] bg-white/5 hover:bg-white/10 text-slate-300 rounded font-semibold cursor-pointer transition-all"
+                    className="px-2.5 py-1 text-[10px] bg-white/5 hover:bg-white/10 text-slate-300 rounded font-semibold transition-all"
                   >
                     {t.cancel}
                   </button>
@@ -115,7 +115,7 @@ export default function SaasDashboard() {
               ) : (
                 <button
                   onClick={() => setShowLogoutConfirm(true)}
-                  className="flex items-center gap-2 py-1.5 px-3 rounded-lg border border-white/5 hover:border-white/10 hover:bg-white/5 text-xs text-rose-400 font-semibold cursor-pointer transition-all"
+                  className="flex items-center gap-2 py-1.5 px-3 rounded-lg border border-white/5 hover:border-white/10 hover:bg-white/5 text-xs text-rose-400 font-semibold transition-all"
                   title={t.signOut}
                 >
                   <LogOut className="w-3.5 h-3.5" />
